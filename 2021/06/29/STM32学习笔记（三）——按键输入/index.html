@@ -6,28 +6,31 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://qianjunwei.top">
-  <title>STM32学习笔记（二）—蜂鸣器实验 | 俊伟的个人站</title>
+  <title>STM32学习笔记（三）—按键输入实验 | 俊伟的个人站</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="一、概述在上一讲中，我们已经说明了如何通过编程控制LED进行交替闪烁。基本思路为：了解硬件连接、配置工程、编写软件（定义GPIO初始化结构体、使能时钟线、设置结构体内容，针对配置内容进行初始化）。本章将继续将继续使用GPIO的输出功能，控制蜂鸣器进行鸣响操作。 二、蜂鸣器简介蜂鸣器是一种一体化结构的电子讯响器，采用直流电压供电，广泛应用于计算机、打印机、复印机、报警器、电子玩具、汽车电子设备、电话">
+  <meta name="description" content="一、概述在前两个章节中，我们已经说明了如何通过操作IO口作为输出分别控制LED灯按照我们的需要进行点亮和熄灭，以及如何进行流水灯的设计，还有操作蜂鸣器进行报警信号的输出。以上两个其实原理都是相同的，都是将IO作为输出，而后分别通过程序控制IO进行外围设备的点亮等。既然以上两种都是将IO口作为输出来控制外围设备，那么单片机能不能将IO作为输入口，检测到施加在某一IO上的电平的高低呢？答案是可以的。原">
 <meta property="og:type" content="article">
-<meta property="og:title" content="STM32学习笔记（二）—蜂鸣器实验">
-<meta property="og:url" content="http://qianjunwei.top/2021/05/21/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E2%80%94%E8%9C%82%E9%B8%A3%E5%99%A8%E5%AE%9E%E9%AA%8C/index.html">
+<meta property="og:title" content="STM32学习笔记（三）—按键输入实验">
+<meta property="og:url" content="http://qianjunwei.top/2021/06/29/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E6%8C%89%E9%94%AE%E8%BE%93%E5%85%A5/index.html">
 <meta property="og:site_name" content="俊伟的个人站">
-<meta property="og:description" content="一、概述在上一讲中，我们已经说明了如何通过编程控制LED进行交替闪烁。基本思路为：了解硬件连接、配置工程、编写软件（定义GPIO初始化结构体、使能时钟线、设置结构体内容，针对配置内容进行初始化）。本章将继续将继续使用GPIO的输出功能，控制蜂鸣器进行鸣响操作。 二、蜂鸣器简介蜂鸣器是一种一体化结构的电子讯响器，采用直流电压供电，广泛应用于计算机、打印机、复印机、报警器、电子玩具、汽车电子设备、电话">
+<meta property="og:description" content="一、概述在前两个章节中，我们已经说明了如何通过操作IO口作为输出分别控制LED灯按照我们的需要进行点亮和熄灭，以及如何进行流水灯的设计，还有操作蜂鸣器进行报警信号的输出。以上两个其实原理都是相同的，都是将IO作为输出，而后分别通过程序控制IO进行外围设备的点亮等。既然以上两种都是将IO口作为输出来控制外围设备，那么单片机能不能将IO作为输入口，检测到施加在某一IO上的电平的高低呢？答案是可以的。原">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://qianjunwei.top/2021/05/21/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E2%80%94%E8%9C%82%E9%B8%A3%E5%99%A8%E5%AE%9E%E9%AA%8C/%E7%A1%AC%E4%BB%B6%E8%BF%9E%E6%8E%A51.jpg">
-<meta property="og:image" content="http://qianjunwei.top/2021/05/21/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E2%80%94%E8%9C%82%E9%B8%A3%E5%99%A8%E5%AE%9E%E9%AA%8C/硬件连接2.jpg">
-<meta property="og:image" content="http://qianjunwei.top/2021/05/21/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E2%80%94%E8%9C%82%E9%B8%A3%E5%99%A8%E5%AE%9E%E9%AA%8C/%E5%B7%A5%E7%A8%8B1.jpg">
-<meta property="og:image" content="http://qianjunwei.top/2021/05/21/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E2%80%94%E8%9C%82%E9%B8%A3%E5%99%A8%E5%AE%9E%E9%AA%8C/%E5%B7%A5%E7%A8%8B2.jpg">
-<meta property="og:image" content="http://qianjunwei.top/2021/05/21/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E2%80%94%E8%9C%82%E9%B8%A3%E5%99%A8%E5%AE%9E%E9%AA%8C/%E5%B7%A5%E7%A8%8B3.jpg">
-<meta property="article:published_time" content="2021-05-21T04:04:19.094Z">
-<meta property="article:modified_time" content="2021-05-24T15:50:26.200Z">
+<meta property="og:image" content="http://qianjunwei.top/2021/06/29/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E6%8C%89%E9%94%AE%E8%BE%93%E5%85%A5/按键.jpg">
+<meta property="og:image" content="http://qianjunwei.top/2021/06/29/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E6%8C%89%E9%94%AE%E8%BE%93%E5%85%A5/按键原理图.jpg">
+<meta property="og:image" content="http://qianjunwei.top/2021/06/29/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E6%8C%89%E9%94%AE%E8%BE%93%E5%85%A5/原理图1.jpg">
+<meta property="og:image" content="http://qianjunwei.top/2021/06/29/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E6%8C%89%E9%94%AE%E8%BE%93%E5%85%A5/原理图2.jpg">
+<meta property="og:image" content="http://qianjunwei.top/2021/06/29/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E6%8C%89%E9%94%AE%E8%BE%93%E5%85%A5/hardware文件夹.jpg">
+<meta property="og:image" content="http://qianjunwei.top/2021/06/29/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E6%8C%89%E9%94%AE%E8%BE%93%E5%85%A5/key.jpg">
+<meta property="og:image" content="http://qianjunwei.top/2021/06/29/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E6%8C%89%E9%94%AE%E8%BE%93%E5%85%A5/工程1.jpg">
+<meta property="og:image" content="http://qianjunwei.top/2021/06/29/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E6%8C%89%E9%94%AE%E8%BE%93%E5%85%A5/工程2.jpg">
+<meta property="article:published_time" content="2021-06-29T12:57:07.815Z">
+<meta property="article:modified_time" content="2021-05-25T04:05:12.577Z">
 <meta property="article:author" content="钱俊伟的个人站">
 <meta property="article:tag" content="STM32">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://qianjunwei.top/2021/05/21/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E2%80%94%E8%9C%82%E9%B8%A3%E5%99%A8%E5%AE%9E%E9%AA%8C/%E7%A1%AC%E4%BB%B6%E8%BF%9E%E6%8E%A51.jpg">
+<meta name="twitter:image" content="http://qianjunwei.top/2021/06/29/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E6%8C%89%E9%94%AE%E8%BE%93%E5%85%A5/按键.jpg">
   
     <link rel="alternative" href="/atom.xml" title="俊伟的个人站" type="application/atom+xml">
   
@@ -213,14 +216,14 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-STM32学习笔记（二）——蜂鸣器实验" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-STM32学习笔记（三）——按键输入" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
   
     <h1 class="article-title" itemprop="name">
-      STM32学习笔记（二）—蜂鸣器实验
+      STM32学习笔记（三）—按键输入实验
     </h1>
   
 
@@ -232,8 +235,8 @@
               <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
         </span>
 
-<a href="/2021/05/21/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E2%80%94%E8%9C%82%E9%B8%A3%E5%99%A8%E5%AE%9E%E9%AA%8C/" class="archive-article-date">
-        <time datetime="2021-05-21T04:04:19.094Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-21</time>
+<a href="/2021/06/29/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E6%8C%89%E9%94%AE%E8%BE%93%E5%85%A5/" class="archive-article-date">
+        <time datetime="2021-06-29T12:57:07.815Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-29</time>
 </a>
 
   
@@ -246,7 +249,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">1.5k字</span>
+      <span class="post-count">1.7k字</span>
     </span>
   </span>
 
@@ -255,7 +258,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">5分</span>
+      <span class="post-count">6分</span>
     </span>
   </span>
 </div>
@@ -266,36 +269,46 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <h2 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h2><p>在上一讲中，我们已经说明了如何通过编程控制LED进行交替闪烁。基本思路为：了解硬件连接、配置工程、编写软件（定义GPIO初始化结构体、使能时钟线、设置结构体内容，针对配置内容进行初始化）。本章将继续将继续使用GPIO的输出功能，控制蜂鸣器进行鸣响操作。</p>
-<h2 id="二、蜂鸣器简介"><a href="#二、蜂鸣器简介" class="headerlink" title="二、蜂鸣器简介"></a>二、蜂鸣器简介</h2><p>蜂鸣器是一种一体化结构的电子讯响器，采用<a href="https://baike.baidu.com/item/%E7%9B%B4%E6%B5%81%E7%94%B5%E5%8E%8B/8640960">直流电压</a>供电，广泛应用于计算机、打印机、复印机、报警器、<a href="https://baike.baidu.com/item/%E7%94%B5%E5%AD%90%E7%8E%A9%E5%85%B7/10753789">电子玩具</a>、汽车电子设备、电话机、<a href="https://baike.baidu.com/item/%E5%AE%9A%E6%97%B6%E5%99%A8/5109454">定时器</a>等电子产品中作发声器件。蜂鸣器主要分为<a href="https://baike.baidu.com/item/%E5%8E%8B%E7%94%B5%E5%BC%8F%E8%9C%82%E9%B8%A3%E5%99%A8/3936962">压电式蜂鸣器</a>和<a href="https://baike.baidu.com/item/%E7%94%B5%E7%A3%81%E5%BC%8F%E8%9C%82%E9%B8%A3%E5%99%A8/6597409">电磁式蜂鸣器</a>两种类型。蜂鸣器在电路中用字母“H”或“HA”（旧标准用“FM”、“ZZG”、“LB”、“JD”等）表示。</p>
-<p>蜂鸣器主要分为有源和无源式。这里的有源不是指电源的“源”，而是指有没有自带震荡电路，有源蜂鸣器自带了震荡电路，一通电就会发声；无源蜂鸣器则没有自带震荡电路，必须外部提供 2~5Khz 左右的方波驱动，<br>才能发声。</p>
-<h2 id="三、硬件设计"><a href="#三、硬件设计" class="headerlink" title="三、硬件设计"></a>三、硬件设计</h2><p><img src="/2021/05/21/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E2%80%94%E8%9C%82%E9%B8%A3%E5%99%A8%E5%AE%9E%E9%AA%8C/%E7%A1%AC%E4%BB%B6%E8%BF%9E%E6%8E%A51.jpg"></p>
-<img src="/2021/05/21/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E2%80%94%E8%9C%82%E9%B8%A3%E5%99%A8%E5%AE%9E%E9%AA%8C/硬件连接2.jpg" style="zoom:88%;">
+    <h2 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h2><p>在前两个章节中，我们已经说明了如何通过操作IO口作为输出分别控制LED灯按照我们的需要进行点亮和熄灭，以及如何进行流水灯的设计，还有操作蜂鸣器进行报警信号的输出。以上两个其实原理都是相同的，都是将IO作为输出，而后分别通过程序控制IO进行外围设备的点亮等。既然以上两种都是将IO口作为输出来控制外围设备，那么单片机能不能将IO作为输入口，检测到施加在某一IO上的电平的高低呢？答案是可以的。原因在于我们在第一讲中已经阐述了STM32的IO一共有八种模式，通过查阅固件库可得知，分别为：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">enum</span></span></span><br><span class="line"><span class="class">&#123;</span> <span class="comment">//作为输入使用时</span></span><br><span class="line">  GPIO_Mode_AIN = <span class="number">0x0</span>,				<span class="comment">//模拟输入</span></span><br><span class="line">  GPIO_Mode_IN_FLOATING = <span class="number">0x04</span>,		<span class="comment">//输入浮空</span></span><br><span class="line">  GPIO_Mode_IPD = <span class="number">0x28</span>,				<span class="comment">//输入下拉</span></span><br><span class="line">  GPIO_Mode_IPU = <span class="number">0x48</span>,				<span class="comment">//输入上拉</span></span><br><span class="line">  <span class="comment">//作为输出使用时</span></span><br><span class="line">  GPIO_Mode_Out_OD = <span class="number">0x14</span>,			<span class="comment">//开漏输出</span></span><br><span class="line">  GPIO_Mode_Out_PP = <span class="number">0x10</span>,			<span class="comment">//推挽式输出</span></span><br><span class="line">  GPIO_Mode_AF_OD = <span class="number">0x1C</span>,			<span class="comment">//开漏复用功能</span></span><br><span class="line">  GPIO_Mode_AF_PP = <span class="number">0x18</span>			<span class="comment">//推挽式复用功能</span></span><br><span class="line">&#125;GPIOMode_TypeDef;					<span class="comment">//存在此结构体中</span></span><br></pre></td></tr></table></figure>
 
-<p>如图所示，为开发板上的蜂鸣器硬件连接图，我们通过跟上章的LED连接图进行对比，是否会产生一下疑问：为什么不是IO直接连接蜂鸣器上面的？为什么此处需要加电阻？又为什么需要一个三极管？作用是什么？</p>
-<p>首先，我们都知道三极管是一种电流控制性器件，作用是把微弱信号放大成幅度值较大的电信号，也用作无触点开关。三极管是半导体基本元器件之一，具有电流放大作用，是电子电路的核心元件。三极管是在一块半导体基片上制作两个相距很近的PN结，两个PN结把整块半导体分成三部分，中间部分是基区，两侧部分是发射区和集电区，排列方式有PNP和NPN两种。所以我们此处的三极管是为了增大IO的输出电流的。但是此处为什么加这个呢？</p>
-<p>原因在于我们通过查阅芯片的 Datesheet 可以知道，单个IO的最大输出电流为25mA，但是蜂鸣器的驱动电流在30mA左右，如果仅仅通过IO去控制，是不能满足要求的，所以我们就想了通过三极管的电流放大作用来进行控制。但是此处的方法并不是唯一的，可以通过别的驱动芯片进行控制，也都能满足效果，例如经典的ULN2003。此处的电阻是限流的作用。</p>
-<p>另外我们通过观察原理图可以得知，三极管的基极即蜂鸣器的控制端接在PB8上，我们通过操作此端口即可满足需要。</p>
-<h2 id="四、工程配置"><a href="#四、工程配置" class="headerlink" title="四、工程配置"></a>四、工程配置</h2><p>同上章说的一样，为了便于我们个人工程的管理以及增强程序的可移植性，我们尽量将我们的个人代码与系统的驱动部分代码分开，这样我们在进行后期不同芯片之间的移植的时候，只需根据不同的硬件连接方式修改个人代码中的端口定义部分，非常的方便。</p>
-<p>首先我们同样在Hardware文件夹下新建Beep文件夹用来存放我们的蜂鸣器驱动代码。在此文件下同时新建Beep.c和Beep.h这两个文件，用于蜂鸣器配置代码的存放。如下图所示。</p>
-<p><img src="/2021/05/21/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E2%80%94%E8%9C%82%E9%B8%A3%E5%99%A8%E5%AE%9E%E9%AA%8C/%E5%B7%A5%E7%A8%8B1.jpg"></p>
-<p>新建完成之后将这两个文件添加进工程，</p>
-<p>将C文件添加进工程目录</p>
-<p><img src="/2021/05/21/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E2%80%94%E8%9C%82%E9%B8%A3%E5%99%A8%E5%AE%9E%E9%AA%8C/%E5%B7%A5%E7%A8%8B2.jpg"></p>
-<p>将头文件添加进编译目录</p>
-<p><img src="/2021/05/21/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E2%80%94%E8%9C%82%E9%B8%A3%E5%99%A8%E5%AE%9E%E9%AA%8C/%E5%B7%A5%E7%A8%8B3.jpg"></p>
+<p>由此可知，我们根据需要，将对应的IO口设置成输入模式即可检测外部对IO口施加的电平信号，从而实现对外部控制器件的检测。</p>
+<h2 id="二、按键简介"><a href="#二、按键简介" class="headerlink" title="二、按键简介"></a>二、按键简介</h2><p>按键开关主要是指轻触式按键开关，也称之为轻触开关。按键开关是一种电子开关，属于电子元器件类，最早出现在日本[称之为：敏感型开关]，使用时以满足操作力的条件向开关操作方向施压开关功能闭合接通，当撤销压力时开关即断开，其内部结构是靠金属弹片受力变化来实现通断的。实物如下图所示。</p>
+<p>按键开关由嵌件、基座、弹片、按钮、盖板组成，其中防水类轻触开关在弹片上加一层<a href="https://baike.baidu.com/item/%E8%81%9A%E9%85%B0%E4%BA%9A%E8%83%BA%E8%96%84%E8%86%9C/6200314">聚酰亚胺薄膜</a></p>
+<img src="/2021/06/29/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E6%8C%89%E9%94%AE%E8%BE%93%E5%85%A5/按键.jpg" style="zoom: 150%;">
+
+<h2 id="三、硬件设计"><a href="#三、硬件设计" class="headerlink" title="三、硬件设计"></a>三、硬件设计</h2><p>如图所示，为按键的硬件连接图。当按键key_up按下的时候，PA0检测到的应改为高电平信号。同理可得，当key0、key1、key2按下的时候，PE2、PE3、PE4检测到的应该为低电平信号。</p>
+<img src="/2021/06/29/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E6%8C%89%E9%94%AE%E8%BE%93%E5%85%A5/按键原理图.jpg" style="zoom: 65%;">
+
+<img src="/2021/06/29/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E6%8C%89%E9%94%AE%E8%BE%93%E5%85%A5/原理图1.jpg" style="zoom: 59%;">
+
+<img src="/2021/06/29/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E6%8C%89%E9%94%AE%E8%BE%93%E5%85%A5/原理图2.jpg" style="zoom: 62%;">
+
+<h2 id="四、工程配置"><a href="#四、工程配置" class="headerlink" title="四、工程配置"></a>四、工程配置</h2><p>与之前一样，为了便于以后我们项目的移植和工程代码的简洁性，我们将各模块代码进行模块化并且存放在Hardware文件夹下。</p>
+<img src="/2021/06/29/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E6%8C%89%E9%94%AE%E8%BE%93%E5%85%A5/hardware文件夹.jpg" style="zoom: 125%;">
+
+<p>在key文件夹下新建 key.c 和 key.h 文件，用来存放 key 的初始化代码</p>
+<img src="/2021/06/29/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E6%8C%89%E9%94%AE%E8%BE%93%E5%85%A5/key.jpg" style="zoom: 125%;">
+
+<p>将C文件添加进工程</p>
+<img src="/2021/06/29/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E6%8C%89%E9%94%AE%E8%BE%93%E5%85%A5/工程1.jpg" style="zoom: 80%;">
+
+<p>将头文件添加进编译路径</p>
+<img src="/2021/06/29/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E6%8C%89%E9%94%AE%E8%BE%93%E5%85%A5/工程2.jpg" style="zoom: 80%;">
+
 <p>按照以上步骤工程即配置完成，接下来进行软件部分的设计即可完成功能的实现。</p>
-<h2 id="五、软件设计"><a href="#五、软件设计" class="headerlink" title="五、软件设计"></a>五、软件设计</h2><p>首先我们在Beep.h文件中添加需要全局定义的一些内容，如下所示,同样是通过位带操作来实现IO口的映射关系</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> __BEEP_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> __BEEP_H	 </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;sys.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">//蜂鸣器端口定义 </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> BEEP PBout(8)	<span class="comment">// BEEP,蜂鸣器接口		   </span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BEEP_Init</span><span class="params">(<span class="keyword">void</span>)</span></span>;	<span class="comment">//初始化</span></span><br><span class="line">		 				    </span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+<h2 id="五、软件设计"><a href="#五、软件设计" class="headerlink" title="五、软件设计"></a>五、软件设计</h2><p>同样的，我们首先要在key.h文件中添加一些需要全局定义的一些内容，也同样是利用位带操作来映射IO的关系。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> __KEY_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> __KEY_H	 </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;sys.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">//#define KEY0 PEin(4)   	//PE4 这部分是通过位带操作来实现对IO的输入的读取</span></span><br><span class="line"><span class="comment">//#define KEY1 PEin(3)		//PE3 </span></span><br><span class="line"><span class="comment">//#define KEY2 PEin(2)		//PE2</span></span><br><span class="line"><span class="comment">//#define WK_UP PAin(0)		//PA0  WK_UP</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//这部分用的是GPIO中直接读取输入状态的函数</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> KEY0  GPIO_ReadInputDataBit(GPIOE,GPIO_Pin_4)	<span class="comment">//读取按键0 </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> KEY1  GPIO_ReadInputDataBit(GPIOE,GPIO_Pin_3)	<span class="comment">//读取按键1</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> KEY2  GPIO_ReadInputDataBit(GPIOE,GPIO_Pin_2)	<span class="comment">//读取按键2 </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> WK_UP   GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_0)	<span class="comment">//读取按键3(WK_UP) </span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> KEY0_PRES 	1	<span class="comment">//KEY0按下返回1</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> KEY1_PRES	2	<span class="comment">//KEY1按下返回2</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> KEY2_PRES	3	<span class="comment">//KEY2按下返回3</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> WKUP_PRES   4	<span class="comment">//KEY_UP按下(即WK_UP/KEY_UP)，返回4</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">KEY_Init</span><span class="params">(<span class="keyword">void</span>)</span></span>;	<span class="comment">//IO初始化函数</span></span><br><span class="line"><span class="function">u8 <span class="title">KEY_Scan</span><span class="params">(u8)</span></span>;  		<span class="comment">//按键扫描函数					    </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
 
-<p>定义完成后我们需要进行GPIO的初始化工作，我们打开Beep.c编写对应IO的初始化代码，如下所示</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;beep.h&quot;</span></span></span><br><span class="line">   </span><br><span class="line"><span class="comment">//初始化PB8为输出口.并使能这个口的时钟		    </span></span><br><span class="line"><span class="comment">//蜂鸣器初始化</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BEEP_Init</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"> </span><br><span class="line"> GPIO_InitTypeDef  GPIO_InitStructure;</span><br><span class="line"> 	</span><br><span class="line"> RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);	<span class="comment">//使能GPIOB端口时钟</span></span><br><span class="line"> </span><br><span class="line"> GPIO_InitStructure.GPIO_Pin = GPIO_Pin_8;				<span class="comment">//BEEP--&gt;PB.8 端口配置</span></span><br><span class="line"> GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP; 		<span class="comment">//推挽输出</span></span><br><span class="line"> GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;	 	<span class="comment">//速度为50MHz</span></span><br><span class="line"> GPIO_Init(GPIOB, &amp;GPIO_InitStructure);	 				<span class="comment">//根据参数初始化GPIOB.8</span></span><br><span class="line"> </span><br><span class="line"> GPIO_ResetBits(GPIOB,GPIO_Pin_8);						<span class="comment">//输出0，关闭蜂鸣器输出</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>而后我们在key.c中编写IO的初始化函数</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;stm32f10x.h&quot;</span>	<span class="comment">//F1系列头文件</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;key.h&quot;</span>		<span class="comment">//按键所需头文件</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;sys.h&quot;</span> 		<span class="comment">//位带操作必须</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;delay.h&quot;</span>		<span class="comment">//延时函数</span></span></span><br><span class="line">								    </span><br><span class="line"><span class="comment">//按键初始化函数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">KEY_Init</span><span class="params">(<span class="keyword">void</span>)</span> 	<span class="comment">//IO初始化函数</span></span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line"> 	GPIO_InitTypeDef GPIO_InitStructure;	<span class="comment">//定义GPIO初始化结构体</span></span><br><span class="line"> </span><br><span class="line"> 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA|RCC_APB2Periph_GPIOE,ENABLE);	<span class="comment">//使能PORTA,PORTE时钟</span></span><br><span class="line"></span><br><span class="line">	GPIO_InitStructure.GPIO_Pin  = GPIO_Pin_2|GPIO_Pin_3|GPIO_Pin_4;	<span class="comment">//KEY0-KEY2</span></span><br><span class="line">	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU; 						<span class="comment">//设置成上拉输入</span></span><br><span class="line"> 	GPIO_Init(GPIOE, &amp;GPIO_InitStructure);						<span class="comment">//初始化GPIOE2,3,4</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//初始化 WK_UP--&gt;GPIOA.0	  下拉输入</span></span><br><span class="line">	GPIO_InitStructure.GPIO_Pin  = GPIO_Pin_0;</span><br><span class="line">	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPD;				<span class="comment">//PA0设置成输入，默认下拉	 </span></span><br><span class="line">	GPIO_Init(GPIOA, &amp;GPIO_InitStructure);						<span class="comment">//初始化GPIOA.0</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//按键处理函数</span></span><br><span class="line"><span class="comment">//返回按键值</span></span><br><span class="line"><span class="comment">//mode:0,不支持连续按;1,支持连续按;</span></span><br><span class="line"><span class="comment">//0，没有任何按键按下</span></span><br><span class="line"><span class="comment">//1，KEY0按下</span></span><br><span class="line"><span class="comment">//2，KEY1按下</span></span><br><span class="line"><span class="comment">//3，KEY2按下 </span></span><br><span class="line"><span class="comment">//4，KEY3按下 WK_UP</span></span><br><span class="line"><span class="comment">//注意此函数有响应优先级,KEY0&gt;KEY1&gt;KEY2&gt;KEY3!!</span></span><br><span class="line"><span class="function">u8 <span class="title">KEY_Scan</span><span class="params">(u8 mode)</span></span></span><br><span class="line"><span class="function"></span>&#123;	 </span><br><span class="line">	<span class="keyword">static</span> u8 key_up=<span class="number">1</span>;	<span class="comment">//按键按松开标志</span></span><br><span class="line">	<span class="keyword">if</span>(mode)key_up=<span class="number">1</span>;  	<span class="comment">//支持连按		  </span></span><br><span class="line">	<span class="keyword">if</span>(key_up&amp;&amp;(KEY0==<span class="number">0</span>||KEY1==<span class="number">0</span>||KEY2==<span class="number">0</span>||WK_UP==<span class="number">1</span>))</span><br><span class="line">	&#123;</span><br><span class="line">		delay_ms(<span class="number">10</span>);	<span class="comment">//去抖动 </span></span><br><span class="line">		key_up=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">if</span>(KEY0==<span class="number">0</span>)<span class="keyword">return</span> KEY0_PRES;		<span class="comment">//key0按键返回KEY0_PRES</span></span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(KEY1==<span class="number">0</span>)<span class="keyword">return</span> KEY1_PRES;	<span class="comment">//key1按键返回KEY1_PRES</span></span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(KEY2==<span class="number">0</span>)<span class="keyword">return</span> KEY2_PRES;	<span class="comment">//key2按键返回KEY2_PRES</span></span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(WK_UP==<span class="number">1</span>)<span class="keyword">return</span> WKUP_PRES;	<span class="comment">//key_up按键返回wkup_PRES</span></span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(KEY0==<span class="number">1</span>&amp;&amp;KEY1==<span class="number">1</span>&amp;&amp;KEY2==<span class="number">1</span>&amp;&amp;WK_UP==<span class="number">0</span>)key_up=<span class="number">1</span>; 	    </span><br><span class="line"> 	<span class="keyword">return</span> <span class="number">0</span>;<span class="comment">// 无按键按下</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>同样是先定义GPIO初始化所需的结构体，使能端口线时钟，设置结构体参数，并对以上参数进行初始化。并且在最后通过设置将蜂鸣器的初始化状态设置为关闭状态，不然程序烧录之后蜂鸣器就会长响，不太雅观。</p>
-<p>之后我们打开main.c，在主程序添加我们需要干的事</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;sys.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;delay.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;led.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;beep.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    delay_init();	    	 <span class="comment">//延时函数初始化</span></span><br><span class="line">    LED_Init();		  	 	<span class="comment">//初始化与LED连接的硬件接口</span></span><br><span class="line">    BEEP_Init();         	<span class="comment">//初始化蜂鸣器端口</span></span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        LED0=<span class="number">0</span>;</span><br><span class="line">        BEEP=<span class="number">0</span>;</span><br><span class="line">        delay_ms(<span class="number">300</span>);<span class="comment">//延时300ms</span></span><br><span class="line">        LED0=<span class="number">1</span>;</span><br><span class="line">        BEEP=<span class="number">1</span>;</span><br><span class="line">        delay_ms(<span class="number">300</span>);<span class="comment">//延时300ms</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>需要注意的是，我们这里利用 static 函数做了一个连续按键检测函数。此外此程序设计还包含了按键的优先级，此处需要注意。</p>
+<p>按键的GPIO初始化定义部分完成之后，我们需要做的就是在main.c中编写我们想要实现的功能即可。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;led.h&quot;</span>			<span class="comment">//led功能头文件</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;delay.h&quot;</span>			<span class="comment">//延时头文件</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;key.h&quot;</span>			<span class="comment">//按键功能头文件</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;sys.h&quot;</span>			<span class="comment">//位带操作头文件</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;beep.h&quot;</span>			<span class="comment">//蜂鸣器功能头文件</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span>				<span class="comment">//主函数</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    vu8 key=<span class="number">0</span>;				<span class="comment">//定义一个无符号字符型数据并赋初始值为0</span></span><br><span class="line">    delay_init();	    	<span class="comment">//延时函数初始化</span></span><br><span class="line">    LED_Init();			    <span class="comment">//LED端口初始化</span></span><br><span class="line">    KEY_Init();         	<span class="comment">//初始化与按键连接的硬件接口</span></span><br><span class="line">    BEEP_Init();         	<span class="comment">//初始化蜂鸣器端口</span></span><br><span class="line">    LED0=<span class="number">0</span>;					<span class="comment">//先点亮红灯</span></span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        key=KEY_Scan(<span class="number">0</span>);	<span class="comment">//将按键处理函数返回的键值赋值给key</span></span><br><span class="line">        <span class="keyword">if</span>(key)				</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">switch</span>(key)		<span class="comment">//通过C语言中的switch函数进行数值匹配</span></span><br><span class="line">            &#123;</span><br><span class="line">            <span class="keyword">case</span> WKUP_PRES:	<span class="comment">//控制蜂鸣器</span></span><br><span class="line">                BEEP=!BEEP;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> KEY2_PRES:	<span class="comment">//控制LED0翻转</span></span><br><span class="line">                LED0=!LED0;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> KEY1_PRES:	<span class="comment">//控制LED1翻转</span></span><br><span class="line">                LED1=!LED1;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> KEY0_PRES:	<span class="comment">//同时控制LED0,LED1翻转</span></span><br><span class="line">                LED0=!LED0;</span><br><span class="line">                LED1=!LED1;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> delay_ms(<span class="number">10</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>首先将所需的所有头文件添加进来，然后在主程序中对我们所用的功能的GPIO进行初始化，然后在循环中进行操作，此处设置的现象为LED灯亮同时蜂鸣器响，间隔300ms，关闭在打开。编译无报错之后，下载进开发板即可观察到对应的实验现象。</p>
+<p>通过以上程序的编写，我们将前三章的功能进行整合到一起了。编译完成下载之后，按WK_UP键可控制蜂鸣器，按key2实现LED1的翻转，按key1实现LED2的翻转，按key0实现这两个的同时翻转。</p>
+<p>此外，本章涉及的关于上下拉输入，IO的内部结构，static函数的使用没有深入展开讲解，有兴趣的可以查阅相关资料，非常的有意思。</p>
 
     
 
@@ -310,7 +323,7 @@
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="http://qianjunwei.top/2021/05/21/STM32学习笔记（二）——蜂鸣器实验/" title="STM32学习笔记（二）—蜂鸣器实验" target="_blank">http://qianjunwei.top/2021/05/21/STM32学习笔记（二）——蜂鸣器实验/</a>
+          <a href="http://qianjunwei.top/2021/06/29/STM32学习笔记（三）——按键输入/" title="STM32学习笔记（三）—按键输入实验" target="_blank">http://qianjunwei.top/2021/06/29/STM32学习笔记（三）——按键输入/</a>
         </li>
         
         <li>
@@ -388,7 +401,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://qianjunwei.top/2021/05/21/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E2%80%94%E8%9C%82%E9%B8%A3%E5%99%A8%E5%AE%9E%E9%AA%8C/" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://qianjunwei.top/2021/06/29/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E6%8C%89%E9%94%AE%E8%BE%93%E5%85%A5/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -403,18 +416,18 @@
 
 <nav id="article-nav">
   
-    <a href="/2021/05/24/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E6%8C%89%E9%94%AE%E8%BE%93%E5%85%A5/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2021/06/29/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E2%80%94%E8%9C%82%E9%B8%A3%E5%99%A8%E5%AE%9E%E9%AA%8C/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          STM32学习笔记（三）—按键输入实验
+          STM32学习笔记（二）—蜂鸣器实验
         
       </div>
     </a>
   
   
-    <a href="/2021/05/19/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E7%82%B9%E4%BA%AELED%E7%81%AF/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">STM32学习笔记（一）—点亮LED灯</div>
+    <a href="/2021/06/29/NCRE%E4%BA%8C%E7%BA%A7C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">NCRE二级C学习笔记—程序设计基本概念</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -441,7 +454,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">一、概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E8%9C%82%E9%B8%A3%E5%99%A8%E7%AE%80%E4%BB%8B"><span class="toc-number">2.</span> <span class="toc-text">二、蜂鸣器简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E7%A1%AC%E4%BB%B6%E8%AE%BE%E8%AE%A1"><span class="toc-number">3.</span> <span class="toc-text">三、硬件设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%B7%A5%E7%A8%8B%E9%85%8D%E7%BD%AE"><span class="toc-number">4.</span> <span class="toc-text">四、工程配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1"><span class="toc-number">5.</span> <span class="toc-text">五、软件设计</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">一、概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%8C%89%E9%94%AE%E7%AE%80%E4%BB%8B"><span class="toc-number">2.</span> <span class="toc-text">二、按键简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E7%A1%AC%E4%BB%B6%E8%AE%BE%E8%AE%A1"><span class="toc-number">3.</span> <span class="toc-text">三、硬件设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%B7%A5%E7%A8%8B%E9%85%8D%E7%BD%AE"><span class="toc-number">4.</span> <span class="toc-text">四、工程配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1"><span class="toc-number">5.</span> <span class="toc-text">五、软件设计</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -597,11 +610,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">模电基础</a>
+                <a href="javascript:void(0)" class="js-tag color5">我爱学习</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">我爱学习</a>
+                <a href="javascript:void(0)" class="js-tag color5">模电基础</a>
               </li>
             
             <div class="clearfix"></div>

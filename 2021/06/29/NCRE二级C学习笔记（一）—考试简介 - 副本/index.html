@@ -6,31 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://qianjunwei.top">
-  <title>STM32学习笔记（三）—按键输入实验 | 俊伟的个人站</title>
+  <title>NCRE二级C学习笔记—考试简介 | 俊伟的个人站</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="一、概述在前两个章节中，我们已经说明了如何通过操作IO口作为输出分别控制LED灯按照我们的需要进行点亮和熄灭，以及如何进行流水灯的设计，还有操作蜂鸣器进行报警信号的输出。以上两个其实原理都是相同的，都是将IO作为输出，而后分别通过程序控制IO进行外围设备的点亮等。既然以上两种都是将IO口作为输出来控制外围设备，那么单片机能不能将IO作为输入口，检测到施加在某一IO上的电平的高低呢？答案是可以的。原">
+  <meta name="description" content="一、考试介绍全国计算机等级考试（National Computer Rank Examination，简称NCRE），是经原国家教育委员会（现教育部）批准，由教育部考试中心主办，面向社会，用于考查应试人员计算机应用知识与技能的全国性计算机水平测评体系。（以下基于2021 版） 一级开考：计算机基础及WPS Office应用、计算机基础及MS Office应用、计算机基础及Photoshop应用、网">
 <meta property="og:type" content="article">
-<meta property="og:title" content="STM32学习笔记（三）—按键输入实验">
-<meta property="og:url" content="http://qianjunwei.top/2021/05/24/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E6%8C%89%E9%94%AE%E8%BE%93%E5%85%A5/index.html">
+<meta property="og:title" content="NCRE二级C学习笔记—考试简介">
+<meta property="og:url" content="http://qianjunwei.top/2021/06/29/NCRE%E4%BA%8C%E7%BA%A7C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E8%80%83%E8%AF%95%E7%AE%80%E4%BB%8B%20-%20%E5%89%AF%E6%9C%AC/index.html">
 <meta property="og:site_name" content="俊伟的个人站">
-<meta property="og:description" content="一、概述在前两个章节中，我们已经说明了如何通过操作IO口作为输出分别控制LED灯按照我们的需要进行点亮和熄灭，以及如何进行流水灯的设计，还有操作蜂鸣器进行报警信号的输出。以上两个其实原理都是相同的，都是将IO作为输出，而后分别通过程序控制IO进行外围设备的点亮等。既然以上两种都是将IO口作为输出来控制外围设备，那么单片机能不能将IO作为输入口，检测到施加在某一IO上的电平的高低呢？答案是可以的。原">
+<meta property="og:description" content="一、考试介绍全国计算机等级考试（National Computer Rank Examination，简称NCRE），是经原国家教育委员会（现教育部）批准，由教育部考试中心主办，面向社会，用于考查应试人员计算机应用知识与技能的全国性计算机水平测评体系。（以下基于2021 版） 一级开考：计算机基础及WPS Office应用、计算机基础及MS Office应用、计算机基础及Photoshop应用、网">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://qianjunwei.top/2021/05/24/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E6%8C%89%E9%94%AE%E8%BE%93%E5%85%A5/按键.jpg">
-<meta property="og:image" content="http://qianjunwei.top/2021/05/24/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E6%8C%89%E9%94%AE%E8%BE%93%E5%85%A5/按键原理图.jpg">
-<meta property="og:image" content="http://qianjunwei.top/2021/05/24/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E6%8C%89%E9%94%AE%E8%BE%93%E5%85%A5/原理图1.jpg">
-<meta property="og:image" content="http://qianjunwei.top/2021/05/24/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E6%8C%89%E9%94%AE%E8%BE%93%E5%85%A5/原理图2.jpg">
-<meta property="og:image" content="http://qianjunwei.top/2021/05/24/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E6%8C%89%E9%94%AE%E8%BE%93%E5%85%A5/hardware文件夹.jpg">
-<meta property="og:image" content="http://qianjunwei.top/2021/05/24/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E6%8C%89%E9%94%AE%E8%BE%93%E5%85%A5/key.jpg">
-<meta property="og:image" content="http://qianjunwei.top/2021/05/24/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E6%8C%89%E9%94%AE%E8%BE%93%E5%85%A5/工程1.jpg">
-<meta property="og:image" content="http://qianjunwei.top/2021/05/24/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E6%8C%89%E9%94%AE%E8%BE%93%E5%85%A5/工程2.jpg">
-<meta property="article:published_time" content="2021-05-24T14:30:12.819Z">
-<meta property="article:modified_time" content="2021-05-25T04:05:12.577Z">
+<meta property="article:published_time" content="2021-06-29T12:57:07.809Z">
+<meta property="article:modified_time" content="2021-06-01T15:31:59.438Z">
 <meta property="article:author" content="钱俊伟的个人站">
-<meta property="article:tag" content="STM32">
+<meta property="article:tag" content="二级C">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://qianjunwei.top/2021/05/24/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E6%8C%89%E9%94%AE%E8%BE%93%E5%85%A5/按键.jpg">
   
     <link rel="alternative" href="/atom.xml" title="俊伟的个人站" type="application/atom+xml">
   
@@ -216,14 +207,14 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-STM32学习笔记（三）——按键输入" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-NCRE二级C学习笔记（一）—考试简介 - 副本" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
   
     <h1 class="article-title" itemprop="name">
-      STM32学习笔记（三）—按键输入实验
+      NCRE二级C学习笔记—考试简介
     </h1>
   
 
@@ -235,8 +226,8 @@
               <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
         </span>
 
-<a href="/2021/05/24/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E6%8C%89%E9%94%AE%E8%BE%93%E5%85%A5/" class="archive-article-date">
-        <time datetime="2021-05-24T14:30:12.819Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-24</time>
+<a href="/2021/06/29/NCRE%E4%BA%8C%E7%BA%A7C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E8%80%83%E8%AF%95%E7%AE%80%E4%BB%8B%20-%20%E5%89%AF%E6%9C%AC/" class="archive-article-date">
+        <time datetime="2021-06-29T12:57:07.809Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-29</time>
 </a>
 
   
@@ -249,7 +240,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">1.7k字</span>
+      <span class="post-count">1.8k字</span>
     </span>
   </span>
 
@@ -269,46 +260,65 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <h2 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h2><p>在前两个章节中，我们已经说明了如何通过操作IO口作为输出分别控制LED灯按照我们的需要进行点亮和熄灭，以及如何进行流水灯的设计，还有操作蜂鸣器进行报警信号的输出。以上两个其实原理都是相同的，都是将IO作为输出，而后分别通过程序控制IO进行外围设备的点亮等。既然以上两种都是将IO口作为输出来控制外围设备，那么单片机能不能将IO作为输入口，检测到施加在某一IO上的电平的高低呢？答案是可以的。原因在于我们在第一讲中已经阐述了STM32的IO一共有八种模式，通过查阅固件库可得知，分别为：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">enum</span></span></span><br><span class="line"><span class="class">&#123;</span> <span class="comment">//作为输入使用时</span></span><br><span class="line">  GPIO_Mode_AIN = <span class="number">0x0</span>,				<span class="comment">//模拟输入</span></span><br><span class="line">  GPIO_Mode_IN_FLOATING = <span class="number">0x04</span>,		<span class="comment">//输入浮空</span></span><br><span class="line">  GPIO_Mode_IPD = <span class="number">0x28</span>,				<span class="comment">//输入下拉</span></span><br><span class="line">  GPIO_Mode_IPU = <span class="number">0x48</span>,				<span class="comment">//输入上拉</span></span><br><span class="line">  <span class="comment">//作为输出使用时</span></span><br><span class="line">  GPIO_Mode_Out_OD = <span class="number">0x14</span>,			<span class="comment">//开漏输出</span></span><br><span class="line">  GPIO_Mode_Out_PP = <span class="number">0x10</span>,			<span class="comment">//推挽式输出</span></span><br><span class="line">  GPIO_Mode_AF_OD = <span class="number">0x1C</span>,			<span class="comment">//开漏复用功能</span></span><br><span class="line">  GPIO_Mode_AF_PP = <span class="number">0x18</span>			<span class="comment">//推挽式复用功能</span></span><br><span class="line">&#125;GPIOMode_TypeDef;					<span class="comment">//存在此结构体中</span></span><br></pre></td></tr></table></figure>
-
-<p>由此可知，我们根据需要，将对应的IO口设置成输入模式即可检测外部对IO口施加的电平信号，从而实现对外部控制器件的检测。</p>
-<h2 id="二、按键简介"><a href="#二、按键简介" class="headerlink" title="二、按键简介"></a>二、按键简介</h2><p>按键开关主要是指轻触式按键开关，也称之为轻触开关。按键开关是一种电子开关，属于电子元器件类，最早出现在日本[称之为：敏感型开关]，使用时以满足操作力的条件向开关操作方向施压开关功能闭合接通，当撤销压力时开关即断开，其内部结构是靠金属弹片受力变化来实现通断的。实物如下图所示。</p>
-<p>按键开关由嵌件、基座、弹片、按钮、盖板组成，其中防水类轻触开关在弹片上加一层<a href="https://baike.baidu.com/item/%E8%81%9A%E9%85%B0%E4%BA%9A%E8%83%BA%E8%96%84%E8%86%9C/6200314">聚酰亚胺薄膜</a></p>
-<img src="/2021/05/24/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E6%8C%89%E9%94%AE%E8%BE%93%E5%85%A5/按键.jpg" style="zoom: 150%;">
-
-<h2 id="三、硬件设计"><a href="#三、硬件设计" class="headerlink" title="三、硬件设计"></a>三、硬件设计</h2><p>如图所示，为按键的硬件连接图。当按键key_up按下的时候，PA0检测到的应改为高电平信号。同理可得，当key0、key1、key2按下的时候，PE2、PE3、PE4检测到的应该为低电平信号。</p>
-<img src="/2021/05/24/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E6%8C%89%E9%94%AE%E8%BE%93%E5%85%A5/按键原理图.jpg" style="zoom: 65%;">
-
-<img src="/2021/05/24/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E6%8C%89%E9%94%AE%E8%BE%93%E5%85%A5/原理图1.jpg" style="zoom: 59%;">
-
-<img src="/2021/05/24/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E6%8C%89%E9%94%AE%E8%BE%93%E5%85%A5/原理图2.jpg" style="zoom: 62%;">
-
-<h2 id="四、工程配置"><a href="#四、工程配置" class="headerlink" title="四、工程配置"></a>四、工程配置</h2><p>与之前一样，为了便于以后我们项目的移植和工程代码的简洁性，我们将各模块代码进行模块化并且存放在Hardware文件夹下。</p>
-<img src="/2021/05/24/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E6%8C%89%E9%94%AE%E8%BE%93%E5%85%A5/hardware文件夹.jpg" style="zoom: 125%;">
-
-<p>在key文件夹下新建 key.c 和 key.h 文件，用来存放 key 的初始化代码</p>
-<img src="/2021/05/24/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E6%8C%89%E9%94%AE%E8%BE%93%E5%85%A5/key.jpg" style="zoom: 125%;">
-
-<p>将C文件添加进工程</p>
-<img src="/2021/05/24/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E6%8C%89%E9%94%AE%E8%BE%93%E5%85%A5/工程1.jpg" style="zoom: 80%;">
-
-<p>将头文件添加进编译路径</p>
-<img src="/2021/05/24/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E6%8C%89%E9%94%AE%E8%BE%93%E5%85%A5/工程2.jpg" style="zoom: 80%;">
-
-<p>按照以上步骤工程即配置完成，接下来进行软件部分的设计即可完成功能的实现。</p>
-<h2 id="五、软件设计"><a href="#五、软件设计" class="headerlink" title="五、软件设计"></a>五、软件设计</h2><p>同样的，我们首先要在key.h文件中添加一些需要全局定义的一些内容，也同样是利用位带操作来映射IO的关系。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> __KEY_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> __KEY_H	 </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;sys.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">//#define KEY0 PEin(4)   	//PE4 这部分是通过位带操作来实现对IO的输入的读取</span></span><br><span class="line"><span class="comment">//#define KEY1 PEin(3)		//PE3 </span></span><br><span class="line"><span class="comment">//#define KEY2 PEin(2)		//PE2</span></span><br><span class="line"><span class="comment">//#define WK_UP PAin(0)		//PA0  WK_UP</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//这部分用的是GPIO中直接读取输入状态的函数</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> KEY0  GPIO_ReadInputDataBit(GPIOE,GPIO_Pin_4)	<span class="comment">//读取按键0 </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> KEY1  GPIO_ReadInputDataBit(GPIOE,GPIO_Pin_3)	<span class="comment">//读取按键1</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> KEY2  GPIO_ReadInputDataBit(GPIOE,GPIO_Pin_2)	<span class="comment">//读取按键2 </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> WK_UP   GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_0)	<span class="comment">//读取按键3(WK_UP) </span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> KEY0_PRES 	1	<span class="comment">//KEY0按下返回1</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> KEY1_PRES	2	<span class="comment">//KEY1按下返回2</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> KEY2_PRES	3	<span class="comment">//KEY2按下返回3</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> WKUP_PRES   4	<span class="comment">//KEY_UP按下(即WK_UP/KEY_UP)，返回4</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">KEY_Init</span><span class="params">(<span class="keyword">void</span>)</span></span>;	<span class="comment">//IO初始化函数</span></span><br><span class="line"><span class="function">u8 <span class="title">KEY_Scan</span><span class="params">(u8)</span></span>;  		<span class="comment">//按键扫描函数					    </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
-
-<p>而后我们在key.c中编写IO的初始化函数</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;stm32f10x.h&quot;</span>	<span class="comment">//F1系列头文件</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;key.h&quot;</span>		<span class="comment">//按键所需头文件</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;sys.h&quot;</span> 		<span class="comment">//位带操作必须</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;delay.h&quot;</span>		<span class="comment">//延时函数</span></span></span><br><span class="line">								    </span><br><span class="line"><span class="comment">//按键初始化函数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">KEY_Init</span><span class="params">(<span class="keyword">void</span>)</span> 	<span class="comment">//IO初始化函数</span></span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line"> 	GPIO_InitTypeDef GPIO_InitStructure;	<span class="comment">//定义GPIO初始化结构体</span></span><br><span class="line"> </span><br><span class="line"> 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA|RCC_APB2Periph_GPIOE,ENABLE);	<span class="comment">//使能PORTA,PORTE时钟</span></span><br><span class="line"></span><br><span class="line">	GPIO_InitStructure.GPIO_Pin  = GPIO_Pin_2|GPIO_Pin_3|GPIO_Pin_4;	<span class="comment">//KEY0-KEY2</span></span><br><span class="line">	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU; 						<span class="comment">//设置成上拉输入</span></span><br><span class="line"> 	GPIO_Init(GPIOE, &amp;GPIO_InitStructure);						<span class="comment">//初始化GPIOE2,3,4</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//初始化 WK_UP--&gt;GPIOA.0	  下拉输入</span></span><br><span class="line">	GPIO_InitStructure.GPIO_Pin  = GPIO_Pin_0;</span><br><span class="line">	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPD;				<span class="comment">//PA0设置成输入，默认下拉	 </span></span><br><span class="line">	GPIO_Init(GPIOA, &amp;GPIO_InitStructure);						<span class="comment">//初始化GPIOA.0</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//按键处理函数</span></span><br><span class="line"><span class="comment">//返回按键值</span></span><br><span class="line"><span class="comment">//mode:0,不支持连续按;1,支持连续按;</span></span><br><span class="line"><span class="comment">//0，没有任何按键按下</span></span><br><span class="line"><span class="comment">//1，KEY0按下</span></span><br><span class="line"><span class="comment">//2，KEY1按下</span></span><br><span class="line"><span class="comment">//3，KEY2按下 </span></span><br><span class="line"><span class="comment">//4，KEY3按下 WK_UP</span></span><br><span class="line"><span class="comment">//注意此函数有响应优先级,KEY0&gt;KEY1&gt;KEY2&gt;KEY3!!</span></span><br><span class="line"><span class="function">u8 <span class="title">KEY_Scan</span><span class="params">(u8 mode)</span></span></span><br><span class="line"><span class="function"></span>&#123;	 </span><br><span class="line">	<span class="keyword">static</span> u8 key_up=<span class="number">1</span>;	<span class="comment">//按键按松开标志</span></span><br><span class="line">	<span class="keyword">if</span>(mode)key_up=<span class="number">1</span>;  	<span class="comment">//支持连按		  </span></span><br><span class="line">	<span class="keyword">if</span>(key_up&amp;&amp;(KEY0==<span class="number">0</span>||KEY1==<span class="number">0</span>||KEY2==<span class="number">0</span>||WK_UP==<span class="number">1</span>))</span><br><span class="line">	&#123;</span><br><span class="line">		delay_ms(<span class="number">10</span>);	<span class="comment">//去抖动 </span></span><br><span class="line">		key_up=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">if</span>(KEY0==<span class="number">0</span>)<span class="keyword">return</span> KEY0_PRES;		<span class="comment">//key0按键返回KEY0_PRES</span></span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(KEY1==<span class="number">0</span>)<span class="keyword">return</span> KEY1_PRES;	<span class="comment">//key1按键返回KEY1_PRES</span></span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(KEY2==<span class="number">0</span>)<span class="keyword">return</span> KEY2_PRES;	<span class="comment">//key2按键返回KEY2_PRES</span></span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(WK_UP==<span class="number">1</span>)<span class="keyword">return</span> WKUP_PRES;	<span class="comment">//key_up按键返回wkup_PRES</span></span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(KEY0==<span class="number">1</span>&amp;&amp;KEY1==<span class="number">1</span>&amp;&amp;KEY2==<span class="number">1</span>&amp;&amp;WK_UP==<span class="number">0</span>)key_up=<span class="number">1</span>; 	    </span><br><span class="line"> 	<span class="keyword">return</span> <span class="number">0</span>;<span class="comment">// 无按键按下</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>需要注意的是，我们这里利用 static 函数做了一个连续按键检测函数。此外此程序设计还包含了按键的优先级，此处需要注意。</p>
-<p>按键的GPIO初始化定义部分完成之后，我们需要做的就是在main.c中编写我们想要实现的功能即可。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;led.h&quot;</span>			<span class="comment">//led功能头文件</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;delay.h&quot;</span>			<span class="comment">//延时头文件</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;key.h&quot;</span>			<span class="comment">//按键功能头文件</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;sys.h&quot;</span>			<span class="comment">//位带操作头文件</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;beep.h&quot;</span>			<span class="comment">//蜂鸣器功能头文件</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span>				<span class="comment">//主函数</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    vu8 key=<span class="number">0</span>;				<span class="comment">//定义一个无符号字符型数据并赋初始值为0</span></span><br><span class="line">    delay_init();	    	<span class="comment">//延时函数初始化</span></span><br><span class="line">    LED_Init();			    <span class="comment">//LED端口初始化</span></span><br><span class="line">    KEY_Init();         	<span class="comment">//初始化与按键连接的硬件接口</span></span><br><span class="line">    BEEP_Init();         	<span class="comment">//初始化蜂鸣器端口</span></span><br><span class="line">    LED0=<span class="number">0</span>;					<span class="comment">//先点亮红灯</span></span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        key=KEY_Scan(<span class="number">0</span>);	<span class="comment">//将按键处理函数返回的键值赋值给key</span></span><br><span class="line">        <span class="keyword">if</span>(key)				</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">switch</span>(key)		<span class="comment">//通过C语言中的switch函数进行数值匹配</span></span><br><span class="line">            &#123;</span><br><span class="line">            <span class="keyword">case</span> WKUP_PRES:	<span class="comment">//控制蜂鸣器</span></span><br><span class="line">                BEEP=!BEEP;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> KEY2_PRES:	<span class="comment">//控制LED0翻转</span></span><br><span class="line">                LED0=!LED0;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> KEY1_PRES:	<span class="comment">//控制LED1翻转</span></span><br><span class="line">                LED1=!LED1;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> KEY0_PRES:	<span class="comment">//同时控制LED0,LED1翻转</span></span><br><span class="line">                LED0=!LED0;</span><br><span class="line">                LED1=!LED1;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> delay_ms(<span class="number">10</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>通过以上程序的编写，我们将前三章的功能进行整合到一起了。编译完成下载之后，按WK_UP键可控制蜂鸣器，按key2实现LED1的翻转，按key1实现LED2的翻转，按key0实现这两个的同时翻转。</p>
-<p>此外，本章涉及的关于上下拉输入，IO的内部结构，static函数的使用没有深入展开讲解，有兴趣的可以查阅相关资料，非常的有意思。</p>
+    <h2 id="一、考试介绍"><a href="#一、考试介绍" class="headerlink" title="一、考试介绍"></a>一、考试介绍</h2><p>全国计算机等级考试（National Computer Rank Examination，简称NCRE），是经原国家教育委员会（现教育部）批准，由教育部考试中心主办，面向社会，用于考查应试人员计算机应用知识与技能的全国性计算机水平测评体系。（以下基于2021 版）</p>
+<p>一级开考：计算机基础及WPS Office应用、计算机基础及MS Office应用、计算机基础及Photoshop应用、网络安全素质教育</p>
+<p>二级开考：C语言程序设计、Java语言程序设计、Access数据库程序设计、C++语言程序设计、MySQL数据库程序设计、Web程序设计、MS Office高级应用与设计、Python语言程序设计、WPS Office高级应用与设计</p>
+<p>三级开考：网络技术、数据库技术、信息安全技术、嵌入式系统开发技术、Linux应用与开发技术</p>
+<p>四级开考：网络工程师、数据库工程师、信息安全工程师、嵌入式系统开发工程师、Linux应用与开发开发工程师</p>
+<p><strong>一级：</strong>操作技能级/信息素养。考核计算机基础知识及计算机基本操作能力，包括Office办公软件、图形图像软件、网络安全素质教育。</p>
+<p><strong>二级：</strong>程序设计/办公软件高级应用级。考核内容包括计算机语言与基础程序设计能力，要求参试者掌握一门计算机语言，可选类别有高级语言程序设计类、数据库程序设计类等；二级还包括办公软件高级应用能力，要求参试者具有计算机应用知识及Office办公软件的高级应用能力，能够在实际办公环境中开展具体应用。</p>
+<p><strong>三级：</strong>工程师预备级。三级证书考核面向应用、面向职业的岗位专业技能。</p>
+<p><strong>四级：</strong>工程师级。四级证书面向已持有三级相关证书的考生，考核计算机专业课程，是面向应用、面向职业的工程师岗位证书。</p>
+<p>报名者不受年龄、职业、学历等限制，均可根据自己学习情况和实际能力选考相应的级别和科目。考生可按照省级承办机构公布的流程在网上进行报名。</p>
+<p>每次考试具体报名时间由各省级承办机构规定，可登录各省级承办机构网站查询。</p>
+<p>NCRE考试实行百分制计分，但以等第形式通知考生成绩。成绩等第分为“优秀”、“良好”、“及格”、“不及格”四等。100-90分为“优秀”，89-80分为“良好”，79-60分为“及格”，59-0分为“不及格”。</p>
+<p>考试成绩优秀者，在证书上注明“优秀”字样；考试成绩良好者，在证书上注明“良好”字样；考试成绩及格者，在证书上注明“合格”字样。</p>
+<p>自1994年开考以来，NCRE适应了市场经济发展的需要，考试持续发展，考生人数逐年递增，至2020年底，累计考生人数近9200万，累计获证人数近3400万。</p>
+<h2 id="二、二级C考试大纲"><a href="#二、二级C考试大纲" class="headerlink" title="二、二级C考试大纲"></a>二、二级C考试大纲</h2><h4 id="（一）、基本要求"><a href="#（一）、基本要求" class="headerlink" title="（一）、基本要求"></a>（一）、基本要求</h4><p>1、熟悉 Visual Ｃ＋＋集成开发环境。<br>       2、掌握结构化程序设计的方法，具有良好的程序设计风格。<br>       3、掌握程序设计中简单的数据结构和算法并能阅读简单的程序。<br>       4、在 Visual Ｃ＋＋集成环境下，能够编写简单的 Ｃ 程序，并具有基本的纠错和调试程序的能力。</p>
+<h4 id="（二）考试内容"><a href="#（二）考试内容" class="headerlink" title="（二）考试内容"></a>（二）考试内容</h4><h5 id="（一）C语言程序的结构"><a href="#（一）C语言程序的结构" class="headerlink" title="（一）C语言程序的结构"></a>（一）C语言程序的结构</h5><p>１、程序的构成，main函数和其他函数。<br>       ２、头文件，数据说明，函数的开始和结束标志以及程序中的注释。<br>       ３、源程序的书写格式。<br>       ４、Ｃ 语言的风格。</p>
+<h5 id="（二）数据类型及其运算"><a href="#（二）数据类型及其运算" class="headerlink" title="（二）数据类型及其运算"></a>（二）数据类型及其运算</h5><p>１、Ｃ 的数据类型（基本类型，构造类型，指针类型，无值类型）及其定义方法。<br>        2、Ｃ 运算符的种类、运算优先级和结合性。<br>        3、不同类型数据间的转换与运算。<br>       ４、Ｃ 表达式类型（赋值表达式，算术表达式，关系表达式，逻辑表达式，条件表达式，逗号表达式）和求值规则。</p>
+<h5 id="（三）基本语句"><a href="#（三）基本语句" class="headerlink" title="（三）基本语句"></a>（三）基本语句</h5><p>１、Ｃ 的数据类型（基本类型，构造类型，指针类型，无值类型）及其定义方法。<br>        2、输入输出函数的调用，正确输入数据并正确设计输出格式。</p>
+<h5 id="（四）选择结构程序设计"><a href="#（四）选择结构程序设计" class="headerlink" title="（四）选择结构程序设计"></a>（四）选择结构程序设计</h5><p> 1、用 if语句实现选择结构。<br>        2、用 switch 语句实现多分支选择结构。<br>        3、选择结构的嵌套。</p>
+<h5 id="（五）循环结构设计"><a href="#（五）循环结构设计" class="headerlink" title="（五）循环结构设计"></a>（五）循环结构设计</h5><p> 1、for 循环结构。<br>        2、while 和 do－while循环结构。<br>        3、continue 语句和 break 语句。<br>        4、循环的嵌套。</p>
+<h5 id="（六）数组的定义和引用"><a href="#（六）数组的定义和引用" class="headerlink" title="（六）数组的定义和引用"></a>（六）数组的定义和引用</h5><p> 1、一维数组和二维数组的定义、初始化和数组元素的引用。<br>        2、字符串与字符数组。</p>
+<h5 id="（七）函数"><a href="#（七）函数" class="headerlink" title="（七）函数"></a>（七）函数</h5><ol>
+<li> 库函数的正确调用。</li>
+<li>函数的定义方法。</li>
+<li>函数的类型和返回值。</li>
+<li>形式参数与实际参数，参数值的传递。</li>
+<li>函数的正确调用，嵌套调用，递归调用。</li>
+<li>局部变量和全局变量。</li>
+<li>变量的存储类别（自动，静态，寄存器，外部），变量的作用域和生存期。</li>
+</ol>
+<h5 id="（八）编译预处理"><a href="#（八）编译预处理" class="headerlink" title="（八）编译预处理"></a>（八）编译预处理</h5><ol>
+<li>宏定义和调用（不带参数的宏，带参数的宏）。</li>
+<li>“文件包含”处理。</li>
+</ol>
+<h5 id="（九）指针"><a href="#（九）指针" class="headerlink" title="（九）指针"></a>（九）指针</h5><ol>
+<li>地址与指针变量的概念，地址运算符与间址运算符。</li>
+<li>一维、二维数组和字符串的地址以及指向变量、数组、字符串、函数、结构体的指针变量的定义。 通过指针引用以上各类型数据。</li>
+<li>用指针作函数参数。</li>
+<li>返回地址值的函数。</li>
+<li>指针数组，指向指针的指针。</li>
+</ol>
+<h5 id="（十）结构体（即“结构”）与共同体（即“联合”）"><a href="#（十）结构体（即“结构”）与共同体（即“联合”）" class="headerlink" title="（十）结构体（即“结构”）与共同体（即“联合”）"></a>（十）结构体（即“结构”）与共同体（即“联合”）</h5><ol>
+<li>用 typedef 说明一个新类型。</li>
+<li>结构体和共用体类型数据的定义和成员的引用。</li>
+<li>通过结构体构成链表，单向链表的建立，结点数据的输出、删除与插入。</li>
+<li></li>
+</ol>
+<h5 id="（十一）位运算"><a href="#（十一）位运算" class="headerlink" title="（十一）位运算"></a>（十一）位运算</h5><ol>
+<li>位运算符的含义和使用。 </li>
+<li>简单的位运算。</li>
+</ol>
+<h5 id="（十二）文件操作"><a href="#（十二）文件操作" class="headerlink" title="（十二）文件操作"></a>（十二）文件操作</h5><ol>
+<li>只要求缓冲文件系统（即高级磁盘 I/ O系统），对非标准缓冲文件系统（即低级磁盘 I/ O系统）不要求。</li>
+<li>文件类型指针（FILE类型指针）。</li>
+<li>文件的打开与关闭（fopen，fclose）。</li>
+<li>文件的读写（ fputc，fgetc，fputs，fgets，fread，fwrite，fprintf，fscanf函数的应用），文件的定位（rewind，fseek函数的应用）。</li>
+</ol>
+<h2 id="三、考试方式"><a href="#三、考试方式" class="headerlink" title="三、考试方式"></a>三、考试方式</h2><p> 上机考试，考试时长 120分钟，满分 100分。<br>        1、题型及分值<br>        单项选择题 40分（含公共基础知识部分 10分）。<br>        操作题 60分（包括程序填空题、程序修改题及程序设计题）。</p>
+<p>2、考试环境<br>        操作系统：中文版 Windows７。<br>        开发环境：Microsoft Visual C++ 2010学习版。</p>
 
     
 
@@ -323,7 +333,7 @@
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="http://qianjunwei.top/2021/05/24/STM32学习笔记（三）——按键输入/" title="STM32学习笔记（三）—按键输入实验" target="_blank">http://qianjunwei.top/2021/05/24/STM32学习笔记（三）——按键输入/</a>
+          <a href="http://qianjunwei.top/2021/06/29/NCRE二级C学习笔记（一）—考试简介 - 副本/" title="NCRE二级C学习笔记—考试简介" target="_blank">http://qianjunwei.top/2021/06/29/NCRE二级C学习笔记（一）—考试简介 - 副本/</a>
         </li>
         
         <li>
@@ -345,7 +355,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">STM32</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">二级C</a>
         		</li>
       		
 		</ul>
@@ -401,7 +411,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://qianjunwei.top/2021/05/24/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%E2%80%94%E2%80%94%E6%8C%89%E9%94%AE%E8%BE%93%E5%85%A5/" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://qianjunwei.top/2021/06/29/NCRE%E4%BA%8C%E7%BA%A7C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E8%80%83%E8%AF%95%E7%AE%80%E4%BB%8B%20-%20%E5%89%AF%E6%9C%AC/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -416,18 +426,18 @@
 
 <nav id="article-nav">
   
-    <a href="/2021/06/01/NCRE%E4%BA%8C%E7%BA%A7C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E8%80%83%E8%AF%95%E7%AE%80%E4%BB%8B%20-%20%E5%89%AF%E6%9C%AC/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2021/06/29/NCRE%E4%BA%8C%E7%BA%A7C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          NCRE二级C学习笔记—考试简介
+          NCRE二级C学习笔记—程序设计基本概念
         
       </div>
     </a>
   
   
-    <a href="/2021/05/21/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E2%80%94%E8%9C%82%E9%B8%A3%E5%99%A8%E5%AE%9E%E9%AA%8C/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">STM32学习笔记（二）—蜂鸣器实验</div>
+    <a href="/2021/06/29/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hello World</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -454,7 +464,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">一、概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%8C%89%E9%94%AE%E7%AE%80%E4%BB%8B"><span class="toc-number">2.</span> <span class="toc-text">二、按键简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E7%A1%AC%E4%BB%B6%E8%AE%BE%E8%AE%A1"><span class="toc-number">3.</span> <span class="toc-text">三、硬件设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%B7%A5%E7%A8%8B%E9%85%8D%E7%BD%AE"><span class="toc-number">4.</span> <span class="toc-text">四、工程配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1"><span class="toc-number">5.</span> <span class="toc-text">五、软件设计</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E8%80%83%E8%AF%95%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">一、考试介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E4%BA%8C%E7%BA%A7C%E8%80%83%E8%AF%95%E5%A4%A7%E7%BA%B2"><span class="toc-number">2.</span> <span class="toc-text">二、二级C考试大纲</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%88%E4%B8%80%EF%BC%89%E3%80%81%E5%9F%BA%E6%9C%AC%E8%A6%81%E6%B1%82"><span class="toc-number">2.0.1.</span> <span class="toc-text">（一）、基本要求</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%88%E4%BA%8C%EF%BC%89%E8%80%83%E8%AF%95%E5%86%85%E5%AE%B9"><span class="toc-number">2.0.2.</span> <span class="toc-text">（二）考试内容</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%EF%BC%88%E4%B8%80%EF%BC%89C%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%BB%93%E6%9E%84"><span class="toc-number">2.0.2.1.</span> <span class="toc-text">（一）C语言程序的结构</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%EF%BC%88%E4%BA%8C%EF%BC%89%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E5%85%B6%E8%BF%90%E7%AE%97"><span class="toc-number">2.0.2.2.</span> <span class="toc-text">（二）数据类型及其运算</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%EF%BC%88%E4%B8%89%EF%BC%89%E5%9F%BA%E6%9C%AC%E8%AF%AD%E5%8F%A5"><span class="toc-number">2.0.2.3.</span> <span class="toc-text">（三）基本语句</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%EF%BC%88%E5%9B%9B%EF%BC%89%E9%80%89%E6%8B%A9%E7%BB%93%E6%9E%84%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.0.2.4.</span> <span class="toc-text">（四）选择结构程序设计</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%EF%BC%88%E4%BA%94%EF%BC%89%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.0.2.5.</span> <span class="toc-text">（五）循环结构设计</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%EF%BC%88%E5%85%AD%EF%BC%89%E6%95%B0%E7%BB%84%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E5%BC%95%E7%94%A8"><span class="toc-number">2.0.2.6.</span> <span class="toc-text">（六）数组的定义和引用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%EF%BC%88%E4%B8%83%EF%BC%89%E5%87%BD%E6%95%B0"><span class="toc-number">2.0.2.7.</span> <span class="toc-text">（七）函数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%EF%BC%88%E5%85%AB%EF%BC%89%E7%BC%96%E8%AF%91%E9%A2%84%E5%A4%84%E7%90%86"><span class="toc-number">2.0.2.8.</span> <span class="toc-text">（八）编译预处理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%EF%BC%88%E4%B9%9D%EF%BC%89%E6%8C%87%E9%92%88"><span class="toc-number">2.0.2.9.</span> <span class="toc-text">（九）指针</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%EF%BC%88%E5%8D%81%EF%BC%89%E7%BB%93%E6%9E%84%E4%BD%93%EF%BC%88%E5%8D%B3%E2%80%9C%E7%BB%93%E6%9E%84%E2%80%9D%EF%BC%89%E4%B8%8E%E5%85%B1%E5%90%8C%E4%BD%93%EF%BC%88%E5%8D%B3%E2%80%9C%E8%81%94%E5%90%88%E2%80%9D%EF%BC%89"><span class="toc-number">2.0.2.10.</span> <span class="toc-text">（十）结构体（即“结构”）与共同体（即“联合”）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%EF%BC%88%E5%8D%81%E4%B8%80%EF%BC%89%E4%BD%8D%E8%BF%90%E7%AE%97"><span class="toc-number">2.0.2.11.</span> <span class="toc-text">（十一）位运算</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%EF%BC%88%E5%8D%81%E4%BA%8C%EF%BC%89%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C"><span class="toc-number">2.0.2.12.</span> <span class="toc-text">（十二）文件操作</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E8%80%83%E8%AF%95%E6%96%B9%E5%BC%8F"><span class="toc-number">3.</span> <span class="toc-text">三、考试方式</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -610,11 +620,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">模电基础</a>
+                <a href="javascript:void(0)" class="js-tag color5">我爱学习</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">我爱学习</a>
+                <a href="javascript:void(0)" class="js-tag color5">模电基础</a>
               </li>
             
             <div class="clearfix"></div>
