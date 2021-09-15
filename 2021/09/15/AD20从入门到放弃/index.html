@@ -6,19 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://qianjunwei.top">
-  <title>Archives: 2021 | 俊伟的个人站</title>
+  <title>AD20从入门到&#34;放弃&#34; | 俊伟的个人站</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="毕业于苏州工业职业技术学院。主要研究各种嵌入式编程，单片机开发等。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="俊伟的个人站">
-<meta property="og:url" content="http://qianjunwei.top/archives/2021/index.html">
+  <meta name="description" content="目录第一部分：课程介绍，学习方法及元器件库的创建 课程介绍以及学习思路介绍 AD20的软件安装以及中英文切换 AD的工程组成以及创建 元件库的介绍及阻容模型的创建 IC类元件模型的创建 排针类元件模型的创建 光耦以及二极管元件模型的创建 现有元件模型的调用  第二部分：智能小车的原理图绘制及编译检查正文 第一部分：课程介绍，学习方法及元器件库的创建  课程介绍以及学习思路介绍  学习目的：用AD">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AD20从入门到&quot;放弃&quot;">
+<meta property="og:url" content="http://qianjunwei.top/2021/09/15/AD20%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/index.html">
 <meta property="og:site_name" content="俊伟的个人站">
-<meta property="og:description" content="毕业于苏州工业职业技术学院。主要研究各种嵌入式编程，单片机开发等。">
+<meta property="og:description" content="目录第一部分：课程介绍，学习方法及元器件库的创建 课程介绍以及学习思路介绍 AD20的软件安装以及中英文切换 AD的工程组成以及创建 元件库的介绍及阻容模型的创建 IC类元件模型的创建 排针类元件模型的创建 光耦以及二极管元件模型的创建 现有元件模型的调用  第二部分：智能小车的原理图绘制及编译检查正文 第一部分：课程介绍，学习方法及元器件库的创建  课程介绍以及学习思路介绍  学习目的：用AD">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-09-15T11:57:25.395Z">
+<meta property="article:modified_time" content="2021-09-15T11:58:58.442Z">
 <meta property="article:author" content="钱俊伟的个人站">
-<meta property="article:tag" content="嵌入式系统，单片机开发">
+<meta property="article:tag" content="PCB设计">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="俊伟的个人站" type="application/atom+xml">
@@ -205,41 +207,177 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-AD20从入门到放弃" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
   
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/09/15/AD20%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/" class="archive-article-date">
-        <time datetime="2021-09-15T11:57:25.395Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-15</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/09/15/AD20%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">AD20从入门到&#34;放弃&#34;</a>
-	
+    <h1 class="article-title" itemprop="name">
+      AD20从入门到&#34;放弃&#34;
     </h1>
   
 
 
-        <div class="article-info info-on-right">
+  
+  
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2021/09/15/AD20%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/" class="archive-article-date">
+        <time datetime="2021-09-15T11:57:25.395Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-15</time>
+</a>
+
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">259字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">1分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <hr>
+<h4 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h4><h6 id="第一部分：课程介绍，学习方法及元器件库的创建"><a href="#第一部分：课程介绍，学习方法及元器件库的创建" class="headerlink" title="第一部分：课程介绍，学习方法及元器件库的创建"></a>第一部分：课程介绍，学习方法及元器件库的创建</h6><ol>
+<li>课程介绍以及学习思路介绍</li>
+<li>AD20的软件安装以及中英文切换</li>
+<li>AD的工程组成以及创建</li>
+<li>元件库的介绍及阻容模型的创建</li>
+<li>IC类元件模型的创建</li>
+<li>排针类元件模型的创建</li>
+<li>光耦以及二极管元件模型的创建</li>
+<li>现有元件模型的调用</li>
+</ol>
+<h6 id="第二部分：智能小车的原理图绘制及编译检查"><a href="#第二部分：智能小车的原理图绘制及编译检查" class="headerlink" title="第二部分：智能小车的原理图绘制及编译检查"></a>第二部分：智能小车的原理图绘制及编译检查</h6><h4 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h4><hr>
+<p>第一部分：课程介绍，学习方法及元器件库的创建</p>
+<ol>
+<li><p>课程介绍以及学习思路介绍</p>
+<ol>
+<li>学习目的：用AD做设计</li>
+<li>学习内容：一是熟悉软件，二是原理图库以及原理图绘制，三是PCB布局以及PCB布线</li>
+<li>怎么学：软件主要练习快捷键，</li>
+</ol>
+<p>​    </p>
+</li>
+</ol>
+<hr>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>持续更新中&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+
+    
+
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          钱俊伟的个人站
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="http://qianjunwei.top/2021/09/15/AD20从入门到放弃/" title="AD20从入门到&#34;放弃&#34;" target="_blank">http://qianjunwei.top/2021/09/15/AD20从入门到放弃/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
           
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -251,105 +389,120 @@
 		</ul>
 	</div>
 
-          
+    
 
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://qianjunwei.top/2021/09/15/AD20%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/08/15/%E6%A8%A1%E7%94%B5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%88%86%E4%BA%AB/" class="archive-article-date">
-        <time datetime="2021-08-14T19:18:08.896Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-15</time>
-</a>
 
+
+<nav id="article-nav">
+  
+  
+    <a href="/2021/08/15/%E6%A8%A1%E7%94%B5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%88%86%E4%BA%AB/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">模电基础知识分享</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/08/15/%E6%A8%A1%E7%94%B5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%88%86%E4%BA%AB/">模电基础知识分享</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">模电基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="toc-number">1.</span> <span class="toc-text">目录</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%EF%BC%9A%E8%AF%BE%E7%A8%8B%E4%BB%8B%E7%BB%8D%EF%BC%8C%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%E5%8F%8A%E5%85%83%E5%99%A8%E4%BB%B6%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="toc-number">1.0.1.</span> <span class="toc-text">第一部分：课程介绍，学习方法及元器件库的创建</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%EF%BC%9A%E6%99%BA%E8%83%BD%E5%B0%8F%E8%BD%A6%E7%9A%84%E5%8E%9F%E7%90%86%E5%9B%BE%E7%BB%98%E5%88%B6%E5%8F%8A%E7%BC%96%E8%AF%91%E6%A3%80%E6%9F%A5"><span class="toc-number">1.0.2.</span> <span class="toc-text">第二部分：智能小车的原理图绘制及编译检查</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A3%E6%96%87"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/08/15/Hello%20World/" class="archive-article-date">
-        <time datetime="2021-08-14T19:18:08.895Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-15</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/08/15/Hello%20World/">Hello World</a>
-	
-    </h1>
-  
+        
+    </div>
+</aside>
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">我爱学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
 
-    
+
+
+
+
+
+
+
 
 
           </div>
@@ -390,8 +543,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
