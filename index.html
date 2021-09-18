@@ -212,7 +212,7 @@
             
 
   
-    <article id="post-AD20从入门到放弃" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-PCB设计从入门到放弃" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -220,7 +220,7 @@
   
     <h1 itemprop="name">
 	
-	  <a class="article-title" href="/2021/09/15/AD20%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">AD20从入门到&#34;放弃&#34;</a>
+	  <a class="article-title" href="/2021/09/15/PCB%E8%AE%BE%E8%AE%A1%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">PCB设计从入门到&#34;放弃&#34;</a>
 	
     </h1>
   
@@ -228,7 +228,7 @@
 
   
   
-<a href="/2021/09/15/AD20%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/" class="archive-article-date">
+<a href="/2021/09/15/PCB%E8%AE%BE%E8%AE%A1%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/" class="archive-article-date">
         <time datetime="2021-09-15T11:57:25.395Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-15</time>
 </a>
 
@@ -259,6 +259,21 @@
 <li>Value值的核对</li>
 <li>封装的统一管理</li>
 <li>原理图的编译设置以及检查</li>
+</ol>
+<h6 id="第三部分：PCB封装库的创建方法及现有封装调用"><a href="#第三部分：PCB封装库的创建方法及现有封装调用" class="headerlink" title="第三部分：PCB封装库的创建方法及现有封装调用"></a>第三部分：PCB封装库的创建方法及现有封装调用</h6><ol>
+<li>常见CHIP类封装的创建</li>
+<li>常见IC类封装的创建</li>
+<li>利用IPC封装创建向导快速创建封装</li>
+<li>常用PCB封装的直接调用</li>
+<li>3D模型的创建和导入</li>
+</ol>
+<h6 id="第四部分：网表导入以及模块化布局设计"><a href="#第四部分：网表导入以及模块化布局设计" class="headerlink" title="第四部分：网表导入以及模块化布局设计"></a>第四部分：网表导入以及模块化布局设计</h6><ol>
+<li>导入常见报错以及解决办法</li>
+<li>PCB板框的评估以及叠层设置</li>
+<li>PCB快捷键的设置以及推荐</li>
+<li>模块化布局规则</li>
+<li>PCB布局实战演示</li>
+<li>PCB布局优化以及调整</li>
 </ol>
 <h4 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h4><hr>
 <p>第一部分：课程介绍，学习方法及元器件库的创建</p>
@@ -314,13 +329,61 @@
 <p>第二部分：智能小车的原理图绘制以及编译检查</p>
 <ol>
 <li>元件的放置<ol>
-<li>创建好原理图库之后，直接安装此库，然后在右侧的comment中直接添加即可</li>
+<li>创建好原理图库之后，直接安装此库，然后在右侧的components中直接添加即可</li>
 </ol>
 </li>
 <li>器件的复制以及对齐<ol>
 <li>放好的元器件直接复制：按住shift键，然后鼠标左键直接拉动即可。</li>
 <li>放好的元器件直接移动：按住Ctrl键，然后鼠标左键直接拉动即可。</li>
 <li>按空格键进行元器件方向的旋转。</li>
+<li>按照模块化的思想进行原理图设计。</li>
+<li>==Shift+Space 可以进行线的角度的设置。==</li>
+</ol>
+</li>
+<li>导线以及NetLable的添加<ol>
+<li> 放置选项卡下的 线（Ctrl+W）是具有电气属性的线，而此选项卡最后绘图工具里面的线（L）是没有电气连接属性的。 </li>
+</ol>
+</li>
+<li>Value值的核对<ol>
+<li>统一标注：工具选项卡 -&gt; 标注 -&gt; 原理图标注，可以进行统一的标注。</li>
+</ol>
+</li>
+<li>封装的统一管理<ol>
+<li>工具选项卡 -&gt; 封装管理器，里面可以针对同一类的元器件统一进行封装管理。</li>
+</ol>
+</li>
+<li>原理图的编译设置以及检查<ol>
+<li>需要报错的内容设置：工程选项卡 -&gt; 工程设置、里面第一项可以设置不同错误的报错类型。然后在进行原理图编译的时候就可以看见报错。然后逐一核查即可。</li>
+</ol>
+</li>
+</ol>
+<p>第三部分：PCB封装库的创建方法及现有封装调用</p>
+<ol>
+<li>常见CHIP封装的创建<ol>
+<li>注意创建PCB封装时，焊盘最外侧为阻焊层，目的在于防止绿油覆盖。</li>
+<li>多个焊盘进行精确移动时，可以选中之后按M键，选择XY移动。</li>
+<li>在复制状态下按住X或者Y可以进行器件的镜像。</li>
+</ol>
+</li>
+<li>常见IC类封装的创建<ol>
+<li>放置好第一个焊盘，之后的多个焊盘可以利用工具选项卡中的特殊粘贴，阵列粘贴进行统一的快速复制。</li>
+<li>如果按照数据手册创建出现丝印覆盖焊盘的情况，可以利用编辑选项卡下的裁剪导线将导线进行切断处理。</li>
+</ol>
+</li>
+<li>利用IPC封装创建向导快速创建封装<ol>
+<li>首先需要安装此插件。未安装的在Extensions&amp;Updates中进行安装。</li>
+<li>制作IPC标准封装时，可以同时生成2D和3D效果图。</li>
+</ol>
+</li>
+<li>常用PCB封装的直接调用<ol>
+<li>用别人的或者自己的生成的库，进行安装即可直接调用。</li>
+</ol>
+</li>
+<li>3D模型的创建和导入<ol>
+<li>可以自己生成简易的3D体。不带引脚等。</li>
+<li><a href="https://www.3dcontentcentral.cn/Default.aspx%E4%B9%9F%E5%8F%AF%E4%BB%A5%E5%8E%BB%E6%AD%A4%E7%BD%91%E7%AB%99%E6%90%9C%E7%B4%A23D%E6%A8%A1%E5%9E%8B%EF%BC%8C%E4%B8%AA%E4%BA%BA%E4%BD%BF%E7%94%A8%E7%9A%84%E8%AF%9D%E8%BF%98%E6%98%AF%E6%AF%94%E8%BE%83%E5%85%A8%E7%9A%84%E3%80%82">https://www.3dcontentcentral.cn/Default.aspx也可以去此网站搜索3D模型，个人使用的话还是比较全的。</a></li>
+<li>国内的IC原理图库和封装等。<a href="https://www.iclib.com/">https://www.iclib.com/</a></li>
+<li></li>
 </ol>
 </li>
 </ol>
@@ -351,7 +414,7 @@
 
     
     <p class="article-more-link">
-      <a class="article-more-a" href="/2021/09/15/AD20%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">展开全文 >></a>
+      <a class="article-more-a" href="/2021/09/15/PCB%E8%AE%BE%E8%AE%A1%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">展开全文 >></a>
     </p>
     
 
