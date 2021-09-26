@@ -248,6 +248,7 @@
 <li><h6 id="电压变量"><a href="#电压变量" class="headerlink" title="电压变量"></a>电压变量</h6></li>
 <li><h6 id="功率和能量"><a href="#功率和能量" class="headerlink" title="功率和能量"></a>功率和能量</h6></li>
 <li><h6 id="基尔霍夫电流定律"><a href="#基尔霍夫电流定律" class="headerlink" title="基尔霍夫电流定律"></a>基尔霍夫电流定律</h6></li>
+<li><h6 id="基尔霍夫电压定律"><a href="#基尔霍夫电压定律" class="headerlink" title="基尔霍夫电压定律"></a>基尔霍夫电压定律</h6></li>
 </ol>
 <hr>
 <h3 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h3><h4 id="1-1、电路模型"><a href="#1-1、电路模型" class="headerlink" title="1.1、电路模型"></a>1.1、电路模型</h4><ol>
@@ -400,21 +401,42 @@
 </li>
 </ol>
 <h4 id="1-6、基尔霍夫电流定律"><a href="#1-6、基尔霍夫电流定律" class="headerlink" title="1.6、基尔霍夫电流定律"></a>1.6、基尔霍夫电流定律</h4><ol>
-<li><p>几个常用的电路术语</p>
-<ol>
+<li><h5 id="几个常用的电路术语"><a href="#几个常用的电路术语" class="headerlink" title="几个常用的电路术语"></a>几个常用的电路术语</h5><ol>
 <li>支路：电路中流过同一电流的几个元件串联的分支</li>
 <li>节点：两条以上支路的连接点</li>
 <li>回路：由支路构成的电路中的任意闭合路径</li>
 <li>网孔：指不包含任何支路的单一回路。网孔是回路，回路不一定是网孔。平面电路的每个网眼都是一个网孔。</li>
 </ol>
 </li>
-<li><p>KCL</p>
-<ol>
+<li><h5 id="KCL"><a href="#KCL" class="headerlink" title="KCL"></a>KCL</h5><ol>
 <li><p>定义：对于任一集总参数电路中的任一节点，流入某一节点电流的代数和恒为零。（描述连接在同一节点上的各支路电流之间的关系）</p>
 </li>
 <li><p>表达式</p>
 <script type="math/tex; mode=display">
 \sum_{k=1}^n{i_k(t)} = 0</script></li>
+</ol>
+</li>
+</ol>
+<ol>
+<li><h5 id="对KCL的说明"><a href="#对KCL的说明" class="headerlink" title="对KCL的说明"></a>对KCL的说明</h5><ol>
+<li>KCL本质上是电荷守恒原理(电荷既不能被创造，也不能被消灭，在任何物理过程中，电荷代数和守恒)在集中电路中的体现。即，到达任何节点的电荷不可能增生，也不可能消失，电流必须连续流动。</li>
+<li>KCL只与电路的结构有关，而与构成电路的元件性质无关。</li>
+<li>适用于节点，也适用于任何一个封闭曲面。</li>
+<li>列出方程时：设出每一个支路电流的参考方向后，流出和=流入和。</li>
+</ol>
+</li>
+</ol>
+<h4 id="1-7、基尔霍夫电压定律"><a href="#1-7、基尔霍夫电压定律" class="headerlink" title="1.7、基尔霍夫电压定律"></a>1.7、基尔霍夫电压定律</h4><ol>
+<li><h5 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h5><ol>
+<li>对于集总参数电路，在任意时刻，沿任一回路巡行一周，各支路电压降的代数和为零。</li>
+</ol>
+</li>
+<li><h5 id="公式"><a href="#公式" class="headerlink" title="公式"></a>公式</h5><script type="math/tex; mode=display">
+\sum{U} = 0</script></li>
+</ol>
+<ol>
+<li><h5 id="说明-1"><a href="#说明-1" class="headerlink" title="说明"></a>说明</h5><ol>
+<li>KL实质上是能量守恒原理在集中参数电路中的体现。从做功的角度来讲，就是电场力做的正功等于负功，代数和为零。在任何回路中，电压的代数和为零，实际上是从某一点出发又回到该点时，电压的升高等于电压的降低。</li>
 </ol>
 </li>
 </ol>
