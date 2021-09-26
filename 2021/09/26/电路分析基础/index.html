@@ -10,15 +10,15 @@
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="目录一、电路模型二、电路分类 一、电路模型 何为电路？ 由电器件相互连接所构成的电流通路成为电路   实际电路的功能 进行能量的产生、传输与转换：如电力系统的的发电、传输等 实现信号的发射与接收、传输和处理。如电视机广播等   电路模型 由理想元件组成的与实际电气元件相对应的电路任何一个物理系统都需要用理想化的模型来描述该系统。 电路理论研究的对象是实际电路抽象而成的电路模型。根据不同条件，统一电">
+  <meta name="description" content="目录一、电路模型二、电路分类三、电流变量四、电压变量 一、电路模型 何为电路？ 由电器件相互连接所构成的电流通路成为电路   实际电路的功能 进行能量的产生、传输与转换：如电力系统的的发电、传输等 实现信号的发射与接收、传输和处理。如电视机广播等   电路模型 由理想元件组成的与实际电气元件相对应的电路任何一个物理系统都需要用理想化的模型来描述该系统。 电路理论研究的对象是实际电路抽象而成的电路模">
 <meta property="og:type" content="article">
 <meta property="og:title" content="电路分析基础">
 <meta property="og:url" content="http://qianjunwei.top/2021/09/26/%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="俊伟的个人站">
-<meta property="og:description" content="目录一、电路模型二、电路分类 一、电路模型 何为电路？ 由电器件相互连接所构成的电流通路成为电路   实际电路的功能 进行能量的产生、传输与转换：如电力系统的的发电、传输等 实现信号的发射与接收、传输和处理。如电视机广播等   电路模型 由理想元件组成的与实际电气元件相对应的电路任何一个物理系统都需要用理想化的模型来描述该系统。 电路理论研究的对象是实际电路抽象而成的电路模型。根据不同条件，统一电">
+<meta property="og:description" content="目录一、电路模型二、电路分类三、电流变量四、电压变量 一、电路模型 何为电路？ 由电器件相互连接所构成的电流通路成为电路   实际电路的功能 进行能量的产生、传输与转换：如电力系统的的发电、传输等 实现信号的发射与接收、传输和处理。如电视机广播等   电路模型 由理想元件组成的与实际电气元件相对应的电路任何一个物理系统都需要用理想化的模型来描述该系统。 电路理论研究的对象是实际电路抽象而成的电路模">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-09-26T00:22:54.344Z">
-<meta property="article:modified_time" content="2021-09-26T01:00:23.084Z">
+<meta property="article:modified_time" content="2021-09-26T01:48:31.977Z">
 <meta property="article:author" content="钱俊伟的个人站">
 <meta property="article:tag" content="电路分析">
 <meta name="twitter:card" content="summary">
@@ -240,7 +240,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">596字</span>
+      <span class="post-count">1.4k字</span>
     </span>
   </span>
 
@@ -249,7 +249,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">2分</span>
+      <span class="post-count">4分</span>
     </span>
   </span>
 </div>
@@ -260,7 +260,7 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <h6 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h6><h6 id="一、电路模型"><a href="#一、电路模型" class="headerlink" title="一、电路模型"></a>一、电路模型</h6><h6 id="二、电路分类"><a href="#二、电路分类" class="headerlink" title="二、电路分类"></a>二、电路分类</h6><hr>
+    <h6 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h6><h6 id="一、电路模型"><a href="#一、电路模型" class="headerlink" title="一、电路模型"></a>一、电路模型</h6><h6 id="二、电路分类"><a href="#二、电路分类" class="headerlink" title="二、电路分类"></a>二、电路分类</h6><h6 id="三、电流变量"><a href="#三、电流变量" class="headerlink" title="三、电流变量"></a>三、电流变量</h6><h6 id="四、电压变量"><a href="#四、电压变量" class="headerlink" title="四、电压变量"></a>四、电压变量</h6><hr>
 <h4 id="一、电路模型-1"><a href="#一、电路模型-1" class="headerlink" title="一、电路模型"></a>一、电路模型</h4><ol>
 <li><h5 id="何为电路？"><a href="#何为电路？" class="headerlink" title="何为电路？"></a>何为电路？</h5><ol>
 <li>由电器件相互连接所构成的电流通路成为电路</li>
@@ -294,14 +294,98 @@
 </ol>
 </li>
 <li><h5 id="线路电路与非线性电路"><a href="#线路电路与非线性电路" class="headerlink" title="线路电路与非线性电路"></a>线路电路与非线性电路</h5><ol>
-<li>定义：若描述电路特性的所有方程都是线性代数或微积分方程，则称这类电路是线性电路，否则为非线性电路。</li>
-<li>线性电路：完全是由线性元件，独立源，线性受控源构成的电路。</li>
-<li>非线性电路在实际更为普遍，线性电路通常是非线性电路的近似模型。线性电路理论是分析非线性电路的主要基础。</li>
+<li><p>定义：若描述电路特性的所有方程都是线性代数或微积分方程，则称这类电路是线性电路，否则为非线性电路。</p>
+</li>
+<li><p>线性电路：完全是由线性元件，独立源，线性受控源构成的电路。</p>
+</li>
+<li><p>非线性电路在实际更为普遍，线性电路通常是非线性电路的近似模型。线性电路理论是分析非线性电路的主要基础。</p>
+</li>
 </ol>
 </li>
 <li><h5 id="时不变电路与时变电路"><a href="#时不变电路与时变电路" class="headerlink" title="时不变电路与时变电路"></a>时不变电路与时变电路</h5><ol>
-<li>时不变电路：电路中元件参数值不随时间变化（时不变元件）的电路，描述其电路方程是常系数的代数或微积分方程。反之，由变系数方程描述的电路称为时变电路。</li>
-<li>时不变电路是基本的电路模型，是研究时变电路的基础。</li>
+<li><p>时不变电路：电路中元件参数值不随时间变化（时不变元件）的电路，描述其电路方程是常系数的代数或微积分方程。反之，由变系数方程描述的电路称为时变电路。</p>
+</li>
+<li><p>时不变电路是基本的电路模型，是研究时变电路的基础。</p>
+</li>
+</ol>
+</li>
+<li><h5 id="动态电路与电阻电路"><a href="#动态电路与电阻电路" class="headerlink" title="动态电路与电阻电路"></a>动态电路与电阻电路</h5><ol>
+<li><p>动态电路：电路中含有储能元件，如电感或电容。动态电路的方程描述是微积分方程。</p>
+</li>
+<li><p>电阻电路：指电路中不包含任何储能元件，仅由电阻和电源构成的电路。电阻电路的描述为代数方程。</p>
+</li>
+</ol>
+</li>
+<li><h5 id="有源电路与无源电路"><a href="#有源电路与无源电路" class="headerlink" title="有源电路与无源电路"></a>有源电路与无源电路</h5><ol>
+<li>从二端子电路是否能对外提供能量划分。</li>
+<li>在任何情况下不可能对外提供能量的电路称为无源子电路。</li>
+<li>在某种情况下能够对外提供能量的电路称为有源子电路。</li>
+</ol>
+</li>
+</ol>
+<h4 id="三、电流变量-1"><a href="#三、电流变量-1" class="headerlink" title="三、电流变量"></a>三、电流变量</h4><ol>
+<li><h5 id="电路变量"><a href="#电路变量" class="headerlink" title="电路变量"></a>电路变量</h5><ol>
+<li><p>为了定量描述电路性能，电路中引入一些物理量作为电路变量，通常分为基本变量和复合变量。</p>
+</li>
+<li><p>基本变量：电流变量i，电压变量u，等易测量物理量。</p>
+</li>
+<li><p>复合变量：包括功率P和能量E等。</p>
+</li>
+</ol>
+</li>
+<li><h5 id="电流的形成"><a href="#电流的形成" class="headerlink" title="电流的形成"></a>电流的形成</h5><ol>
+<li><p>在电场力的作用下，电荷有规律的移动形成电流。一般为了定量分析电流，引入电流强度的概念，一般用i（t）或者i来表示。</p>
+</li>
+<li><p>电流的大小：单位时间内通过导体横截面的电荷量，电荷单位（库伦）（C）。 </p>
+</li>
+</ol>
+</li>
+<li><h5 id="电流方向"><a href="#电流方向" class="headerlink" title="电流方向"></a>电流方向</h5><ol>
+<li><p>电路范畴内电流只可能有两个方向，从A到B或者从B到A</p>
+</li>
+<li><p>实际方向，规定为正电荷运动的方向</p>
+</li>
+<li><p>参考方向，规定正电荷运动的方向</p>
+</li>
+</ol>
+</li>
+<li><h5 id="电流参考方向"><a href="#电流参考方向" class="headerlink" title="电流参考方向"></a>电流参考方向</h5><ol>
+<li>如果电路复杂或电源为交流电源，则电流的实际方向难以标出。因此需要在分析电路前事先标出各支路电流的方向。</li>
+<li>参考方向假设说明<ol>
+<li>原则上可以任意设定</li>
+<li>习惯上：<ol>
+<li>凡是可以看出电流方向的，标定此方向为参考方向。</li>
+<li>对于看不出方向的，可任意设定。</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>以后在电路图上只标参考方向。电流的参考方向是任意指定的，一般用箭头在电路图中标出，也可以用双下标表示；如i_ab表示电流的参考方向是由a到b。</li>
+</ol>
+</li>
+</ol>
+<h4 id="四、电压变量-1"><a href="#四、电压变量-1" class="headerlink" title="四、电压变量"></a>四、电压变量</h4><ol>
+<li><h5 id="电压定义"><a href="#电压定义" class="headerlink" title="电压定义"></a>电压定义</h5><ol>
+<li>电路中，电场力将单位正电荷从某一点移到另一点所做的功，成为两点间的电压。</li>
+</ol>
+</li>
+<li><h5 id="电压极性"><a href="#电压极性" class="headerlink" title="电压极性"></a>电压极性</h5><ol>
+<li><p>规定两点间电压的高电位端为 + 级，低电位端为 - 级。两点电位降低的方向也称为电压的方向。</p>
+</li>
+<li><p>参考极性，假设的电压为+ </p>
+</li>
+<li><p>若参考极性与实际极性一致，电压为正值，反之电压为负值。</p>
+</li>
+</ol>
+</li>
+<li><h5 id="关联参考方向"><a href="#关联参考方向" class="headerlink" title="关联参考方向"></a>关联参考方向</h5><ol>
+<li>电流和电压的参考方向可任意假定，而且二者是相互独立的。</li>
+<li>若选取电流i的参考方向与电压u的压降方向一致，则称u与i对该元件是参考方向关联的。否则称为非关联参考方向。</li>
+<li>关联参考方向设置的意义<ol>
+<li>方向设置简单明了</li>
+<li>有利于电路变量计算</li>
+</ol>
+</li>
 </ol>
 </li>
 </ol>
@@ -441,7 +525,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="toc-number">1.</span> <span class="toc-text">目录</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%94%B5%E8%B7%AF%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.</span> <span class="toc-text">一、电路模型</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E7%B1%BB"><span class="toc-number">3.</span> <span class="toc-text">二、电路分类</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%94%B5%E8%B7%AF%E6%A8%A1%E5%9E%8B-1"><span class="toc-number"></span> <span class="toc-text">一、电路模型</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BD%95%E4%B8%BA%E7%94%B5%E8%B7%AF%EF%BC%9F"><span class="toc-number"></span> <span class="toc-text">何为电路？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%9E%E9%99%85%E7%94%B5%E8%B7%AF%E7%9A%84%E5%8A%9F%E8%83%BD"><span class="toc-number"></span> <span class="toc-text">实际电路的功能</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%94%B5%E8%B7%AF%E6%A8%A1%E5%9E%8B"><span class="toc-number"></span> <span class="toc-text">电路模型</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%87%A0%E7%A7%8D%E5%B8%B8%E8%A7%81%E7%9A%84%E7%90%86%E6%83%B3%E5%8C%96%E5%85%83%E4%BB%B6%E6%A8%A1%E5%9E%8B"><span class="toc-number"></span> <span class="toc-text">几种常见的理想化元件模型</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%94%B5%E8%B7%AF%E6%A8%A1%E5%9E%8B%E6%9E%84%E6%88%90%E5%92%8C%E7%94%B5%E8%B7%AF%E5%9B%BE"><span class="toc-number"></span> <span class="toc-text">电路模型构成和电路图</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AF%B4%E6%98%8E%EF%BC%8C%E4%B8%80%E4%B8%AA%E5%AE%9E%E9%99%85%E7%94%B5%E8%B7%AF%E5%8F%AF%E8%83%BD%E6%9C%89%E5%A4%9A%E4%B8%AA%E7%94%B5%E8%B7%AF%E6%A8%A1%E5%9E%8B"><span class="toc-number"></span> <span class="toc-text">说明，一个实际电路可能有多个电路模型</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E7%B1%BB-1"><span class="toc-number"></span> <span class="toc-text">二、电路分类</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%9B%86%E6%80%BB%E5%8F%82%E6%95%B0%E7%94%B5%E8%B7%AF%E4%B8%8E%E5%88%86%E5%B8%83%E5%8F%82%E6%95%B0%E7%94%B5%E8%B7%AF"><span class="toc-number"></span> <span class="toc-text">集总参数电路与分布参数电路</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BA%BF%E8%B7%AF%E7%94%B5%E8%B7%AF%E4%B8%8E%E9%9D%9E%E7%BA%BF%E6%80%A7%E7%94%B5%E8%B7%AF"><span class="toc-number"></span> <span class="toc-text">线路电路与非线性电路</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%97%B6%E4%B8%8D%E5%8F%98%E7%94%B5%E8%B7%AF%E4%B8%8E%E6%97%B6%E5%8F%98%E7%94%B5%E8%B7%AF"><span class="toc-number"></span> <span class="toc-text">时不变电路与时变电路</span></a>
+                    <ol class="toc"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="toc-number">1.</span> <span class="toc-text">目录</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%94%B5%E8%B7%AF%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.</span> <span class="toc-text">一、电路模型</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E7%B1%BB"><span class="toc-number">3.</span> <span class="toc-text">二、电路分类</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E7%94%B5%E6%B5%81%E5%8F%98%E9%87%8F"><span class="toc-number">4.</span> <span class="toc-text">三、电流变量</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E7%94%B5%E5%8E%8B%E5%8F%98%E9%87%8F"><span class="toc-number">5.</span> <span class="toc-text">四、电压变量</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%94%B5%E8%B7%AF%E6%A8%A1%E5%9E%8B-1"><span class="toc-number"></span> <span class="toc-text">一、电路模型</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BD%95%E4%B8%BA%E7%94%B5%E8%B7%AF%EF%BC%9F"><span class="toc-number"></span> <span class="toc-text">何为电路？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%9E%E9%99%85%E7%94%B5%E8%B7%AF%E7%9A%84%E5%8A%9F%E8%83%BD"><span class="toc-number"></span> <span class="toc-text">实际电路的功能</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%94%B5%E8%B7%AF%E6%A8%A1%E5%9E%8B"><span class="toc-number"></span> <span class="toc-text">电路模型</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%87%A0%E7%A7%8D%E5%B8%B8%E8%A7%81%E7%9A%84%E7%90%86%E6%83%B3%E5%8C%96%E5%85%83%E4%BB%B6%E6%A8%A1%E5%9E%8B"><span class="toc-number"></span> <span class="toc-text">几种常见的理想化元件模型</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%94%B5%E8%B7%AF%E6%A8%A1%E5%9E%8B%E6%9E%84%E6%88%90%E5%92%8C%E7%94%B5%E8%B7%AF%E5%9B%BE"><span class="toc-number"></span> <span class="toc-text">电路模型构成和电路图</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AF%B4%E6%98%8E%EF%BC%8C%E4%B8%80%E4%B8%AA%E5%AE%9E%E9%99%85%E7%94%B5%E8%B7%AF%E5%8F%AF%E8%83%BD%E6%9C%89%E5%A4%9A%E4%B8%AA%E7%94%B5%E8%B7%AF%E6%A8%A1%E5%9E%8B"><span class="toc-number"></span> <span class="toc-text">说明，一个实际电路可能有多个电路模型</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E7%B1%BB-1"><span class="toc-number"></span> <span class="toc-text">二、电路分类</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%9B%86%E6%80%BB%E5%8F%82%E6%95%B0%E7%94%B5%E8%B7%AF%E4%B8%8E%E5%88%86%E5%B8%83%E5%8F%82%E6%95%B0%E7%94%B5%E8%B7%AF"><span class="toc-number"></span> <span class="toc-text">集总参数电路与分布参数电路</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BA%BF%E8%B7%AF%E7%94%B5%E8%B7%AF%E4%B8%8E%E9%9D%9E%E7%BA%BF%E6%80%A7%E7%94%B5%E8%B7%AF"><span class="toc-number"></span> <span class="toc-text">线路电路与非线性电路</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%97%B6%E4%B8%8D%E5%8F%98%E7%94%B5%E8%B7%AF%E4%B8%8E%E6%97%B6%E5%8F%98%E7%94%B5%E8%B7%AF"><span class="toc-number"></span> <span class="toc-text">时不变电路与时变电路</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E7%94%B5%E8%B7%AF%E4%B8%8E%E7%94%B5%E9%98%BB%E7%94%B5%E8%B7%AF"><span class="toc-number"></span> <span class="toc-text">动态电路与电阻电路</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9C%89%E6%BA%90%E7%94%B5%E8%B7%AF%E4%B8%8E%E6%97%A0%E6%BA%90%E7%94%B5%E8%B7%AF"><span class="toc-number"></span> <span class="toc-text">有源电路与无源电路</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E7%94%B5%E6%B5%81%E5%8F%98%E9%87%8F-1"><span class="toc-number"></span> <span class="toc-text">三、电流变量</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%94%B5%E8%B7%AF%E5%8F%98%E9%87%8F"><span class="toc-number"></span> <span class="toc-text">电路变量</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%94%B5%E6%B5%81%E7%9A%84%E5%BD%A2%E6%88%90"><span class="toc-number"></span> <span class="toc-text">电流的形成</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%94%B5%E6%B5%81%E6%96%B9%E5%90%91"><span class="toc-number"></span> <span class="toc-text">电流方向</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%94%B5%E6%B5%81%E5%8F%82%E8%80%83%E6%96%B9%E5%90%91"><span class="toc-number"></span> <span class="toc-text">电流参考方向</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E7%94%B5%E5%8E%8B%E5%8F%98%E9%87%8F-1"><span class="toc-number"></span> <span class="toc-text">四、电压变量</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%94%B5%E5%8E%8B%E5%AE%9A%E4%B9%89"><span class="toc-number"></span> <span class="toc-text">电压定义</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%94%B5%E5%8E%8B%E6%9E%81%E6%80%A7"><span class="toc-number"></span> <span class="toc-text">电压极性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%85%B3%E8%81%94%E5%8F%82%E8%80%83%E6%96%B9%E5%90%91"><span class="toc-number"></span> <span class="toc-text">关联参考方向</span></a>
                     </div>
                 </span>
             </div>
