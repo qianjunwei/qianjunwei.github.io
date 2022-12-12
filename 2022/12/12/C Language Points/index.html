@@ -24,7 +24,7 @@
 <meta property="og:description" content="第一章、C语言的背景一、C语言的起源1972年由贝尔实验室的 Dennis Ritchie 和Ken Thompson 在开发Unix系统的基础上开发的C语言。 二、C语言流行的原因 设计特性：融合了计算机科学理论和实践的控制特性。其设计理念能够使得用户能够轻松完成自顶向下的规划、结构化编程和模块化设计。 高效性：充分调动计算机资源，使得C程序更加的紧凑，且运行速度更快，具备了汇编语言才具有的微调">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-12-12T06:17:02.624Z">
-<meta property="article:modified_time" content="2022-12-12T13:34:03.435Z">
+<meta property="article:modified_time" content="2022-12-12T14:02:52.619Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -189,7 +189,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.6k 字
+      3.2k 字
     </span>
   
 
@@ -198,7 +198,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      22 分钟
+      27 分钟
     </span>
   
 
@@ -295,6 +295,13 @@
 <li>在函数中用空行分隔概念上的多个部分。</li>
 <li>每条语句各占一行。</li>
 </ol>
+<h4 id="三、多个函数"><a href="#三、多个函数" class="headerlink" title="三、多个函数"></a>三、多个函数</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;stdio.h&quot;</span></span><br><br><span class="hljs-type">void</span> <span class="hljs-title function_">World</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span>；			<span class="hljs-comment">//函数原型</span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span>				<span class="hljs-comment">//此函数输出Hello</span><br>&#123;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Hello\t&quot;</span>);<br>    World();<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>；<br>&#125;<br><br><span class="hljs-type">void</span> World(<span class="hljs-type">void</span>)			<span class="hljs-comment">//此函数输出World</span><br>&#123;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;World!\n&quot;</span>);<br>&#125;<br><br><br></code></pre></td></tr></table></figure>
+
+<p>在上文代码中，World出现了三次。第一次是函数原型，告知编译器在程序中要使用该函数，第二次以函数调用的形式出现在 main() 函数中，最后一次出现在函数定义中，函数定义即是函数本身的源代码。</p>
+<h4 id="四、程序状态"><a href="#四、程序状态" class="headerlink" title="四、程序状态"></a>四、程序状态</h4><p>通过逐步跟踪程序的执行步骤，并记录每个变量，便可监视程序的状态。程序状态是在程序的执行过程中，某给定点上所有变量值的几集合。</p>
+<p>跟踪程序状态的方法：如果循环有非常多次，观察一小部分循环，是否按照预期的方式执行。另外还要根据实际写出来的代码与运行程序，而不是根据自己的所想进行程序的运行。所以要尽量忠实代码来进行模拟。</p>
+<p>定义语义错误的另一种方法是：在程序的关键点插入额外的 printf 语句，以监视变量值的变化。</p>
+<p>最后一种方法是使用调试器。调试器是一种程序，让你一步一步的运行另一个程序，并检查该程序的变量值。</p>
 
             </div>
             <hr>
