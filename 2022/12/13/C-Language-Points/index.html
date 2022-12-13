@@ -19,13 +19,14 @@
     <meta name="description" content="第一章、C语言的背景一、C语言的起源1972年由贝尔实验室的 Dennis Ritchie 和Ken Thompson 在开发Unix系统的基础上开发的C语言。 二、C语言流行的原因 设计特性：融合了计算机科学理论和实践的控制特性。其设计理念能够使得用户能够轻松完成自顶向下的规划、结构化编程和模块化设计。 高效性：充分调动计算机资源，使得C程序更加的紧凑，且运行速度更快，具备了汇编语言才具有的微调">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C Language Points">
-<meta property="og:url" content="http://example.com/2022/12/12/C%20Language%20Points/index.html">
+<meta property="og:url" content="http://example.com/2022/12/13/C-Language-Points/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="第一章、C语言的背景一、C语言的起源1972年由贝尔实验室的 Dennis Ritchie 和Ken Thompson 在开发Unix系统的基础上开发的C语言。 二、C语言流行的原因 设计特性：融合了计算机科学理论和实践的控制特性。其设计理念能够使得用户能够轻松完成自顶向下的规划、结构化编程和模块化设计。 高效性：充分调动计算机资源，使得C程序更加的紧凑，且运行速度更快，具备了汇编语言才具有的微调">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-12-12T06:17:02.624Z">
-<meta property="article:modified_time" content="2022-12-12T14:02:52.619Z">
+<meta property="article:published_time" content="2022-12-13T07:23:03.000Z">
+<meta property="article:modified_time" content="2022-12-13T07:23:52.979Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="C语言">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -178,8 +179,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-12-12 14:17" pubdate>
-        December 12, 2022 pm
+      <time datetime="2022-12-13 15:23" pubdate>
+        December 13, 2022 pm
       </time>
     </span>
   
@@ -189,7 +190,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      3.2k 字
+      5.5k 字
     </span>
   
 
@@ -198,7 +199,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      27 分钟
+      46 分钟
     </span>
   
 
@@ -302,12 +303,148 @@
 <p>跟踪程序状态的方法：如果循环有非常多次，观察一小部分循环，是否按照预期的方式执行。另外还要根据实际写出来的代码与运行程序，而不是根据自己的所想进行程序的运行。所以要尽量忠实代码来进行模拟。</p>
 <p>定义语义错误的另一种方法是：在程序的关键点插入额外的 printf 语句，以监视变量值的变化。</p>
 <p>最后一种方法是使用调试器。调试器是一种程序，让你一步一步的运行另一个程序，并检查该程序的变量值。</p>
+<h4 id="五、关键字和保留字符"><a href="#五、关键字和保留字符" class="headerlink" title="五、关键字和保留字符"></a><strong>五、关键字和保留字符</strong></h4><p>关键字是C语言的词汇。关键字对于C语言来说比较特殊，因为其不能够作为标识符使用。许多关键字用于指定不同的类型，比如说 int 和 float 等，还有一些关键字用于控制程序中的语句执行顺序。下表中，粗体表示C90新增的关键字，斜体表示C99标准新增的关键字，粗斜体表示C11中新增的关键字。</p>
+<table>
+<thead>
+<tr>
+<th align="center">auto</th>
+<th align="center">extern</th>
+<th align="center">short</th>
+<th align="center"><strong>while</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">break</td>
+<td align="center">float</td>
+<td align="center"><strong>signed</strong></td>
+<td align="center"><em><strong>_Alignas</strong></em></td>
+</tr>
+<tr>
+<td align="center">case</td>
+<td align="center">for</td>
+<td align="center">sizeof</td>
+<td align="center"><em><strong>_Alignof</strong></em></td>
+</tr>
+<tr>
+<td align="center">char</td>
+<td align="center">goto</td>
+<td align="center">static</td>
+<td align="center"><em><strong>_Atomic</strong></em></td>
+</tr>
+<tr>
+<td align="center">const</td>
+<td align="center">if</td>
+<td align="center">struct</td>
+<td align="center"><em><strong>_Bool</strong></em></td>
+</tr>
+<tr>
+<td align="center">continue</td>
+<td align="center">inline</td>
+<td align="center">switch</td>
+<td align="center"><em><strong>_Complex</strong></em></td>
+</tr>
+<tr>
+<td align="center">default</td>
+<td align="center">int</td>
+<td align="center">typedef</td>
+<td align="center"><em><strong>_Generic</strong></em></td>
+</tr>
+<tr>
+<td align="center">do</td>
+<td align="center">long</td>
+<td align="center">union</td>
+<td align="center"><em><strong>_Imaginary</strong></em></td>
+</tr>
+<tr>
+<td align="center">double</td>
+<td align="center">register</td>
+<td align="center">unsigned</td>
+<td align="center"><em><strong>_Noreturn</strong></em></td>
+</tr>
+<tr>
+<td align="center">else</td>
+<td align="center">restrict</td>
+<td align="center">void</td>
+<td align="center"><em><strong>_Static_assert</strong></em></td>
+</tr>
+<tr>
+<td align="center"><strong>enum</strong></td>
+<td align="center">return</td>
+<td align="center"><strong>volatile</strong></td>
+<td align="center"><em><strong>_Thread_local</strong></em></td>
+</tr>
+</tbody></table>
+<h4 id="六、关键概念"><a href="#六、关键概念" class="headerlink" title="六、关键概念"></a>六、关键概念</h4><p>对于编程人员来说，要具备抽象和逻辑的思维，并谨慎的处理细节问题。应该理解什么是C程序，可以把程序看做是你希望计算机如何完成任务的描述。编译器负责具体的细节工作。</p>
+<h4 id="七、Test"><a href="#七、Test" class="headerlink" title="七、Test"></a>七、Test</h4><h5 id="（一）、基础测试"><a href="#（一）、基础测试" class="headerlink" title="（一）、基础测试"></a>（一）、基础测试</h5><ol>
+<li><p>C语言的基本模块是什么？</p>
+</li>
+<li><p>什么是语法错误？写出一个英语例子和C语言例子？</p>
+</li>
+<li><p>什么是语义错误？写出一个英语例子和C语言例子？</p>
+</li>
+<li><p>Indiana Sloth 编写了下面的程序，并征求你的意见，请帮助他评定。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c">include studio.h<br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span>		<span class="hljs-comment">//该程序打印一年有多少周</span><br>&#123;<br>    <span class="hljs-type">int</span> s<br>    <br>    s := <span class="hljs-number">56</span>;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;There are s weeks in a year.&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>假设下面的4个例子都是完整程序中的一部分，它们都输出什么结果？</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-built_in">printf</span>（<span class="hljs-string">&quot;Baa Baa Black Sheep.&quot;</span>）;<br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Have you any wool?\n&quot;</span>);<br><br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Begone!\n O creature of lard!\n&quot;</span>);<br><br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;What?\n No/n fish?\n&quot;</span>);<br><br><span class="hljs-type">int</span> num;<br>num = <span class="hljs-number">2</span>;<br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d + %d = %d&quot;</span>,num,num,num+num);<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>在 main int function char &#x3D; 中，哪些是C语言的关键字？</p>
+</li>
+<li><p>如何以下面的格式输出变量 words 和 lines 的值 （这里，3020和350代表两个变量的值？）</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">There were <span class="hljs-number">3020</span> words and <span class="hljs-number">350</span> lines。<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>考虑下面的程序</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span><br>&#123;<br>    <span class="hljs-type">int</span> x,y;<br>    x = <span class="hljs-number">10</span>;<br>    y = <span class="hljs-number">5</span>;		<span class="hljs-comment">//第六行</span><br>    y = x+y;	<span class="hljs-comment">//第七行</span><br>    x = x*y;	<span class="hljs-comment">//第八行</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d %d\n&quot;</span>,x,y);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>请问在执行完第六、七 、八行之后，程序的状态分别是什么？</p>
+</li>
+</ol>
+<h5 id="（二）、编程练习"><a href="#（二）、编程练习" class="headerlink" title="（二）、编程练习"></a>（二）、编程练习</h5><ol>
+<li><p>编写一个程序，调用一次 printf 函数，把你的姓名打印在第一行。再调用一次 printf 函数，把你的姓名分别打印在两行，然后再调用两次 printf 函数，把你的姓名打印在一行。输出应该如下所示。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c">Gustav Mahler		<span class="hljs-comment">//第一次打印的内容</span><br>Gustav			    <span class="hljs-comment">//第二次打印的内容</span><br>Mahler				<span class="hljs-comment">//仍然是第二次打印的内容</span><br>Gustav Mahler		<span class="hljs-comment">//第三次和第四次打印的内容</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>编写一个程序，打印你的姓名和地址。</p>
+</li>
+<li><p>编写一个程序把你的年龄转换成天数，并显示这两个值。这里不用考虑闰年的问题。</p>
+</li>
+<li><p>编写一个程序生成以下输出：</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">For</span> h<span class="hljs-string">e&#x27;s a jolly good fellow!</span><br><span class="hljs-string">For he&#x27;</span>s a jolly good fellow!<br><span class="hljs-keyword">For</span> h<span class="hljs-string">e&#x27;s a jolly good fellow!</span><br><span class="hljs-string">Which nobody can deny!</span><br></code></pre></td></tr></table></figure>
+
+<p>除了 main() 函数以外，该程序还要调用两个自定义函数，一个名为 jolly() 用于打印前三条消息，调用一次打印一条；另一个函数名为 deny() ，打印最后一条消息。</p>
+</li>
+<li><p>编写一个程序，生成以下输出</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c">Brazil, Russia, India, China<br>India, China<br>Brazil, Russia<br></code></pre></td></tr></table></figure>
+
+<p>除了 main() 函数以外，该程序还要调用两个自定义的函数，一个名为 br() ，调用一次打印一次“Brazil, Russia”；另一个名为 ic()，调用一次打印一次“India，China”。其他内容在 main() 函数中完成。</p>
+</li>
+<li><p>编写一个程序，创建一个整形变量 toes，并将 toes 设置为10。程序还要计算toes的两倍和toes的平方。该程序打印三个值，分别描述以示区分。</p>
+</li>
+<li><p>许多研究表明，微笑益处多多。编写一个程序，生成以下格式的输出</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs">Smile！Smile！Smile！<br>Smile！Smile！<br>Smile！<br></code></pre></td></tr></table></figure>
+
+<p>该程序要定义一个函数，该函数被调用一次打印一次 “Smile！”，根据程序的需要使用该函数。</p>
+</li>
+<li><p>在C语言中，函数可以调用另一个函数。编写一个程序，调用一个名为 one_three() 的函数。该函数在一行打印单词“one”，再调用第二个函数 two() ，然后在另一行打印单词 “three”。two() 函数在一行显示单词 “two”。main() 函数在调用 one_three() 函数前要打印短语 “starting now：”，并在调用完毕后显示短语“done！”。因此该程序的输出应如下所示。</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">starting now：<br><span class="hljs-literal">one</span><br><span class="hljs-literal">two</span><br><span class="hljs-literal">three</span><br>done！<br></code></pre></td></tr></table></figure>
+
+<hr>
+</li>
+</ol>
 
             </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
                 
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/C%E8%AF%AD%E8%A8%80/">C语言</a>
+                    
+                  </div>
                 
               </div>
               
