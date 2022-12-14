@@ -24,7 +24,7 @@
 <meta property="og:description" content="第一章、C语言的背景一、C语言的起源1972年由贝尔实验室的 Dennis Ritchie 和Ken Thompson 在开发Unix系统的基础上开发的C语言。 二、C语言流行的原因 设计特性：融合了计算机科学理论和实践的控制特性。其设计理念能够使得用户能够轻松完成自顶向下的规划、结构化编程和模块化设计。 高效性：充分调动计算机资源，使得C程序更加的紧凑，且运行速度更快，具备了汇编语言才具有的微调">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-12-13T07:23:03.000Z">
-<meta property="article:modified_time" content="2022-12-13T07:23:52.979Z">
+<meta property="article:modified_time" content="2022-12-14T12:05:11.121Z">
 <meta property="article:author" content="钱俊伟">
 <meta property="article:tag" content="C语言">
 <meta name="twitter:card" content="summary_large_image">
@@ -190,7 +190,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      5.5k 字
+      9.6k 字
     </span>
   
 
@@ -199,7 +199,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      46 分钟
+      80 分钟
     </span>
   
 
@@ -274,7 +274,7 @@
 <li>Linux系统：是一个开源、流行、类Unix的系统，可在不同平台运行。</li>
 <li>集成开发环境：Windows上提供了很多的集成开发环境。统称为IDE。流行的有VS,CLion等。</li>
 </ul>
-<h4 id="八、Test："><a href="#八、Test：" class="headerlink" title="八、Test："></a>八、Test：</h4><ol>
+<h4 id="八、Test"><a href="#八、Test" class="headerlink" title="八、Test"></a>八、Test</h4><ol>
 <li>对编程而言，可移植性意味着什么？</li>
 <li>解释性代码文件，目标代码文件和可执行文件有什么区别？</li>
 <li>编程的七个主要步骤是什么？</li>
@@ -432,6 +432,127 @@
 <hr>
 </li>
 </ol>
+<h3 id="第三章、数据和C"><a href="#第三章、数据和C" class="headerlink" title="第三章、数据和C"></a>第三章、数据和C</h3><p>Introduction：本章介绍：</p>
+<ul>
+<li>关键字：int short long unsigned char float double <em>Bool</em> _Complex _Imaginary </li>
+<li>运算符：sizeof()</li>
+<li>函数：scan（）</li>
+<li>整数类型和浮点数类型的区别</li>
+<li>如何书写整形和浮点型常数，如何声明这些类型的变量</li>
+<li>如何使用printf（）和scanf（）函数读取不同类型的值</li>
+</ul>
+<h4 id="一、示例程序"><a href="#一、示例程序" class="headerlink" title="一、示例程序"></a>一、示例程序</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span><br>&#123;<br>	<span class="hljs-type">float</span> weight; 	<span class="hljs-comment">//你的体重</span><br>	<span class="hljs-type">float</span> value;	<span class="hljs-comment">//相等重量的白金的价值</span><br>    <br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Are you worth your weight in platiume?\n&quot;</span>);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Let&#x27;s check it out.\n&quot;</span>);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Please enter your weight in pounds&quot;</span>);<br>    <br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%f&quot;</span>,&amp;weight);	<span class="hljs-comment">//获取用户的输入</span><br>    <span class="hljs-comment">/*假设白金的价值是每盎司$1700，,14.5833用于把英镑常衡盎司转换为金衡盎司*/</span><br>    value  = <span class="hljs-number">1700.0</span> *weight *<span class="hljs-number">14.5833</span>;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Your weight in platinum is worth $%.2f.\n&quot;</span>,value);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;You are easily worth that! If platinum prices drop.\n&quot;</span>);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;eat more to maintain your value.\n&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h6 id="程序中的新元素"><a href="#程序中的新元素" class="headerlink" title="程序中的新元素"></a>程序中的新元素</h6><ul>
+<li>出现了 float 类型的变量，可以储存带小数的变量</li>
+<li>打印输出的变化：使用%f来输出小数类型的变量，%.2f是指只输出小数点后两位的数据。</li>
+<li>scanf() 用于获取键盘的输入值。%f说明需要读取用户从键盘输入的浮点数值。&amp;weight说明把scanf() 输入的值赋值给名为weight的变量。</li>
+</ul>
+<h4 id="二、常量与变量"><a href="#二、常量与变量" class="headerlink" title="二、常量与变量"></a>二、常量与变量</h4><p>例如π等一下具有固定数值的数据都是常量（constant），本程序中例如weight这种都是变量（variable）。</p>
+<h4 id="三、数据类型和关键字"><a href="#三、数据类型和关键字" class="headerlink" title="三、数据类型和关键字"></a>三、数据类型和关键字</h4><p>在C语言中，不同的数据类型之间也有差异。一些数据类型表示数字，一些数据类型表示字符。C通过识别一些基本的数据类型来区分和使用这些不同的数据类型。对于常量，通过用户的书写形式来识别类型，例如42是int型，42.0就是float型。但是对于变量而言，需要在声明时指定其数据类型。</p>
+<table>
+<thead>
+<tr>
+<th align="center">最初K&amp;R给出的关键字</th>
+<th align="center">C90标准添加的关键字</th>
+<th align="center">C99标准添加的关键字</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">int</td>
+<td align="center">signed</td>
+<td align="center">_Bool</td>
+</tr>
+<tr>
+<td align="center">long</td>
+<td align="center">void</td>
+<td align="center">_Complex</td>
+</tr>
+<tr>
+<td align="center">short</td>
+<td align="center"></td>
+<td align="center">_Imaginary</td>
+</tr>
+<tr>
+<td align="center">unsigned</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">char</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">float</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">double</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<p>在C语言中，用int关键字来表示基本的数据类型。后三个关键字（long short 和 unsigned）和C90新增的 signed 用于提供基本整数类型的变式。例如unsigned short int 和 long long int . char 关键字用于指定字母和其他字符（如：# $ % *）另外，char类型也可以表示较小的整数。float，double和long double表示带小数点的数。_Bool 类型表示布尔值（true 或 false）, _complexhe _Imaginary 分别表示复数和虚数。</p>
+<p>通过这些关键字创建的类型，按计算机的储存方式可分为两大基本类型：整数类型和浮点数类型。</p>
+<h5 id="tips：位、字节和字"><a href="#tips：位、字节和字" class="headerlink" title="tips：位、字节和字"></a>tips：位、字节和字</h5><ul>
+<li>位，字节和字是描述计算机数据单元或储存单元的术语，这里主要指储存单元。</li>
+<li>最小的储存单元是位（bit），可以储存 0 或 1 ，也或者说用户设置开或关。虽然一位的储存信息有限，但是计算机中的位的数量十分庞大。位是计算机内存的基本构建块。</li>
+<li>字节（byte）是常用的计算机储存单位，对于几乎所有的机器，1字节均为8位，这是字节的标准定义。</li>
+<li>字是设计计算机时给定的自然储存单位，对于8位的微型计算机，1个字长只有8位，从那以后个人计算机字长逐渐增长为：16位，32位，64位。计算机字长越大，其数据转移越快，允许的内存访问也就更多。</li>
+</ul>
+<h5 id="整数和浮点数"><a href="#整数和浮点数" class="headerlink" title="整数和浮点数"></a>整数和浮点数</h5><p>对于编程人员而言，整数和浮点数的区别是它们的书写方式不同，但是对于计算机而言，它们的区别是储存方式不同。</p>
+<ul>
+<li>整数没有小数部分</li>
+<li>浮点数可以表示的范围比整数更大</li>
+<li>对于一些算数运算，浮点数损失的精度更多</li>
+<li>因为在任何区间内，都存在无穷多个数，所以计算机的浮点数不能表示区间内所有的值。浮点数通常只是实际值的近似值。</li>
+<li>以前浮点运算一般都比整数运算慢，但是现在许多CPU都包含了浮点处理器，缩小了速度上的差距。</li>
+</ul>
+<h4 id="四、C语言的基本数据类型"><a href="#四、C语言的基本数据类型" class="headerlink" title="四、C语言的基本数据类型"></a>四、C语言的基本数据类型</h4><h6 id="（一）int类型"><a href="#（一）int类型" class="headerlink" title="（一）int类型"></a>（一）int类型</h6><p>C语言中的整数类型可以表示不同的取值范围和正负值。一般情况下使用int类型就可以了，但是为了满足特定的任务和机器的要求，还可以选择其他的类型。</p>
+<p>int类型是有符号整形，即int类型的值必须是整数，可以是正整数、负整数或者是零。int型所占用的值取决于一个机器字长。</p>
+<h6 id="（二）、声明int类型"><a href="#（二）、声明int类型" class="headerlink" title="（二）、声明int类型"></a>（二）、声明int类型</h6><p>共有两种方式,可以单独声明每个变量，也可以在 int 后面声明多个变量名，变量名之间使用逗号分隔。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> erns;<br><span class="hljs-type">int</span> hogs,cows,goats;<br></code></pre></td></tr></table></figure>
+
+<h6 id="（三）、初始化变量"><a href="#（三）、初始化变量" class="headerlink" title="（三）、初始化变量"></a>（三）、初始化变量</h6><p>就是为变量赋一个初始值。在C语言中，初始化可以在声明中完成。只需要在变量名后面加上赋值运算符（&#x3D;），和所需要赋的值即可。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> hogs = <span class="hljs-number">21</span>;<br><span class="hljs-type">int</span> cows = <span class="hljs-number">32</span>, goats = <span class="hljs-number">14</span>;<br><span class="hljs-type">int</span> dogs, cats = <span class="hljs-number">94</span>;		<span class="hljs-comment">//可以但是不推荐</span><br></code></pre></td></tr></table></figure>
+
+<h6 id="（四）、int型常量和打印的方法"><a href="#（四）、int型常量和打印的方法" class="headerlink" title="（四）、int型常量和打印的方法"></a>（四）、int型常量和打印的方法</h6><p>C语言把不含小数点和指数的数作为整数。C语言把大多数整形常量视为 int 类型，但是非常大的整数除外。</p>
+<p>可以使用 printf 函数打印 int 类型的值。主要使用 %d ，此符号称为转换说明，它制定了printf() 应使用什么格式来显示这一个值。格式化字符串中的每个%d都与待打印的变量列表中相应的int值匹配。</p>
+<h6 id="（五）、显示八进制和十六进制"><a href="#（五）、显示八进制和十六进制" class="headerlink" title="（五）、显示八进制和十六进制"></a>（五）、显示八进制和十六进制</h6><p>在C语言中，即可以使用和显示不同进制的数，不同的进制要使用不同的转换说明。<strong>以十进制显示数字，使用&amp;d；以八进制显示数字，使用%o；以十六进制显示数字，使用%x。另外，要显示个进制数的前缀 0， 0x， 0X，必须分别使用 %#o, %#x, %#X。</strong></p>
+<h6 id="（六）、其他整数类型"><a href="#（六）、其他整数类型" class="headerlink" title="（六）、其他整数类型"></a>（六）、其他整数类型</h6><ul>
+<li><p>short int 类型占用的储存空间可能比int类型少，常用于较小数值的场合以节省控件。与int相似，但是short是有符号类型。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">short</span> <span class="hljs-type">int</span> tags；<br><span class="hljs-type">short</span> tags；			<span class="hljs-comment">//int 可省略</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>long int 或long占用的储存空间可能比 int 多，适用于较大数值的场合。与int相似，long是有符号类型。</p>
+</li>
+<li><p>long long int或long long占用的储存空间可能比long 多，适用于更大数值的场景。该类型至少占用64位，该类型是有符号类型。</p>
+</li>
+<li><p>unsigned int 或者 unsigned 只用于非负值的场合。这种类型与有符号类型表示的范围不同。如unsigned int 表示0~65535，而不是-32768-32767。</p>
+</li>
+</ul>
+<h6 id="（七）、使用多种类型整数类型的原因"><a href="#（七）、使用多种类型整数类型的原因" class="headerlink" title="（七）、使用多种类型整数类型的原因"></a>（七）、使用多种类型整数类型的原因</h6><ul>
+<li>为什么说 short 类型可能比 int 类型占用的字节少，long类型可能比 int 类型占用的空间多？因为C语言只规定了short占用的储存空间不能多于int，long的储存空间不能少于int，这样的规定是为了适应不同类型的机器。</li>
+<li>现在，个人计算机上常见的设置是，long long占64位，long占32位，short占16位，int占16位或32位。</li>
+<li>int类型那么多，应该如何选择？首先，考虑unsigned类型。，这种类型的数常用于计数，因为计数不用负数。而且，unsigned类型可以表示更大的正数。如果一个数超出了int类型的取值范围，且在long类型的取值范围内时，使用long类型。然而，对于那些long占用的空间比int大的系统，使用long类型会减慢运算速度。因此，如非必要，请不要使用long类型。另外要注意一点：如果在long类型和int类型占用空间相同的机器上编写代码，当确实需要32位的整数时，应使用long类型而不是int类型，以便把程序移植到16位机后仍然可以正常工作。类似地，如果确实需要64位的整数，应使用longlong类型。如果在int设置为32位的系统中要使用16位的值，应使用short类型以节省存储空间。通常，只有当程序使用相对于系统可用内存较大的整型数组时，才需要重点考虑节省空间的问题。使用short类型的另一个原因是，计算机中某些组件使用的硬件寄存器是16位。</li>
+<li>需要注意数据超出对应类型的表示范围所造成的数据溢出情况。</li>
+</ul>
+<h6 id="（八）、打印short、long、long-long和unsigned类型"><a href="#（八）、打印short、long、long-long和unsigned类型" class="headerlink" title="（八）、打印short、long、long long和unsigned类型"></a>（八）、打印short、long、long long和unsigned类型</h6><ul>
+<li>打印unsigned int类型的值，使用%u转换说明</li>
+<li>打印long类型的值，使用%ld转换说明。</li>
+<li>如果系统中int和long的大小相同时，使用%d就可以。但是需要注意，这样一直到其他系统中可能无法正常使用。</li>
+<li>%lx 表示以十六进制格式打印long类型整数</li>
+<li>%lo 表示以八进制格式打印long类型整数</li>
+<li>对于short类型，可以使用h前缀，</li>
+<li>%hd 表示以十进制显示short类型的整数</li>
+<li>%ho 表示以八进制显示short类型的整数</li>
+<li>%lu 表示打印unsigned long 类型的值</li>
+</ul>
+<h6 id="（九）、char-类型和声明"><a href="#（九）、char-类型和声明" class="headerlink" title="（九）、char 类型和声明"></a>（九）、char 类型和声明</h6><p>char类型用于储存字符，但是从技术层面看，char是整数类型。因为char类型实际上储存的是整数而不是字符。字符是用ASCll 编码的数字来进行保存的。</p>
+<p>声明方式：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">char</span> broiled;<br><span class="hljs-type">char</span> itable,latan;<br><br>broiled = <span class="hljs-string">&#x27;T&#x27;</span>;		<span class="hljs-comment">//此处只能使用单引号</span><br><span class="hljs-type">char</span> grade = <span class="hljs-number">65</span>;	<span class="hljs-comment">//可以将对应字符的ASCII码赋值给该变量，但是不推荐这样。</span><br></code></pre></td></tr></table></figure>
+
 
             </div>
             <hr>
