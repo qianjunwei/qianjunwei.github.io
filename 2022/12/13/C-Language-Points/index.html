@@ -24,7 +24,7 @@
 <meta property="og:description" content="第一章、C语言的背景一、C语言的起源1972年由贝尔实验室的 Dennis Ritchie 和Ken Thompson 在开发Unix系统的基础上开发的C语言。 二、C语言流行的原因 设计特性：融合了计算机科学理论和实践的控制特性。其设计理念能够使得用户能够轻松完成自顶向下的规划、结构化编程和模块化设计。 高效性：充分调动计算机资源，使得C程序更加的紧凑，且运行速度更快，具备了汇编语言才具有的微调">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-12-13T07:23:03.000Z">
-<meta property="article:modified_time" content="2022-12-15T07:36:06.286Z">
+<meta property="article:modified_time" content="2022-12-15T09:31:55.981Z">
 <meta property="article:author" content="钱俊伟">
 <meta property="article:tag" content="C语言">
 <meta name="twitter:card" content="summary_large_image">
@@ -190,7 +190,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      10k 字
+      11k 字
     </span>
   
 
@@ -199,7 +199,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      85 分钟
+      95 分钟
     </span>
   
 
@@ -623,7 +623,66 @@
 <p>char 类型的输出形式为 printf (“%c”)</p>
 <h5 id="2、有符号还是无符号"><a href="#2、有符号还是无符号" class="headerlink" title="2、有符号还是无符号"></a>2、有符号还是无符号</h5><p>有的C编译器把char实现为有符号类型，即可表示的范围为 -128<del>127 ，而有些C编译器把char实现为无符号类型，即可表示的范围为 0</del>255。这就需要查阅具体的编译器手册。</p>
 <h4 id="（五）、-Bool类型"><a href="#（五）、-Bool类型" class="headerlink" title="（五）、_Bool类型"></a>（五）、_Bool类型</h4><p>C99标准添加了_Bool类型，用于表示布尔值，即逻辑函数 true 和 false 。因为C语言使用0表示false，用1表示ture，所以 _Bool类型实际上也是一种整数类型。但他原则上仅占用1位储存空间。</p>
-<h4 id="（六）、float-double-和-long-double"><a href="#（六）、float-double-和-long-double" class="headerlink" title="（六）、float double 和 long double"></a>（六）、float double 和 long double</h4>
+<h4 id="（六）、float-double-和-long-double"><a href="#（六）、float-double-和-long-double" class="headerlink" title="（六）、float double 和 long double"></a>（六）、float double 和 long double</h4><p>各种整数类型对于大多数软件开发已经够用了，但是面向金融和数学的程序经常使用浮点数。C语言中的浮点运算类型主要有float double 和 long double类型。浮点数的表示类似于科学计数法，即用小数乘以10的幂来表示数字。下表中给出了常见的计数示例：</p>
+<table>
+<thead>
+<tr>
+<th align="center">数字</th>
+<th align="center">科学计数法</th>
+<th align="center">指数计数法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1000000000</td>
+<td align="center">1.0 * 10<sup>9</sup></td>
+<td align="center">1.0e9</td>
+</tr>
+<tr>
+<td align="center">123000</td>
+<td align="center">1.23 * 10<sup>5</sup></td>
+<td align="center">1.23e5</td>
+</tr>
+<tr>
+<td align="center">322.56</td>
+<td align="center">3.2256 * 10<sup>2</sup></td>
+<td align="center">3.2256e2</td>
+</tr>
+<tr>
+<td align="center">0.000056</td>
+<td align="center">5.6 * 10<sup>-5</sup></td>
+<td align="center">5.6e-5</td>
+</tr>
+</tbody></table>
+<h5 id="1、声明浮点型变量"><a href="#1、声明浮点型变量" class="headerlink" title="1、声明浮点型变量"></a>1、声明浮点型变量</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">float</span> noah,jonah;<br><span class="hljs-type">double</span> trouble;<br><span class="hljs-type">float</span> planck = <span class="hljs-number">6.63e-34</span>;<br><span class="hljs-type">long</span> <span class="hljs-type">double</span> gnp;<br></code></pre></td></tr></table></figure>
+
+<h5 id="2、浮点型常量"><a href="#2、浮点型常量" class="headerlink" title="2、浮点型常量"></a>2、浮点型常量</h5><p>基本书写形式：有符号的数字（包括小数点），后面紧跟E或e，最后是一个有符号数表示10的指数。例举两个有效的浮点数常量：-1.56E+12	2.78e-3 </p>
+<p><strong>不要在浮点数常量中间加空格：1.56 E+12	这样是错误的！</strong></p>
+<p>注意浮点数的几种错误，一是浮点值的上溢出和下溢出。二是浮点数的舍入错误。</p>
+<h4 id="（七）、复数和虚数类型"><a href="#（七）、复数和虚数类型" class="headerlink" title="（七）、复数和虚数类型"></a>（七）、复数和虚数类型</h4><p>C语言有三种复数类型：float_Complex、double_Complex、long double_Complex。例如float_Complex 类型的变量应包含两个float类型的值，分别表示复数的实部和虚部。类似的，C语言的三种虚数类型是float_Imaginary、double_Imaginary、long double_Imaginary。</p>
+<p>如果包含complex.h这一个头文件，便可以用complex代替_Complex，imaginary代替 _Imaginary，还可以用 I 代替-1的平方根。</p>
+<h4 id="（八）、Conclusion"><a href="#（八）、Conclusion" class="headerlink" title="（八）、Conclusion"></a>（八）、Conclusion</h4><ul>
+<li><p>关键字,共有十一个</p>
+ <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span>; <span class="hljs-type">long</span>; <span class="hljs-type">short</span>; <span class="hljs-type">unsigned</span>; <span class="hljs-type">char</span>; <span class="hljs-type">float</span>; <span class="hljs-type">double</span>; <span class="hljs-type">signed</span>; <span class="hljs-type">_Bool</span>; <span class="hljs-type">_Complex</span>; <span class="hljs-type">_Imaginary</span>; <br></code></pre></td></tr></table></figure>
+</li>
+<li><p>有符号整形：有符号整形可以表示正整数和负整数</p>
+<ul>
+<li>int：系统给定的基本整数类型。C语言规定int的类型不小于16位。</li>
+<li>short 或 short int ：最大的short类型整数小于或等于最大的int类型整数。C语言规定short 类型至少占用16位。4</li>
+<li>long 或 long int：该类型可表示的整数大于或等于最大的int类型整数。C语言规定long类型至少占32位。</li>
+<li>long long 或 long long int ：该类型可表示的整数大于或等于最大的long类型整数，long long类型至少占用64位。</li>
+</ul>
+</li>
+<li><p>无符号整形</p>
+<p>无符号整形只能用于表示零和正整数，因此无符号整形可表示的正整数比有符号的整形大。在整形类型前加上unsigned表示是无符号类型。</p>
+</li>
+<li><p>字符类型</p>
+<p>可打印出来的符号都是字符类型，根据定义，char类型表示一个字符要占用1字节的内存。char 字符类型的关键字。</p>
+</li>
+<li><p>布尔类型</p>
+<p>布尔值表示 true 和 false。C语言使用1表示true，使用0表示false。_Bool类型的关键字。布尔类型是无符号int类型，所占用的空间只要是能储存0或1即可。</p>
+</li>
+</ul>
+
             </div>
             <hr>
             <div>
