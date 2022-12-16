@@ -24,7 +24,7 @@
 <meta property="og:description" content="第一章、C语言的背景一、C语言的起源1972年由贝尔实验室的 Dennis Ritchie 和Ken Thompson 在开发Unix系统的基础上开发的C语言。 二、C语言流行的原因 设计特性：融合了计算机科学理论和实践的控制特性。其设计理念能够使得用户能够轻松完成自顶向下的规划、结构化编程和模块化设计。 高效性：充分调动计算机资源，使得C程序更加的紧凑，且运行速度更快，具备了汇编语言才具有的微调">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-12-13T07:23:03.000Z">
-<meta property="article:modified_time" content="2022-12-15T09:31:55.981Z">
+<meta property="article:modified_time" content="2022-12-16T15:25:41.144Z">
 <meta property="article:author" content="钱俊伟">
 <meta property="article:tag" content="C语言">
 <meta name="twitter:card" content="summary_large_image">
@@ -190,7 +190,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      11k 字
+      15k 字
     </span>
   
 
@@ -199,7 +199,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      95 分钟
+      127 分钟
     </span>
   
 
@@ -681,7 +681,235 @@
 <li><p>布尔类型</p>
 <p>布尔值表示 true 和 false。C语言使用1表示true，使用0表示false。_Bool类型的关键字。布尔类型是无符号int类型，所占用的空间只要是能储存0或1即可。</p>
 </li>
+<li><p>实浮点类型</p>
+<p> 实浮点类型可表示正浮点数和复浮点数。</p>
+<p> float：系统的基本浮点类型，可精确表示至少6位有效数字。</p>
+<p> double：储存浮点数的范围更大，能表示比float更多的有效数字，和更大的指数。</p>
+<p> long double：储存浮点数的范围比double更大，能表示比double更多的有效数字和更大的指数。</p>
+</li>
+<li><p>复数和虚数浮点数</p>
+<p> 虚数类型是可选的类型，复数的实部和虚部类型都基于实浮点类型来构成。</p>
+<ul>
+<li>float_Complex</li>
+<li>double_Complex</li>
+<li>long double_Complex</li>
+<li>float_Imaginary</li>
+<li>double_Imaginary</li>
+<li>long long_Imaginary</li>
 </ul>
+</li>
+<li><p>如何声明简单变量</p>
+<ol>
+<li>选择需要的类型</li>
+<li>使用有效的字符给变量起一个变量名</li>
+<li>按以下格式进行声明：类型说明符 变量名；类型说明符由一个或多个关键字组成。例如 int erest；</li>
+<li>可以同时声明相同类型的多个变量，用逗号分隔各个变量名，例如char ch,init,ans;</li>
+<li>在声明的同时还可以初始化变量：float mass &#x3D; 6.0E24;</li>
+</ol>
+</li>
+<li><p>类型大小</p>
+<p> 如果想知道当前系统指定的大小是多少，可以通过 sizeof() 来进行打印输出。例如 printf(“int size is %zd bytes. \n”,sizeof(int));</p>
+</li>
+<li><p>刷新输出</p>
+<p> printf() 函数何时把输出发送到屏幕上？最初，printf() 语句首先把输出发送到一个叫作缓冲区（buffer）的中间储存区域，然后缓冲区的内容再不断被发送到屏幕上。当缓冲区满、或者遇到换行字符或需要输入这三种情况的时候，才刷新缓冲区，即迫使printf() 的输出被发送到屏幕上。</p>
+</li>
+</ul>
+<h3 id="五-、Test"><a href="#五-、Test" class="headerlink" title="(五)、Test"></a>(五)、Test</h3><h4 id="（一）、基础练习"><a href="#（一）、基础练习" class="headerlink" title="（一）、基础练习"></a>（一）、基础练习</h4><ol>
+<li><h6 id="指出下面各种数据使用的合适的数据类型，注意有些可使用多种数据类脑"><a href="#指出下面各种数据使用的合适的数据类型，注意有些可使用多种数据类脑" class="headerlink" title="指出下面各种数据使用的合适的数据类型，注意有些可使用多种数据类脑"></a>指出下面各种数据使用的合适的数据类型，注意有些可使用多种数据类脑</h6><ol>
+<li>East Simpleton 的人口</li>
+<li>DVD影碟的价格</li>
+<li>本章出现次数最多的字母</li>
+<li>本章出现次数最多的子母次数</li>
+</ol>
+</li>
+<li><p>在什么情况要用long类型的变量代替int类型的变量？</p>
+</li>
+<li><p>使用哪些可移植的数据类型可以获得32位有符号整数？选择的理由是什么？</p>
+</li>
+<li><p>指出下列常量的类型和含义（如果有的话）</p>
+<ol>
+<li>‘\b’</li>
+<li>1066</li>
+<li>99.44</li>
+<li>0XAA</li>
+<li>2.0e30</li>
+</ol>
+</li>
+<li><p>Dottie Cawm编写了一个程序，请找出程序中的错误。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br>main()<br>&#123;<br>    <span class="hljs-type">float</span> g; h;<br>    <span class="hljs-type">float</span> tax, rate;<br>    <br>    g = e21;<br>    tax = rate * g;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>写出下列常量在声明中使用的数据类型和在printf() 中对应的转换说明</p>
+<table>
+<thead>
+<tr>
+<th align="center">常量</th>
+<th align="center">类型</th>
+<th align="center">转换说明（%转换字符）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">12</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">0X3</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">‘C’</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2.3E07</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">‘\040’</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">7.0</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">6L</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">6.0f</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">0x5.b6p12</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+</li>
+<li><p>写出下列常量在声明中使用的数据类型和在printf() 中对应的转换说明（假设int为16位）</p>
+<table>
+<thead>
+<tr>
+<th align="center">常量</th>
+<th align="center">类型</th>
+<th align="center">转换说明（%转换字符）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">012</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2.9e05L</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">‘s’</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">100000</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">‘\n’</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">20.0f</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">0x44</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">-40</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+</li>
+<li><p>假设程序的开头有下列声明：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> imate = <span class="hljs-number">2</span>;<br><span class="hljs-type">long</span> shot = <span class="hljs-number">53456</span>;<br><span class="hljs-type">char</span> grade = <span class="hljs-string">&#x27;A&#x27;</span>;<br><span class="hljs-type">float</span> <span class="hljs-built_in">log</span> = <span class="hljs-number">2.71828</span>;<br></code></pre></td></tr></table></figure>
+
+<p>把下面的printf() 函数语句中的转换字符补充完整“</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-built_in">printf</span> (<span class="hljs-string">&quot;The odds against the %__ were %__ to 1.\n&quot;</span>,imate ,shot);<br><span class="hljs-built_in">printf</span> (<span class="hljs-string">&quot;A score of %__ is not an %__ grade.\n&quot;</span>,<span class="hljs-built_in">log</span>,grade);<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>假设ch是char 类型的变量。分别使用转移序列、十进制值、八进制字符常量和十六进制字符常量把回车字符赋值给ch（假设使用ASCII编码值）；</p>
+</li>
+<li><p>修正下面的程序：（在C中，&#x2F;表示除以）</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">int</span>)</span> /this program is perfect /<br>&#123;<br>    cows,legs integer;<br>    <span class="hljs-built_in">printf</span> (<span class="hljs-string">&quot;How many cow legs did you count?\n&quot;</span>);<br>    <span class="hljs-built_in">scanf</span> (<span class="hljs-string">&quot;%c&quot;</span>,legs);<br>    cows = legs / <span class="hljs-number">4</span>;<br>    <span class="hljs-built_in">printf</span> (<span class="hljs-string">&quot;That implies there are %f cows.\n&quot;</span>,cows);<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>指出下列转移字符的含义</p>
+<ol>
+<li>\n</li>
+<li>\ \</li>
+<li>\ ‘’ </li>
+<li>\ t</li>
+</ol>
+</li>
+</ol>
+<h4 id="二-、编程练习"><a href="#二-、编程练习" class="headerlink" title="(二)、编程练习"></a>(二)、编程练习</h4><ol>
+<li><p>通过编写相关程序，观察系统如何处理整数上溢、浮点数上溢和浮点数下溢的情况。</p>
+</li>
+<li><p>编写一个程序，要求提示输入一个ASCII码值（如，66），然后打印输入的字符。</p>
+</li>
+<li><p>编写一个程序，发出一声警报，然后打印下面的文本</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c">Startled by the sudden sound,Sally shouted,<br><span class="hljs-string">&quot;By the Great Pumpkin,what was that!&quot;</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>编写一个程序，读取一个浮点数，先打印成小数点形式，再打印成指数形式。然后如果系统支持，在打印成p计数法，即十六进制计数法。按照以下格式输出（实际显示的指数位数因系统而异）</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">Enter</span> a floatint-point value: <span class="hljs-number">64</span>.<span class="hljs-number">25</span><br><span class="hljs-attribute">fixed</span>-point notation: <span class="hljs-number">64</span>.<span class="hljs-number">250000</span><br><span class="hljs-attribute">exponential</span> notation: <span class="hljs-number">6</span>.<span class="hljs-number">425000</span>e±<span class="hljs-number">01</span><br><span class="hljs-attribute">p</span> notation: <span class="hljs-number">0</span>x1.<span class="hljs-number">01</span>p+<span class="hljs-number">6</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>一年大约有3.156*10<sup>7</sup>秒。编写一个程序，提示用户输入年龄，然后显示该年龄对应的秒数。</p>
+</li>
+<li><p>1个水分子的质量约为3.0*10<sup>-23</sup>克。1夸脱水大约是950克。编写一个程序，提示用户输入水的夸脱数，并显示水分子的数量。</p>
+</li>
+<li><p>1英寸相当于2.54厘米。编写一个程序，提示用户输入身高（英寸），然后以厘米为单位显示身高。</p>
+</li>
+<li><p>在美国的体积测量系统中，1品脱等于2杯，1杯等于8盎司，1盎司等于2大汤勺，1大汤勺等于3茶勺。编写一个程序，提示用户输入杯数，并以品脱、盎司、汤勺、茶勺为单位显示等价容量。思考对于该程序，为何使用浮点类型比整数类型更合适？</p>
+</li>
+</ol>
+<hr>
+<h2 id="第四章、字符串和格式化输入-x2F-输出"><a href="#第四章、字符串和格式化输入-x2F-输出" class="headerlink" title="第四章、字符串和格式化输入&#x2F;输出"></a>第四章、字符串和格式化输入&#x2F;输出</h2><p>Introduction</p>
+<ul>
+<li>函数：strlen()</li>
+<li>关键字：const</li>
+<li>字符串</li>
+<li>如何创建、储存字符串</li>
+<li>如何使用strlen() 函数获取字符串长度</li>
+<li>如C预处理器指令#define 和ANSIC 的const 修饰符创建符号常量</li>
+</ul>
+<h4 id="一、引导程序与解释"><a href="#一、引导程序与解释" class="headerlink" title="一、引导程序与解释"></a>一、引导程序与解释</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span><br><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> DENSITY 62.4</span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span><br>&#123;<br>	<span class="hljs-type">float</span> weight, volume;<br>    <span class="hljs-type">int</span> size, letters;<br>    <span class="hljs-type">char</span> name[<span class="hljs-number">40</span>];<br><br>    <span class="hljs-built_in">printf</span> (<span class="hljs-string">&quot;Hi! What&#x27;s your first name?\n&quot;</span>);<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%s&quot;</span>,name);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%s,what&#x27;s your weight in pounds?\n&quot;</span>,name);<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%f&quot;</span>,&amp;weight);<br>    size = <span class="hljs-keyword">sizeof</span> name;<br>    letters = <span class="hljs-built_in">strlen</span>(name);<br>    volume = weight / DENSITY;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Well,%s,your volume is %2.2f cubic feet.\n&quot;</span>,name, volume);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Also,your first name has %d letters,\n&quot;</span>,letters);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;and we have %d bytes to store it.\n&quot;</span>,size);<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>该程序的新特性：</p>
+<ul>
+<li>用数组（array）储存字符串（character string）。在该程序中，用户输入的名被储存在数组中，该数组占用内存中40个连续的字节，每个字节储存一个字符值。</li>
+<li>使用%s转换说明来处理字符串的输入和输出。注意，在scanf() 中，name没有&amp;前缀，而weight有。而&amp;weight和name都是地址。</li>
+<li>用C预处理器把字符常量DENSITY 定义为62.4</li>
+<li>用C函数strlen() 获取字符串的长度</li>
+</ul>
+<h4 id="二、字符串简介"><a href="#二、字符串简介" class="headerlink" title="二、字符串简介"></a>二、字符串简介</h4><p>字符串（character string）是一个或多个字符的序列，如“Zing went the strings of my heart！”</p>
+<h5 id="（一）、char-类型数组和null字符"><a href="#（一）、char-类型数组和null字符" class="headerlink" title="（一）、char 类型数组和null字符"></a>（一）、char 类型数组和null字符</h5><p>C语言没有专门用于储存字符串的变量类型。字符串都被储存在char类型的数组中。而数组又由连续的储存单元组成，字符串中的字符都被储存在相邻的储存单元中，每个单元储存一个字符。</p>
+<p>注意数组末尾 \0 字符。这是空字符（null character），C语言用它标记字符串的结束。空字符不是数字0，它是非打印字符，其ASCII码值是0。C语言中的字符串<strong>一定是以空字符结束</strong>，这意味着数组的容量必须至少比待储存的字符串多1 。</p>
+<p>数组可以看做是一行连续的多个储存单元。正式的说法是同类型数据元素的有序序列。例如上文声明的一个 char name[40]; 类型的值。name后面的方括号表示这是一个数组，方括号中的40表明该数组中的元素数量，char表示数组每个元素的类型。</p>
 
             </div>
             <hr>
