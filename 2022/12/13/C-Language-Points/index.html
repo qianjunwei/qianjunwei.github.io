@@ -24,7 +24,7 @@
 <meta property="og:description" content="第一章、C语言的背景一、C语言的起源1972年由贝尔实验室的 Dennis Ritchie 和Ken Thompson 在开发Unix系统的基础上开发的C语言。 二、C语言流行的原因 设计特性：融合了计算机科学理论和实践的控制特性。其设计理念能够使得用户能够轻松完成自顶向下的规划、结构化编程和模块化设计。 高效性：充分调动计算机资源，使得C程序更加的紧凑，且运行速度更快，具备了汇编语言才具有的微调">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-12-13T07:23:03.000Z">
-<meta property="article:modified_time" content="2022-12-17T07:01:04.124Z">
+<meta property="article:modified_time" content="2022-12-19T09:34:06.756Z">
 <meta property="article:author" content="钱俊伟">
 <meta property="article:tag" content="C语言">
 <meta name="twitter:card" content="summary_large_image">
@@ -190,7 +190,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      17k 字
+      19k 字
     </span>
   
 
@@ -199,7 +199,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      145 分钟
+      158 分钟
     </span>
   
 
@@ -1051,7 +1051,167 @@
 <td>1.00和比1.00大的最小float类型值之间的差值</td>
 </tr>
 </tbody></table>
-<h5 id="（三）、printf-和scanf"><a href="#（三）、printf-和scanf" class="headerlink" title="（三）、printf() 和scanf()"></a>（三）、printf() 和scanf()</h5>
+<h5 id="（三）、printf-和scanf"><a href="#（三）、printf-和scanf" class="headerlink" title="（三）、printf() 和scanf()"></a>（三）、printf() 和scanf()</h5><p>这两个函数可以让用户可以与程序进行交流，它们是输入输出函数，或被称为I&#x2F;O函数。</p>
+<h6 id="1、printf-函数"><a href="#1、printf-函数" class="headerlink" title="1、printf() 函数"></a>1、printf() 函数</h6><p>请求printf() 函数打印数据的指令要与待打印数据的类型相匹配。例如打印整数时使用%d，打印字符时使用%c，这些符号被称为转换说明（conversion specification），它们指定了如何把数据转换成可显示的形式。</p>
+<table>
+<thead>
+<tr>
+<th align="left">转换说明</th>
+<th>输出</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">%a</td>
+<td>浮点数、十六进制数和p计数法</td>
+</tr>
+<tr>
+<td align="left">%A</td>
+<td>浮点数、十六进制数和p计数法</td>
+</tr>
+<tr>
+<td align="left">%c</td>
+<td>单个字符</td>
+</tr>
+<tr>
+<td align="left">%d</td>
+<td>有符号十进制数</td>
+</tr>
+<tr>
+<td align="left">%e</td>
+<td>浮点数，e计数法</td>
+</tr>
+<tr>
+<td align="left">%E</td>
+<td>浮点数，e计数法</td>
+</tr>
+<tr>
+<td align="left">%f</td>
+<td>浮点数，十进制计数法</td>
+</tr>
+<tr>
+<td align="left">%g</td>
+<td>根据值的不同，自动选择%f或者%e，%e格式用于指数小于-4或者大于或等于精度时</td>
+</tr>
+<tr>
+<td align="left">%G</td>
+<td>根据值的不同，自动选择%f或者%E，%E格式用于指数小于-4或者大于或等于精度时</td>
+</tr>
+<tr>
+<td align="left">%i</td>
+<td>有符号十进制整数（与%d相同）</td>
+</tr>
+<tr>
+<td align="left">%o</td>
+<td>无符号八进制整数</td>
+</tr>
+<tr>
+<td align="left">%p</td>
+<td>指针</td>
+</tr>
+<tr>
+<td align="left">%s</td>
+<td>字符串</td>
+</tr>
+<tr>
+<td align="left">%u</td>
+<td>无符号十进制整数</td>
+</tr>
+<tr>
+<td align="left">%x</td>
+<td>无符号十六进制整数，使用十六进制数0f</td>
+</tr>
+<tr>
+<td align="left">%X</td>
+<td>无符号十六进制整数，使用十六进制数0F</td>
+</tr>
+<tr>
+<td align="left">%%</td>
+<td>打印一个百分号</td>
+</tr>
+</tbody></table>
+<h6 id="2、printf-的转换说明修饰符"><a href="#2、printf-的转换说明修饰符" class="headerlink" title="2、printf() 的转换说明修饰符"></a>2、printf() 的转换说明修饰符</h6><p>在%和转换字符之间插入修饰符可修饰基本的转换说明。下表列出了可作为修饰符的合法字符。如果要插入多个字符，其书写顺序应于下表相同。不是所有的组合都可行。下表是printf()函数的修饰符</p>
+<table>
+<thead>
+<tr>
+<th>修饰符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>标记</td>
+<td>共有五种标记（-、+、空格、#和0）可以不使用标记或使用多个标记；示例：“%-10d”</td>
+</tr>
+<tr>
+<td>数字</td>
+<td>最小字段宽度，如果该字段不能容纳待打印的数字或字符串，系统就会使用更宽的字段。示例：“%4d”</td>
+</tr>
+<tr>
+<td>.数字</td>
+<td>精度<br>对于%e、%E和%f转换，表示小数点右边数字的位数<br>对于%g和%G转换，表示有效数字的最大位数<br>对于%s转换，表示待打印数字的最小位数<br>如有必要，使用前导0来达到这个位数<br>只使用 . 表示其后跟随一个0. 所以%.f 和 %0.f 相同<br>示例：使用“%5.2f”打印一个浮点数，字段宽度为5字符，其中小数点后有两位数字</td>
+</tr>
+<tr>
+<td>h</td>
+<td>和整形转换说明一起使用，表示short int 或 unsigned short int 类型的值<br>示例：“%hu”，“%hx”，“%6.4hd”</td>
+</tr>
+<tr>
+<td>hh</td>
+<td>和整形转换说明一起使用，表示signed char 或 unsigned char 类型的值<br>示例：“%hhu”，“%hhx”、“%6.4hhd”</td>
+</tr>
+<tr>
+<td>j</td>
+<td>和整形转换说明一起使用，表示intmax_t 或 uintmax_t 类型的值。这些定义都在stdio.h中<br>示例：“%jd”，“%8jx”</td>
+</tr>
+<tr>
+<td>l</td>
+<td>和整形转换说明一起使用，表示long int 或unsigned long int类型的值<br>示例：“&amp;ld”，“%8lu”</td>
+</tr>
+<tr>
+<td>ll</td>
+<td>和整形转换说明一起使用，表示long long int 或 unsigned long long int 类型的值<br>示例：“%lld”，“%8llu”</td>
+</tr>
+<tr>
+<td>L</td>
+<td>和浮点转换说明一起使用，表示long double类型的值<br>示例：“%Ld”，“%10.4Le”</td>
+</tr>
+<tr>
+<td>t</td>
+<td>和整形转换说明一起使用，表示printf_t 类型的值。printf_t是两个指针差值的类型<br>示例：“%td”，“%12ti”</td>
+</tr>
+<tr>
+<td>z</td>
+<td>和整形转换说明一起使用，表示size_t类型的值。size_t是sizeof返回的类型<br>示例：“%zd”，“%12zd”</td>
+</tr>
+</tbody></table>
+<p>printf() 中的标记</p>
+<table>
+<thead>
+<tr>
+<th>标记</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-</td>
+<td>待打印项左对齐。即从字段的左侧开始打印该项<br>示例：“%-20s”</td>
+</tr>
+<tr>
+<td>+</td>
+<td>有符号值若为正，则在值前面显示加号；若为负，则在值前面显示减号<br>示例：“%+6.2f”</td>
+</tr>
+<tr>
+<td>空格</td>
+<td>有符号值若为正，则在值前面显示前导空格（不显示任何符号）；若为负，则在值前面显示减号+标记覆盖一个空格<br>示例：“%6.2f”</td>
+</tr>
+<tr>
+<td>#</td>
+<td>把结果转换为另一种形式。如果是%o格式，则以0开始；如果是%x或%X格式，则以0x或0X开始；对于所有的浮点格式，#保证了即使后面没有任何数字，也打印一个小数点字符。对于%g和%G格式，#防止结果后面的0被删除。<br>示例：“%#0“，”%#8.0f“</td>
+</tr>
+<tr>
+<td>0</td>
+<td>属于数值格式，用前导0代替空格填充字段宽度。对于整数格式，如果出现 - 标记或指定精度，则忽略该标记。</td>
+</tr>
+</tbody></table>
+
             </div>
             <hr>
             <div>
