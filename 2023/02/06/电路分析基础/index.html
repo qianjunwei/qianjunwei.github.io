@@ -1,0 +1,638 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
+  <link rel="icon" href="/img/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="钱俊伟">
+  <meta name="keywords" content="嵌入式系统，单片机开发">
+  
+    <meta name="description" content="目录第一章： 电路模型 电路分类 电流变量 电压变量 功率和能量 基尔霍夫电流定律 基尔霍夫电压定律   第一章1.1、电路模型 何为电路？ 由电器件相互连接所构成的电流通路成为电路   实际电路的功能 进行能量的产生、传输与转换：如电力系统的的发电、传输等 实现信号的发射与接收、传输和处理。如电视机广播等   电路模型 由理想元件组成的与实际电气元件相对应的电路任何一个物理系统都需要用理想化的模">
+<meta property="og:type" content="article">
+<meta property="og:title" content="电路分析基础">
+<meta property="og:url" content="http://qianjunwei.top/2023/02/06/%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="俊伟的个人站">
+<meta property="og:description" content="目录第一章： 电路模型 电路分类 电流变量 电压变量 功率和能量 基尔霍夫电流定律 基尔霍夫电压定律   第一章1.1、电路模型 何为电路？ 由电器件相互连接所构成的电流通路成为电路   实际电路的功能 进行能量的产生、传输与转换：如电力系统的的发电、传输等 实现信号的发射与接收、传输和处理。如电视机广播等   电路模型 由理想元件组成的与实际电气元件相对应的电路任何一个物理系统都需要用理想化的模">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-02-06T15:15:03.709Z">
+<meta property="article:modified_time" content="2021-09-26T07:43:00.000Z">
+<meta property="article:author" content="钱俊伟">
+<meta property="article:tag" content="电路分析">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>电路分析基础 - 俊伟的个人站</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"qianjunwei.top","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>俊伟的个人站</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                主页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                目录
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于我
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="电路分析基础">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      钱俊伟
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2023-02-06 23:15" pubdate>
+        February 6, 2023 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.4k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      20 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">电路分析基础</h1>
+            
+            <div class="markdown-body">
+              <h6 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h6><h6 id="第一章："><a href="#第一章：" class="headerlink" title="第一章："></a>第一章：</h6><ol>
+<li><h6 id="电路模型"><a href="#电路模型" class="headerlink" title="电路模型"></a>电路模型</h6></li>
+<li><h6 id="电路分类"><a href="#电路分类" class="headerlink" title="电路分类"></a>电路分类</h6></li>
+<li><h6 id="电流变量"><a href="#电流变量" class="headerlink" title="电流变量"></a>电流变量</h6></li>
+<li><h6 id="电压变量"><a href="#电压变量" class="headerlink" title="电压变量"></a>电压变量</h6></li>
+<li><h6 id="功率和能量"><a href="#功率和能量" class="headerlink" title="功率和能量"></a>功率和能量</h6></li>
+<li><h6 id="基尔霍夫电流定律"><a href="#基尔霍夫电流定律" class="headerlink" title="基尔霍夫电流定律"></a>基尔霍夫电流定律</h6></li>
+<li><h6 id="基尔霍夫电压定律"><a href="#基尔霍夫电压定律" class="headerlink" title="基尔霍夫电压定律"></a>基尔霍夫电压定律</h6></li>
+</ol>
+<hr>
+<h3 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h3><h4 id="1-1、电路模型"><a href="#1-1、电路模型" class="headerlink" title="1.1、电路模型"></a>1.1、电路模型</h4><ol>
+<li><h5 id="何为电路？"><a href="#何为电路？" class="headerlink" title="何为电路？"></a>何为电路？</h5><ol>
+<li>由电器件相互连接所构成的电流通路成为电路</li>
+</ol>
+</li>
+<li><h5 id="实际电路的功能"><a href="#实际电路的功能" class="headerlink" title="实际电路的功能"></a>实际电路的功能</h5><ol>
+<li>进行能量的产生、传输与转换：如电力系统的的发电、传输等</li>
+<li>实现信号的发射与接收、传输和处理。如电视机广播等</li>
+</ol>
+</li>
+<li><h5 id="电路模型-1"><a href="#电路模型-1" class="headerlink" title="电路模型"></a>电路模型</h5><ol>
+<li>由理想元件组成的与实际电气元件相对应的电路任何一个物理系统都需要用理想化的模型来描述该系统。</li>
+<li>电路理论研究的对象是实际电路抽象而成的电路模型。根据不同条件，统一电路 可以有不同的电路模型。</li>
+</ol>
+</li>
+<li><h5 id="几种常见的理想化元件模型"><a href="#几种常见的理想化元件模型" class="headerlink" title="几种常见的理想化元件模型"></a>几种常见的理想化元件模型</h5><ol>
+<li>理想电阻元件，只消耗电能</li>
+<li>理想电容元件，只储存电能</li>
+<li>理想电感元件，只储存磁能</li>
+</ol>
+</li>
+<li><h5 id="电路模型构成和电路图"><a href="#电路模型构成和电路图" class="headerlink" title="电路模型构成和电路图"></a>电路模型构成和电路图</h5><ol>
+<li>将实际电路中各个器件用其器件模型表示，并按照原有方式连接，就得到实际电路的电路模型。也成为电路图。</li>
+</ol>
+</li>
+<li><h5 id="说明，一个实际电路可能有多个电路模型"><a href="#说明，一个实际电路可能有多个电路模型" class="headerlink" title="说明，一个实际电路可能有多个电路模型"></a>说明，一个实际电路可能有多个电路模型</h5></li>
+</ol>
+<h4 id="1-2、电路分类"><a href="#1-2、电路分类" class="headerlink" title="1.2、电路分类"></a>1.2、电路分类</h4><ol>
+<li><h5 id="集总参数电路与分布参数电路"><a href="#集总参数电路与分布参数电路" class="headerlink" title="集总参数电路与分布参数电路"></a>集总参数电路与分布参数电路</h5><ol>
+<li>定义：电路几何尺寸远小于其工作时的电磁波波长λ，即（l &lt;&lt; λ），的电路称为集总参数电路，否则称为分布参数电路。</li>
+</ol>
+</li>
+<li><h5 id="线路电路与非线性电路"><a href="#线路电路与非线性电路" class="headerlink" title="线路电路与非线性电路"></a>线路电路与非线性电路</h5><ol>
+<li><p>定义：若描述电路特性的所有方程都是线性代数或微积分方程，则称这类电路是线性电路，否则为非线性电路。</p>
+</li>
+<li><p>线性电路：完全是由线性元件，独立源，线性受控源构成的电路。</p>
+</li>
+<li><p>非线性电路在实际更为普遍，线性电路通常是非线性电路的近似模型。线性电路理论是分析非线性电路的主要基础。</p>
+</li>
+</ol>
+</li>
+<li><h5 id="时不变电路与时变电路"><a href="#时不变电路与时变电路" class="headerlink" title="时不变电路与时变电路"></a>时不变电路与时变电路</h5><ol>
+<li><p>时不变电路：电路中元件参数值不随时间变化（时不变元件）的电路，描述其电路方程是常系数的代数或微积分方程。反之，由变系数方程描述的电路称为时变电路。</p>
+</li>
+<li><p>时不变电路是基本的电路模型，是研究时变电路的基础。</p>
+</li>
+</ol>
+</li>
+<li><h5 id="动态电路与电阻电路"><a href="#动态电路与电阻电路" class="headerlink" title="动态电路与电阻电路"></a>动态电路与电阻电路</h5><ol>
+<li><p>动态电路：电路中含有储能元件，如电感或电容。动态电路的方程描述是微积分方程。</p>
+</li>
+<li><p>电阻电路：指电路中不包含任何储能元件，仅由电阻和电源构成的电路。电阻电路的描述为代数方程。</p>
+</li>
+</ol>
+</li>
+<li><h5 id="有源电路与无源电路"><a href="#有源电路与无源电路" class="headerlink" title="有源电路与无源电路"></a>有源电路与无源电路</h5><ol>
+<li>从二端子电路是否能对外提供能量划分。</li>
+<li>在任何情况下不可能对外提供能量的电路称为无源子电路。</li>
+<li>在某种情况下能够对外提供能量的电路称为有源子电路。</li>
+</ol>
+</li>
+</ol>
+<h4 id="1-3、电流变量"><a href="#1-3、电流变量" class="headerlink" title="1.3、电流变量"></a>1.3、电流变量</h4><ol>
+<li><h5 id="电路变量"><a href="#电路变量" class="headerlink" title="电路变量"></a>电路变量</h5><ol>
+<li><p>为了定量描述电路性能，电路中引入一些物理量作为电路变量，通常分为基本变量和复合变量。</p>
+</li>
+<li><p>基本变量：电流变量i，电压变量u，等易测量物理量。</p>
+</li>
+<li><p>复合变量：包括功率P和能量E等。</p>
+</li>
+</ol>
+</li>
+<li><h5 id="电流的形成"><a href="#电流的形成" class="headerlink" title="电流的形成"></a>电流的形成</h5><ol>
+<li><p>在电场力的作用下，电荷有规律的移动形成电流。一般为了定量分析电流，引入电流强度的概念，一般用i（t）或者i来表示。</p>
+</li>
+<li><p>电流的大小：单位时间内通过导体横截面的电荷量，电荷单位（库伦）（C）。</p>
+</li>
+</ol>
+</li>
+<li><h5 id="电流方向"><a href="#电流方向" class="headerlink" title="电流方向"></a>电流方向</h5><ol>
+<li><p>电路范畴内电流只可能有两个方向，从A到B或者从B到A</p>
+</li>
+<li><p>实际方向，规定为正电荷运动的方向</p>
+</li>
+<li><p>参考方向，规定正电荷运动的方向</p>
+</li>
+</ol>
+</li>
+<li><h5 id="电流参考方向"><a href="#电流参考方向" class="headerlink" title="电流参考方向"></a>电流参考方向</h5><ol>
+<li>如果电路复杂或电源为交流电源，则电流的实际方向难以标出。因此需要在分析电路前事先标出各支路电流的方向。</li>
+<li>参考方向假设说明<ol>
+<li>原则上可以任意设定</li>
+<li>习惯上：<ol>
+<li>凡是可以看出电流方向的，标定此方向为参考方向。</li>
+<li>对于看不出方向的，可任意设定。</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>以后在电路图上只标参考方向。电流的参考方向是任意指定的，一般用箭头在电路图中标出，也可以用双下标表示；如i_ab表示电流的参考方向是由a到b。</li>
+</ol>
+</li>
+</ol>
+<h4 id="1-4、电压变量"><a href="#1-4、电压变量" class="headerlink" title="1.4、电压变量"></a>1.4、电压变量</h4><ol>
+<li><h5 id="电压定义"><a href="#电压定义" class="headerlink" title="电压定义"></a>电压定义</h5><ol>
+<li>电路中，电场力将单位正电荷从某一点移到另一点所做的功，成为两点间的电压。</li>
+</ol>
+</li>
+<li><h5 id="电压极性"><a href="#电压极性" class="headerlink" title="电压极性"></a>电压极性</h5><ol>
+<li><p>规定两点间电压的高电位端为 + 级，低电位端为 - 级。两点电位降低的方向也称为电压的方向。</p>
+</li>
+<li><p>参考极性，假设的电压为+ </p>
+</li>
+<li><p>若参考极性与实际极性一致，电压为正值，反之电压为负值。</p>
+</li>
+</ol>
+</li>
+<li><h5 id="关联参考方向"><a href="#关联参考方向" class="headerlink" title="关联参考方向"></a>关联参考方向</h5><ol>
+<li>电流和电压的参考方向可任意假定，而且二者是相互独立的。</li>
+<li>若选取电流i的参考方向与电压u的压降方向一致，则称u与i对该元件是参考方向关联的。否则称为非关联参考方向。</li>
+<li>关联参考方向设置的意义<ol>
+<li>方向设置简单明了</li>
+<li>有利于电路变量计算</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><h5 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h5><ol>
+<li>电压的参考极性可以任意指定，一般用 + - 在电路总标出，有时也用双下标表示，如u_ab ，表示a端为+</li>
+<li>电路中不标明参考方向时，默认电流参考方向与电压参考方向关联。</li>
+</ol>
+</li>
+</ol>
+<h4 id="1-5、功率和能量"><a href="#1-5、功率和能量" class="headerlink" title="1.5、功率和能量"></a>1.5、功率和能量</h4><ol>
+<li><h5 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h5><ol>
+<li>单位时间内电场力所做的功成为电功率	P(t) &#x3D; W&#x2F;t</li>
+</ol>
+</li>
+<li><h5 id="功率与电压u、电流i-的关系"><a href="#功率与电压u、电流i-的关系" class="headerlink" title="功率与电压u、电流i 的关系"></a>功率与电压u、电流i 的关系</h5><ol>
+<li>关联参考方向时，计算结果为正</li>
+<li>非关联参考方向时，计算结果为负</li>
+</ol>
+</li>
+<li><h5 id="功率的计算"><a href="#功率的计算" class="headerlink" title="功率的计算"></a>功率的计算</h5><ol>
+<li>若P（t) &gt; 0,则表示电路N消耗（吸收）功率</li>
+<li>若P（t）&lt; 0 ，则表示电路N吸收为负，实质上他将产生（提供或发出功率）</li>
+<li>当电路N的u和i关联，则N产生功率的公式为 P(t) &#x3D; -u(t) i(t)</li>
+</ol>
+</li>
+</ol>
+<h4 id="1-6、基尔霍夫电流定律"><a href="#1-6、基尔霍夫电流定律" class="headerlink" title="1.6、基尔霍夫电流定律"></a>1.6、基尔霍夫电流定律</h4><ol>
+<li><h5 id="几个常用的电路术语"><a href="#几个常用的电路术语" class="headerlink" title="几个常用的电路术语"></a>几个常用的电路术语</h5><ol>
+<li>支路：电路中流过同一电流的几个元件串联的分支</li>
+<li>节点：两条以上支路的连接点</li>
+<li>回路：由支路构成的电路中的任意闭合路径</li>
+<li>网孔：指不包含任何支路的单一回路。网孔是回路，回路不一定是网孔。平面电路的每个网眼都是一个网孔。</li>
+</ol>
+</li>
+<li><h5 id="KCL"><a href="#KCL" class="headerlink" title="KCL"></a>KCL</h5><ol>
+<li><p>定义：对于任一集总参数电路中的任一节点，流入某一节点电流的代数和恒为零。（描述连接在同一节点上的各支路电流之间的关系）</p>
+</li>
+<li><p>表达式<br>$$<br>\sum_{k&#x3D;1}^n{i_k(t)} &#x3D; 0<br>$$</p>
+</li>
+</ol>
+</li>
+<li><h5 id="对KCL的说明"><a href="#对KCL的说明" class="headerlink" title="对KCL的说明"></a>对KCL的说明</h5><ol>
+<li>KCL本质上是电荷守恒原理(电荷既不能被创造，也不能被消灭，在任何物理过程中，电荷代数和守恒)在集中电路中的体现。即，到达任何节点的电荷不可能增生，也不可能消失，电流必须连续流动。</li>
+<li>KCL只与电路的结构有关，而与构成电路的元件性质无关。</li>
+<li>适用于节点，也适用于任何一个封闭曲面。</li>
+<li>列出方程时：设出每一个支路电流的参考方向后，流出和&#x3D;流入和。</li>
+</ol>
+</li>
+</ol>
+<h4 id="1-7、基尔霍夫电压定律"><a href="#1-7、基尔霍夫电压定律" class="headerlink" title="1.7、基尔霍夫电压定律"></a>1.7、基尔霍夫电压定律</h4><ol>
+<li><h5 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h5><ol>
+<li>对于集总参数电路，在任意时刻，沿任一回路巡行一周，各支路电压降的代数和为零。</li>
+</ol>
+</li>
+<li><h5 id="公式"><a href="#公式" class="headerlink" title="公式"></a>公式</h5><p>$$<br>\sum{U} &#x3D; 0<br>$$</p>
+</li>
+<li><h5 id="说明-1"><a href="#说明-1" class="headerlink" title="说明"></a>说明</h5><ol>
+<li>KL实质上是能量守恒原理在集中参数电路中的体现。从做功的角度来讲，就是电场力做的正功等于负功，代数和为零。在任何回路中，电压的代数和为零，实际上是从某一点出发又回到该点时，电压的升高等于电压的降低。</li>
+</ol>
+</li>
+</ol>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/">电路分析</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/02/06/%E6%A8%A1%E7%94%B5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%88%86%E4%BA%AB/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">模电基础知识分享</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/02/06/PCB%E8%AE%BE%E8%AE%A1%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">
+                        <span class="hidden-mobile">PCB设计从入门到"放弃"</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

@@ -16,21 +16,36 @@
   <meta name="author" content="钱俊伟">
   <meta name="keywords" content="嵌入式系统，单片机开发">
   
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+    <meta name="description" content="前言今天与大家分享一下我在参加集成电路这一技能大赛期间恶补的模数电知识，在回顾知识的过程中也遇到了很多的问题，非常感谢金老师和程老师给予的指导。 基础知识（一）——二极管  基础知识（二）——三极管  基础知识（三）——场效应管  直流放大器  差分放大电路    集成运放      比例运算电路    运放非线性应用  模拟芯片测试方案">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://qianjunwei.top/2022/12/22/hello-world/index.html">
+<meta property="og:title" content="模电基础知识分享">
+<meta property="og:url" content="http://qianjunwei.top/2023/02/06/%E6%A8%A1%E7%94%B5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%88%86%E4%BA%AB/index.html">
 <meta property="og:site_name" content="俊伟的个人站">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="前言今天与大家分享一下我在参加集成电路这一技能大赛期间恶补的模数电知识，在回顾知识的过程中也遇到了很多的问题，非常感谢金老师和程老师给予的指导。 基础知识（一）——二极管  基础知识（二）——三极管  基础知识（三）——场效应管  直流放大器  差分放大电路    集成运放      比例运算电路    运放非线性应用  模拟芯片测试方案">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-12-22T07:24:05.187Z">
-<meta property="article:modified_time" content="2022-12-09T14:29:35.990Z">
+<meta property="og:image" content="http://qianjunwei.top/2023/02/06/%E6%A8%A1%E7%94%B5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%88%86%E4%BA%AB/%E4%BA%8C%E6%9E%81%E7%AE%A1.JPG">
+<meta property="og:image" content="http://qianjunwei.top/2023/02/06/%E6%A8%A1%E7%94%B5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%88%86%E4%BA%AB/%E4%B8%89%E6%9E%81%E7%AE%A1.JPG">
+<meta property="og:image" content="http://qianjunwei.top/2023/02/06/%E6%A8%A1%E7%94%B5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%88%86%E4%BA%AB/%E5%9C%BA%E6%95%88%E5%BA%94%E7%AE%A1.JPG">
+<meta property="og:image" content="http://qianjunwei.top/2023/02/06/%E6%A8%A1%E7%94%B5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%88%86%E4%BA%AB/%E7%9B%B4%E6%B5%81%E6%94%BE%E5%A4%A7%E5%99%A8.JPG">
+<meta property="og:image" content="http://qianjunwei.top/2023/02/06/%E6%A8%A1%E7%94%B5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%88%86%E4%BA%AB/%E5%B7%AE%E5%88%86%E6%94%BE%E5%A4%A7%E7%94%B5%E8%B7%AF.JPG">
+<meta property="og:image" content="http://qianjunwei.top/2023/02/06/%E6%A8%A1%E7%94%B5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%88%86%E4%BA%AB/%E5%B7%AE%E5%88%86%E6%94%BE%E5%A4%A7%E7%94%B5%E8%B7%AF1.JPG">
+<meta property="og:image" content="http://qianjunwei.top/2023/02/06/%E6%A8%A1%E7%94%B5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%88%86%E4%BA%AB/%E9%9B%86%E6%88%90%E8%BF%90%E6%94%BE1.JPG">
+<meta property="og:image" content="http://qianjunwei.top/2023/02/06/%E6%A8%A1%E7%94%B5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%88%86%E4%BA%AB/%E9%9B%86%E6%88%90%E8%BF%90%E6%94%BE2.JPG">
+<meta property="og:image" content="http://qianjunwei.top/2023/02/06/%E6%A8%A1%E7%94%B5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%88%86%E4%BA%AB/%E9%9B%86%E6%88%90%E8%BF%90%E6%94%BE3.JPG">
+<meta property="og:image" content="http://qianjunwei.top/2023/02/06/%E6%A8%A1%E7%94%B5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%88%86%E4%BA%AB/%E6%AF%94%E4%BE%8B%E8%BF%90%E7%AE%97%E7%94%B5%E8%B7%AF1.JPG">
+<meta property="og:image" content="http://qianjunwei.top/2023/02/06/%E6%A8%A1%E7%94%B5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%88%86%E4%BA%AB/%E6%AF%94%E4%BE%8B%E8%BF%90%E7%AE%97%E7%94%B5%E8%B7%AF2.JPG">
+<meta property="og:image" content="http://qianjunwei.top/2023/02/06/%E6%A8%A1%E7%94%B5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%88%86%E4%BA%AB/%E8%BF%90%E6%94%BE%E9%9D%9E%E7%BA%BF%E6%80%A7%E5%BA%94%E7%94%A8.JPG">
+<meta property="og:image" content="http://qianjunwei.top/2023/02/06/%E6%A8%A1%E7%94%B5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%88%86%E4%BA%AB/%E6%A8%A1%E6%8B%9F1.JPG">
+<meta property="og:image" content="http://qianjunwei.top/2023/02/06/%E6%A8%A1%E7%94%B5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%88%86%E4%BA%AB/%E6%A8%A1%E6%8B%9F2.JPG">
+<meta property="article:published_time" content="2023-02-06T15:15:03.711Z">
+<meta property="article:modified_time" content="2021-07-03T13:08:12.000Z">
 <meta property="article:author" content="钱俊伟">
-<meta property="article:tag" content="嵌入式系统，单片机开发">
+<meta property="article:tag" content="模电基础">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://qianjunwei.top/2023/02/06/%E6%A8%A1%E7%94%B5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%88%86%E4%BA%AB/%E4%BA%8C%E6%9E%81%E7%AE%A1.JPG">
   
   
-  <title>Hello World - 俊伟的个人站</title>
+  <title>模电基础知识分享 - 俊伟的个人站</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -164,7 +179,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Hello World">
+            <span class="h2" id="subtitle" title="模电基础知识分享">
               
             </span>
 
@@ -179,8 +194,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-12-22 15:24" pubdate>
-        December 22, 2022 pm
+      <time datetime="2023-02-06 23:15" pubdate>
+        February 6, 2023 pm
       </time>
     </span>
   
@@ -190,7 +205,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      367 字
+      145 字
     </span>
   
 
@@ -199,7 +214,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      4 分钟
+      2 分钟
     </span>
   
 
@@ -236,28 +251,51 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Hello World</h1>
+            <h1 style="display: none">模电基础知识分享</h1>
             
             <div class="markdown-body">
-              <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
+              <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天与大家分享一下我在参加集成电路这一技能大赛期间恶补的模数电知识，在回顾知识的过程中也遇到了很多的问题，非常感谢金老师和程老师给予的指导。</p>
+<h2 id="基础知识（一）——二极管"><a href="#基础知识（一）——二极管" class="headerlink" title="基础知识（一）——二极管"></a>基础知识（一）——二极管</h2><img src="/2023/02/06/%E6%A8%A1%E7%94%B5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%88%86%E4%BA%AB/二极管.JPG" srcset="/img/loading.gif" lazyload style="zoom: 80%;">
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
+<h2 id="基础知识（二）——三极管"><a href="#基础知识（二）——三极管" class="headerlink" title="基础知识（二）——三极管"></a>基础知识（二）——三极管</h2><img src="/2023/02/06/%E6%A8%A1%E7%94%B5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%88%86%E4%BA%AB/三极管.JPG" srcset="/img/loading.gif" lazyload style="zoom: 80%;">
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
+<h2 id="基础知识（三）——场效应管"><a href="#基础知识（三）——场效应管" class="headerlink" title="基础知识（三）——场效应管"></a>基础知识（三）——场效应管</h2><img src="/2023/02/06/%E6%A8%A1%E7%94%B5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%88%86%E4%BA%AB/场效应管.JPG" srcset="/img/loading.gif" lazyload style="zoom: 80%;">
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
+<h2 id="直流放大器"><a href="#直流放大器" class="headerlink" title="直流放大器"></a>直流放大器</h2><img src="/2023/02/06/%E6%A8%A1%E7%94%B5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%88%86%E4%BA%AB/直流放大器.JPG" srcset="/img/loading.gif" lazyload style="zoom: 80%;">
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<h2 id="差分放大电路"><a href="#差分放大电路" class="headerlink" title="差分放大电路"></a>差分放大电路</h2><img src="/2023/02/06/%E6%A8%A1%E7%94%B5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%88%86%E4%BA%AB/差分放大电路.JPG" srcset="/img/loading.gif" lazyload style="zoom: 80%;">
+
+<img src="/2023/02/06/%E6%A8%A1%E7%94%B5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%88%86%E4%BA%AB/差分放大电路1.JPG" srcset="/img/loading.gif" lazyload style="zoom: 80%;">
+
+<h2 id="集成运放"><a href="#集成运放" class="headerlink" title="集成运放"></a>集成运放</h2><img src="/2023/02/06/%E6%A8%A1%E7%94%B5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%88%86%E4%BA%AB/集成运放1.JPG" srcset="/img/loading.gif" lazyload style="zoom: 80%;">
+
+<img src="/2023/02/06/%E6%A8%A1%E7%94%B5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%88%86%E4%BA%AB/集成运放2.JPG" srcset="/img/loading.gif" lazyload style="zoom: 80%;">
+
+<img src="/2023/02/06/%E6%A8%A1%E7%94%B5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%88%86%E4%BA%AB/集成运放3.JPG" srcset="/img/loading.gif" lazyload style="zoom: 80%;">
+
+<h2 id="比例运算电路"><a href="#比例运算电路" class="headerlink" title="比例运算电路"></a>比例运算电路</h2><img src="/2023/02/06/%E6%A8%A1%E7%94%B5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%88%86%E4%BA%AB/比例运算电路1.JPG" srcset="/img/loading.gif" lazyload style="zoom: 80%;">
+
+<img src="/2023/02/06/%E6%A8%A1%E7%94%B5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%88%86%E4%BA%AB/比例运算电路2.JPG" srcset="/img/loading.gif" lazyload style="zoom: 80%;">
+
+<h2 id="运放非线性应用"><a href="#运放非线性应用" class="headerlink" title="运放非线性应用"></a>运放非线性应用</h2><img src="/2023/02/06/%E6%A8%A1%E7%94%B5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%88%86%E4%BA%AB/运放非线性应用.JPG" srcset="/img/loading.gif" lazyload style="zoom: 80%;">
+
+<h2 id="模拟芯片测试方案"><a href="#模拟芯片测试方案" class="headerlink" title="模拟芯片测试方案"></a>模拟芯片测试方案</h2><img src="/2023/02/06/%E6%A8%A1%E7%94%B5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%88%86%E4%BA%AB/模拟1.JPG" srcset="/img/loading.gif" lazyload style="zoom: 80%;">
+
+<img src="/2023/02/06/%E6%A8%A1%E7%94%B5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%88%86%E4%BA%AB/模拟2.JPG" srcset="/img/loading.gif" lazyload style="zoom: 80%;">
+
 
             </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
                 
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%A8%A1%E7%94%B5%E5%9F%BA%E7%A1%80/">模电基础</a>
+                    
+                  </div>
                 
               </div>
               
@@ -272,18 +310,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/02/06/PCB%E8%AE%BE%E8%AE%A1%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">PCB设计从入门到"放弃"</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/12/13/C-Language-Points/">
-                        <span class="hidden-mobile">C Language Points</span>
+                      <a href="/2023/02/06/%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80/">
+                        <span class="hidden-mobile">电路分析基础</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

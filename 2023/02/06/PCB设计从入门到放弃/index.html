@@ -1,0 +1,817 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
+  <link rel="icon" href="/img/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="钱俊伟">
+  <meta name="keywords" content="嵌入式系统，单片机开发">
+  
+    <meta name="description" content="目录第一部分：课程介绍，学习方法及元器件库的创建 课程介绍以及学习思路介绍 AD20的软件安装以及中英文切换 AD的工程组成以及创建 元件库的介绍及阻容模型的创建 IC类元件模型的创建  排针类元件模型的创建 光耦以及二极管元件模型的创建 现有元件模型的调用  第二部分：智能小车的原理图绘制及编译检查 元件的放置 器件的复制以及对齐 导线以及NetLable的添加 Value值的核对 封装的统一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PCB设计从入门到&quot;放弃&quot;">
+<meta property="og:url" content="http://qianjunwei.top/2023/02/06/PCB%E8%AE%BE%E8%AE%A1%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/index.html">
+<meta property="og:site_name" content="俊伟的个人站">
+<meta property="og:description" content="目录第一部分：课程介绍，学习方法及元器件库的创建 课程介绍以及学习思路介绍 AD20的软件安装以及中英文切换 AD的工程组成以及创建 元件库的介绍及阻容模型的创建 IC类元件模型的创建  排针类元件模型的创建 光耦以及二极管元件模型的创建 现有元件模型的调用  第二部分：智能小车的原理图绘制及编译检查 元件的放置 器件的复制以及对齐 导线以及NetLable的添加 Value值的核对 封装的统一">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-02-06T15:15:03.697Z">
+<meta property="article:modified_time" content="2021-09-26T00:56:17.000Z">
+<meta property="article:author" content="钱俊伟">
+<meta property="article:tag" content="PCB设计">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>PCB设计从入门到&#34;放弃&#34; - 俊伟的个人站</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"qianjunwei.top","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>俊伟的个人站</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                主页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                目录
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于我
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="PCB设计从入门到&#34;放弃&#34;">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      钱俊伟
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2023-02-06 23:15" pubdate>
+        February 6, 2023 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      5.1k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      43 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">PCB设计从入门到&#34;放弃&#34;</h1>
+            
+            <div class="markdown-body">
+              <hr>
+<h4 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h4><h6 id="第一部分：课程介绍，学习方法及元器件库的创建"><a href="#第一部分：课程介绍，学习方法及元器件库的创建" class="headerlink" title="第一部分：课程介绍，学习方法及元器件库的创建"></a>第一部分：课程介绍，学习方法及元器件库的创建</h6><ol>
+<li>课程介绍以及学习思路介绍</li>
+<li>AD20的软件安装以及中英文切换</li>
+<li>AD的工程组成以及创建</li>
+<li>元件库的介绍及阻容模型的创建</li>
+<li>IC类元件模型的创建 </li>
+<li>排针类元件模型的创建</li>
+<li>光耦以及二极管元件模型的创建</li>
+<li>现有元件模型的调用</li>
+</ol>
+<h6 id="第二部分：智能小车的原理图绘制及编译检查"><a href="#第二部分：智能小车的原理图绘制及编译检查" class="headerlink" title="第二部分：智能小车的原理图绘制及编译检查"></a>第二部分：智能小车的原理图绘制及编译检查</h6><ol>
+<li>元件的放置</li>
+<li>器件的复制以及对齐</li>
+<li>导线以及NetLable的添加</li>
+<li>Value值的核对</li>
+<li>封装的统一管理</li>
+<li>原理图的编译设置以及检查</li>
+</ol>
+<h6 id="第三部分：PCB封装库的创建方法及现有封装调用"><a href="#第三部分：PCB封装库的创建方法及现有封装调用" class="headerlink" title="第三部分：PCB封装库的创建方法及现有封装调用"></a>第三部分：PCB封装库的创建方法及现有封装调用</h6><ol>
+<li>常见CHIP类封装的创建</li>
+<li>常见IC类封装的创建</li>
+<li>利用IPC封装创建向导快速创建封装</li>
+<li>常用PCB封装的直接调用</li>
+<li>3D模型的创建和导入</li>
+</ol>
+<h6 id="第四部分：网表导入以及模块化布局设计"><a href="#第四部分：网表导入以及模块化布局设计" class="headerlink" title="第四部分：网表导入以及模块化布局设计"></a>第四部分：网表导入以及模块化布局设计</h6><ol>
+<li>导入常见报错以及解决办法</li>
+<li>PCB板框的评估以及叠层设置</li>
+<li>PCB快捷键的设置以及推荐</li>
+<li>模块化布局规则</li>
+<li>PCB布局实战演示</li>
+<li>PCB布局优化以及调整</li>
+</ol>
+<h6 id="第五部分：PCB规则设置以及PCB手工布线"><a href="#第五部分：PCB规则设置以及PCB手工布线" class="headerlink" title="第五部分：PCB规则设置以及PCB手工布线"></a>第五部分：PCB规则设置以及PCB手工布线</h6><ol>
+<li>Class、设计参数、规则的创建</li>
+<li>扇孔的处理及覆铜插件的应用</li>
+<li>PCB布线——信号线的走线</li>
+<li>PCB布线——电源部分的走线</li>
+<li>信号的修线优化和GND的处理</li>
+</ol>
+<h6 id="第六部分：PCB的DRC检查，拼板设计以及资料输出"><a href="#第六部分：PCB的DRC检查，拼板设计以及资料输出" class="headerlink" title="第六部分：PCB的DRC检查，拼板设计以及资料输出"></a>第六部分：PCB的DRC检查，拼板设计以及资料输出</h6><ol>
+<li>DRC的检查以及丝印的调整以及logo的导入</li>
+<li>什么是拼版？为什么要拼版？</li>
+<li>V—Cut和邮票孔的概念</li>
+<li>拼版的实战演示</li>
+<li>Gerber文件的输出以及整理</li>
+</ol>
+<h4 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h4><hr>
+<h4 id="第一部分：课程介绍，学习方法及元器件库的创建-1"><a href="#第一部分：课程介绍，学习方法及元器件库的创建-1" class="headerlink" title="第一部分：课程介绍，学习方法及元器件库的创建"></a>第一部分：课程介绍，学习方法及元器件库的创建</h4><ol>
+<li><h5 id="课程介绍以及学习思路介绍"><a href="#课程介绍以及学习思路介绍" class="headerlink" title="课程介绍以及学习思路介绍"></a>课程介绍以及学习思路介绍</h5><ol>
+<li>学习目的：用AD做设计</li>
+<li>学习内容：一是熟悉软件，二是原理图库以及原理图绘制，三是PCB布局以及PCB布线</li>
+<li>怎么学：软件主要练习快捷键，设计主要是先看一遍，练习一遍，最后对比学习</li>
+</ol>
+</li>
+<li><h5 id="AD20的软件安装以及中英文切换"><a href="#AD20的软件安装以及中英文切换" class="headerlink" title="AD20的软件安装以及中英文切换"></a>AD20的软件安装以及中英文切换</h5><ol>
+<li>网上找了个蛮详细的，大家可以参考</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_40379143/article/details/108446461">https://blog.csdn.net/weixin_40379143/article/details/108446461</a></li>
+</ol>
+</li>
+<li><h5 id="AD的工程组成以及创建"><a href="#AD的工程组成以及创建" class="headerlink" title="AD的工程组成以及创建"></a>AD的工程组成以及创建</h5><ol>
+<li>工程文件包含的内容：原理图库，原理图，PCB库，PCB，生产文件。 &#x3D;&#x3D;Tips：以上内容一定要包含在工程中，否则原理图与PCB无法交互。&#x3D;&#x3D;</li>
+</ol>
+</li>
+<li><h5 id="元件库的介绍及阻容模型的创建"><a href="#元件库的介绍及阻容模型的创建" class="headerlink" title="元件库的介绍及阻容模型的创建"></a>元件库的介绍及阻容模型的创建</h5><ol>
+<li>元件符号是元件在原理图上的表现形式，主要由元件边框、管脚（包括管脚序号和管脚名称）、元件名称以及元件说明组成，通过放置的管脚来建立电器连接关系，元件符号中的管脚序号和电子元件实物的管脚一一对应的。在创建元件的时候，图形不一定和实物完全一样，但是对于管脚序号和名称，一定要严格按照数据手册中的的说明一一对应好。</li>
+</ol>
+</li>
+<li><h5 id="在SCH-Library中进行创建，主要参考元件的数据手册，注意电器属性引脚向外，可以修改引脚长度。"><a href="#在SCH-Library中进行创建，主要参考元件的数据手册，注意电器属性引脚向外，可以修改引脚长度。" class="headerlink" title="在SCH Library中进行创建，主要参考元件的数据手册，注意电器属性引脚向外，可以修改引脚长度。"></a>在SCH Library中进行创建，主要参考元件的数据手册，注意电器属性引脚向外，可以修改引脚长度。</h5></li>
+<li><h5 id="IC类元件模型的创建"><a href="#IC类元件模型的创建" class="headerlink" title="IC类元件模型的创建"></a>IC类元件模型的创建</h5><ol>
+<li>创建IC类元器件类型时，先放置外框，然后再放置引脚，最后再次修改名称即可。</li>
+<li>如果元器件引脚上有横线，加个反斜杠（\）即可。</li>
+<li>快捷键自定义：&#x3D;&#x3D;放在对应的操作上，按住Ctrl，鼠标左键点击，即可设置新的快捷键。&#x3D;&#x3D;</li>
+</ol>
+</li>
+<li><h5 id="排针类元件模型的创建"><a href="#排针类元件模型的创建" class="headerlink" title="排针类元件模型的创建"></a>排针类元件模型的创建</h5><ol>
+<li>&#x3D;&#x3D;阵列粘贴&#x3D;&#x3D;：类似于排针的引脚一样多个相同时候，可以使用本功能。先放置第一个引脚，&#x3D;&#x3D;然后复制&#x3D;&#x3D;，点击粘贴里面的阵列粘贴，输入对象数量，主增量，为管脚号，次增量，为管脚名称。点击确定即可快速添加多个引脚等。</li>
+</ol>
+</li>
+<li><h5 id="光耦以及二极管元件模型的创建"><a href="#光耦以及二极管元件模型的创建" class="headerlink" title="光耦以及二极管元件模型的创建"></a>光耦以及二极管元件模型的创建</h5><ol>
+<li>创建例如三极管发射极和集电极，可以把栅格改小之后再去画。</li>
+</ol>
+</li>
+<li><h5 id="现有元件模型的调用"><a href="#现有元件模型的调用" class="headerlink" title="现有元件模型的调用"></a>现有元件模型的调用</h5><ol>
+<li>以设计好的原理图为例可以生成原理图库，直接调用即可。</li>
+</ol>
+</li>
+</ol>
+<h4 id="第二部分：智能小车的原理图绘制以及编译检查"><a href="#第二部分：智能小车的原理图绘制以及编译检查" class="headerlink" title="第二部分：智能小车的原理图绘制以及编译检查"></a>第二部分：智能小车的原理图绘制以及编译检查</h4><ol>
+<li><h5 id="元件的放置"><a href="#元件的放置" class="headerlink" title="元件的放置"></a>元件的放置</h5><ol>
+<li>创建好原理图库之后，直接安装此库，然后在右侧的components中直接添加即可</li>
+</ol>
+</li>
+<li><h5 id="器件的复制以及对齐"><a href="#器件的复制以及对齐" class="headerlink" title="器件的复制以及对齐"></a>器件的复制以及对齐</h5><ol>
+<li>放好的元器件直接复制：按住shift键，然后鼠标左键直接拉动即可。</li>
+<li>放好的元器件直接移动：按住Ctrl键，然后鼠标左键直接拉动即可。</li>
+<li>按空格键进行元器件方向的旋转。</li>
+<li>按照模块化的思想进行原理图设计。</li>
+<li>&#x3D;&#x3D;Shift+Space 可以进行线的角度的设置。&#x3D;&#x3D;</li>
+</ol>
+</li>
+<li><h5 id="导线以及NetLable的添加"><a href="#导线以及NetLable的添加" class="headerlink" title="导线以及NetLable的添加"></a>导线以及NetLable的添加</h5><ol>
+<li>放置选项卡下的 线（Ctrl+W）是具有电气属性的线，而此选项卡最后绘图工具里面的线（L）是没有电气连接属性的。</li>
+</ol>
+</li>
+<li><h5 id="Value值的核对"><a href="#Value值的核对" class="headerlink" title="Value值的核对"></a>Value值的核对</h5><ol>
+<li>统一标注：工具选项卡 -&gt; 标注 -&gt; 原理图标注，可以进行统一的标注。</li>
+</ol>
+</li>
+<li><h5 id="封装的统一管理"><a href="#封装的统一管理" class="headerlink" title="封装的统一管理"></a>封装的统一管理</h5><ol>
+<li>工具选项卡 -&gt; 封装管理器，里面可以针对同一类的元器件统一进行封装管理。</li>
+</ol>
+</li>
+<li><h5 id="原理图的编译设置以及检查"><a href="#原理图的编译设置以及检查" class="headerlink" title="原理图的编译设置以及检查"></a>原理图的编译设置以及检查</h5><ol>
+<li>需要报错的内容设置：工程选项卡 -&gt; 工程设置、里面第一项可以设置不同错误的报错类型。然后在进行原理图编译的时候就可以看见报错。然后逐一核查即可。</li>
+</ol>
+</li>
+</ol>
+<h4 id="第三部分：PCB封装库的创建方法及现有封装调用-1"><a href="#第三部分：PCB封装库的创建方法及现有封装调用-1" class="headerlink" title="第三部分：PCB封装库的创建方法及现有封装调用"></a>第三部分：PCB封装库的创建方法及现有封装调用</h4><ol>
+<li><h5 id="常见CHIP封装的创建"><a href="#常见CHIP封装的创建" class="headerlink" title="常见CHIP封装的创建"></a>常见CHIP封装的创建</h5><ol>
+<li>注意创建PCB封装时，焊盘最外侧为阻焊层，目的在于防止绿油覆盖。</li>
+<li>多个焊盘进行精确移动时，可以选中之后按M键，选择XY移动。</li>
+<li>在复制状态下按住X或者Y可以进行器件的镜像。</li>
+</ol>
+</li>
+<li><h5 id="常见IC类封装的创建"><a href="#常见IC类封装的创建" class="headerlink" title="常见IC类封装的创建"></a>常见IC类封装的创建</h5><ol>
+<li>放置好第一个焊盘，之后的多个焊盘可以利用工具选项卡中的特殊粘贴，阵列粘贴进行统一的快速复制。</li>
+<li>如果按照数据手册创建出现丝印覆盖焊盘的情况，可以利用编辑选项卡下的裁剪导线将导线进行切断处理。</li>
+</ol>
+</li>
+<li><h5 id="利用IPC封装创建向导快速创建封装"><a href="#利用IPC封装创建向导快速创建封装" class="headerlink" title="利用IPC封装创建向导快速创建封装"></a>利用IPC封装创建向导快速创建封装</h5><ol>
+<li>首先需要安装此插件。未安装的在Extensions&amp;Updates中进行安装。</li>
+<li>制作IPC标准封装时，可以同时生成2D和3D效果图。</li>
+</ol>
+</li>
+<li><h5 id="常用PCB封装的直接调用"><a href="#常用PCB封装的直接调用" class="headerlink" title="常用PCB封装的直接调用"></a>常用PCB封装的直接调用</h5><ol>
+<li>用别人的或者自己的生成的库，进行安装即可直接调用。</li>
+</ol>
+</li>
+<li><h5 id="3D模型的创建和导入"><a href="#3D模型的创建和导入" class="headerlink" title="3D模型的创建和导入"></a>3D模型的创建和导入</h5><ol>
+<li>可以自己生成简易的3D体。不带引脚等。</li>
+<li><a target="_blank" rel="noopener" href="https://www.3dcontentcentral.cn/Default.aspx">https://www.3dcontentcentral.cn/Default.aspx</a>   也可以去此网站搜索3D模型，个人使用的话还是比较全的。</li>
+<li>国内的IC原理图库和封装等。<a target="_blank" rel="noopener" href="https://www.iclib.com/">https://www.iclib.com/</a></li>
+</ol>
+</li>
+</ol>
+<h4 id="第四部分：网表导入以及模块化布局设计-1"><a href="#第四部分：网表导入以及模块化布局设计-1" class="headerlink" title="第四部分：网表导入以及模块化布局设计"></a>第四部分：网表导入以及模块化布局设计</h4><ol>
+<li><h5 id="导入常见报错以及解决办法"><a href="#导入常见报错以及解决办法" class="headerlink" title="导入常见报错以及解决办法"></a>导入常见报错以及解决办法</h5><ol>
+<li>unknown pin <ol>
+<li>没有封装</li>
+<li>封装管脚缺失</li>
+<li>管脚号不匹配</li>
+</ol>
+</li>
+<li>常见绿色报错的消除<ol>
+<li>整体绿色是因为导入进去的红框没删掉。</li>
+<li>如果两个元器件之间出现绿色报错是因为小于安全间距。</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><h5 id="PCB板框的评估及叠层设置"><a href="#PCB板框的评估及叠层设置" class="headerlink" title="PCB板框的评估及叠层设置"></a>PCB板框的评估及叠层设置</h5><ol>
+<li>器件整齐摆放：工具选项卡下 -&gt; 器件摆放，在矩形区域排列。即可在规定区域内放置所有元器件。</li>
+<li>这部分的重要性：可以根据元器件摆放的矩形框大小，评估板材的尺寸。最后注意取整。</li>
+<li>定位孔按照先放顶角，而后往内偏移的方式进行确定。</li>
+<li>两层板与四层板区别：一是成本，二是设计难度，三是信号质量</li>
+<li>层叠设置：设计选项卡 -&gt; 层叠管理器，在里面添加所需要的层数即可。</li>
+<li>注意正片层与正片层的区别：正片层只有画线的地方有铜皮，负片层只有画线的地方无铜皮。</li>
+</ol>
+</li>
+<li><h5 id="PCB快捷键的设置以及推荐"><a href="#PCB快捷键的设置以及推荐" class="headerlink" title="PCB快捷键的设置以及推荐"></a>PCB快捷键的设置以及推荐</h5><ol>
+<li><p>在需要设置快捷键的命令上按住Ctrl，重新设置快捷键。</p>
+<ol>
+<li><p>快捷键推荐设置：</p>
+<table>
+<thead>
+<tr>
+<th align="center">拉线</th>
+<th align="center">过孔</th>
+<th align="center">覆铜</th>
+<th align="center">器件排列离散</th>
+<th align="center">线选</th>
+<th align="center">框选</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">F2</td>
+<td align="center">F3</td>
+<td align="center">F4</td>
+<td align="center">F6</td>
+<td align="center">2</td>
+<td align="center">3</td>
+</tr>
+<tr>
+<td align="center">左对齐</td>
+<td align="center">右对齐</td>
+<td align="center">上对齐</td>
+<td align="center">下对齐</td>
+<td align="center">水平等间距</td>
+<td align="center">垂直等间距</td>
+</tr>
+<tr>
+<td align="center">Num4</td>
+<td align="center">Num3</td>
+<td align="center">Num8</td>
+<td align="center">Num2</td>
+<td align="center">Num7</td>
+<td align="center">Num9</td>
+</tr>
+<tr>
+<td align="center">器件位号排列</td>
+<td align="center">差分线</td>
+<td align="center">删除网络</td>
+<td align="center">物理选择</td>
+<td align="center">执行DRC</td>
+<td align="center">规则</td>
+</tr>
+<tr>
+<td align="center">Num5</td>
+<td align="center">Alt+F2</td>
+<td align="center">Num8</td>
+<td align="center">Ctrl+H</td>
+<td align="center">TD</td>
+<td align="center">DR</td>
+</tr>
+<tr>
+<td align="center">Class</td>
+<td align="center">网络显示关闭</td>
+<td align="center">移动</td>
+<td align="center">选择</td>
+<td align="center">单位切换</td>
+<td align="center">单层显示</td>
+</tr>
+<tr>
+<td align="center">DC</td>
+<td align="center">N</td>
+<td align="center">M</td>
+<td align="center">S</td>
+<td align="center">Q</td>
+<td align="center">Shift+S</td>
+</tr>
+<tr>
+<td align="center">切换抓取</td>
+<td align="center">多根走线</td>
+<td align="center">忽略障碍物</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">Shift+E</td>
+<td align="center">TTM</td>
+<td align="center">Shift+R</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><h5 id="模块化布局规划"><a href="#模块化布局规划" class="headerlink" title="模块化布局规划"></a>模块化布局规划</h5><ol>
+<li>通过工具选项卡下交叉选择模式可以将原理图选中的在PCB中高亮显示，使用此模式时，可以将操作区域垂直分布。</li>
+<li>&#x3D;&#x3D;交叉选择模式下，选中对应模块的元器件，然后在PCB界面中对应的进行器件排列，非常的好用，能够快速的将器件进行模块化分类。&#x3D;&#x3D;</li>
+<li>几大布局原则：<ol>
+<li>先大后小。</li>
+<li>如果一个部分整体已经布局好，作为一个整体的话，右键，联合，从选中的器件生成联合。</li>
+<li>交互式布线时，选中器件按快捷键 TC，可以定位器件。</li>
+<li>信号流向原则。</li>
+<li>考虑整体协调，布局美观。</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="第五部分：PCB规则设置以及PCB手工布线-1"><a href="#第五部分：PCB规则设置以及PCB手工布线-1" class="headerlink" title="第五部分：PCB规则设置以及PCB手工布线"></a>第五部分：PCB规则设置以及PCB手工布线</h4><ol>
+<li><h5 id="Class、设计参数、规则的创建"><a href="#Class、设计参数、规则的创建" class="headerlink" title="Class、设计参数、规则的创建"></a>Class、设计参数、规则的创建</h5><ol>
+<li><p>Class的创建：设计选项卡 -&gt; 类，即可添加相同的类。比如将所有的电源线统一加入Power类，即可进行统一隐藏或者显示。</p>
+</li>
+<li><p>设计参数设置：设计选项卡 -&gt; 规则。可以对相对应的部分进行规则设置。此部分一共有九个大类。一是电气性能规则、二是信号线宽规则、三是贴片规则、四是阻焊规则、五是铺铜规则、六是测试点规则、七是生产部分规则、八是高速部分规则、九是放置器件的规则、最后是信号完整性分析。</p>
+<p>常用的有以下几类：</p>
+<ol>
+<li>间距规则，与生产挂钩，具体与PCB板厂的生产能力相关。可查询对应厂家可支持的规则。通常为6mil以上。</li>
+<li>线宽与最小孔径同理，参照厂家生产能力。线宽推荐6mil以上，最小孔径12mil以上。</li>
+<li>例如此部分参照嘉立创工艺参数。|<a target="_blank" rel="noopener" href="https://www.jlc.com/portal/vtechnology.html">https://www.jlc.com/portal/vtechnology.html</a></li>
+</ol>
+</li>
+<li><p>电源部分线的载流宽度需要注意。电流大需要加粗。</p>
+</li>
+<li><p>过孔规则计算公式：2*H ± 2mil。</p>
+</li>
+<li><p>反焊层设置为全连接，推荐设置为8mil。</p>
+</li>
+<li><p>焊盘连接方式：载流情况下推荐使用全连接，因为要走大电流。但是在作为信号连接的情况下推荐使用十字连接。</p>
+</li>
+<li><p>过孔连接方式：建议采用全连接。</p>
+</li>
+<li><p>丝印与阻焊层的距离：推荐设置为2mil</p>
+</li>
+</ol>
+</li>
+<li><h5 id="扇孔的处理以及覆铜插件的应用"><a href="#扇孔的处理以及覆铜插件的应用" class="headerlink" title="扇孔的处理以及覆铜插件的应用"></a>扇孔的处理以及覆铜插件的应用</h5><ol>
+<li>PCB设计中先进行扇孔的目的：一是打孔占位、二是减少回流路径。</li>
+</ol>
+</li>
+<li><h5 id="PCB布线——信号线的走线"><a href="#PCB布线——信号线的走线" class="headerlink" title="PCB布线——信号线的走线"></a>PCB布线——信号线的走线</h5><ol>
+<li>先考虑连通性</li>
+</ol>
+</li>
+<li><h5 id="PCB布线——电源部分的处理"><a href="#PCB布线——电源部分的处理" class="headerlink" title="PCB布线——电源部分的处理"></a>PCB布线——电源部分的处理</h5><ol>
+<li>考虑电源载流能力，注意线宽。</li>
+</ol>
+</li>
+<li><h5 id="信号线的优化和GND的处理"><a href="#信号线的优化和GND的处理" class="headerlink" title="信号线的优化和GND的处理"></a>信号线的优化和GND的处理</h5><ol>
+<li>如果出现尖端铜，可以进行多边形铺铜挖空。避免出现尖端放电效应。</li>
+</ol>
+</li>
+</ol>
+<h4 id="第六部分：PCB的DRC检查，拼板设计以及资料输出-1"><a href="#第六部分：PCB的DRC检查，拼板设计以及资料输出-1" class="headerlink" title="第六部分：PCB的DRC检查，拼板设计以及资料输出"></a>第六部分：PCB的DRC检查，拼板设计以及资料输出</h4><ol>
+<li><h5 id="DRC的检查以及丝印的调整"><a href="#DRC的检查以及丝印的调整" class="headerlink" title="DRC的检查以及丝印的调整"></a>DRC的检查以及丝印的调整</h5><ol>
+<li>进行DRC检查的目的：前期为了满足各项设计的要求，通常会设置很多约束规则，当一个PCB设计完成之后，通常要进行DRC检查。DRC检查就是检查设计是否满足所设置的规则，一个完整的PCB设计必须经过各项电气规则的检查，常见的包括间距、开短路的检查。更加严格的还有差分对、阻抗线等检查。</li>
+<li>问题：<ol>
+<li>如果出现警告弹窗，通常是因为修改铜皮之后没有进行重新铺铜。</li>
+<li>如果出现啥都没有的情况，可能是因为检测时间不够，修改到5000ms以上。</li>
+<li>丝印的DRC间距推荐设置为2mil。</li>
+</ol>
+</li>
+<li>丝印的调整<ol>
+<li>针对后期元器件装配，特别是手工装配元器件，一般都得出PCB的装配图，用于元件放料定位之用。</li>
+<li>丝印位号不上阻焊，防止丝印生产之后缺失。</li>
+<li>丝印位号清晰，字号推荐字宽&#x2F;字高尺寸为4&#x2F;25mil，5&#x2F;30mil，6&#x2F;45mil。</li>
+<li>保持方向统一性，一般在一块PCB上不要超过两个方向摆放，推荐字母在左或在下。</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><h5 id="什么是拼版？为什么要拼版？"><a href="#什么是拼版？为什么要拼版？" class="headerlink" title="什么是拼版？为什么要拼版？"></a>什么是拼版？为什么要拼版？</h5><ol>
+<li>节约生产成本</li>
+<li>提高SMT生产效率</li>
+<li>节省PCBA拿放时间</li>
+<li>拼版的好处<ol>
+<li>SMT产线的最大瓶颈，就是【锡膏印刷】制程，因为不论PCB的尺寸多大，其印刷所花费的时间都是25s左右，如果后期的快速贴片打件机、泛用贴片打件机所花费的时间如果小于锡膏印刷机，就会空等，造成资源的浪费。</li>
+<li>其实贴片机的速度非常快，快到一秒钟可以打好几个零件，有些贴片机甚至有好几个吸嘴可以同时打件，以手机上PCBA上面的零件数来看，如果只有单一片板子，应该不到10s就可以完成所贴片作业。所以将PCB做拼版就可以增加贴片的零件数，也就可以增加贴片机的利用率。</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><h5 id="拼板类型"><a href="#拼板类型" class="headerlink" title="拼板类型"></a>拼板类型</h5><ol>
+<li>V-Cut</li>
+<li>邮票孔：一般邮票孔使用孔径为直径0.8mm大小的非金属化孔，孔与孔的中心间距1.1mm左右，孔的个数5个为宜。</li>
+<li>选用方式：规则的矩形使用V-Cut，不规则的、圆形等使用邮票孔</li>
+<li>如果需要对类似于电源部分添加大面积铺地孔，则可以通过工具选项卡下，缝合孔进行整体添加。栅格150mil</li>
+</ol>
+</li>
+<li><h5 id="Gerber文件的输出以及整理"><a href="#Gerber文件的输出以及整理" class="headerlink" title="Gerber文件的输出以及整理"></a>Gerber文件的输出以及整理</h5><ol>
+<li>装配图的输出</li>
+<li>BOM文件的输出<ol>
+<li>报告选项卡下Bill of materials 可以进行输出</li>
+</ol>
+</li>
+<li>Gerber文件的输出<ol>
+<li>文件选项卡 -&gt; 装配输出 -&gt; Gerber Fils，设置类型：单位选择英寸，格式选择2:4，绘制层可以全部选择，镜像层全部取消。</li>
+</ol>
+</li>
+<li>转孔文件的输出</li>
+<li>坐标文件的输出</li>
+<li>文件的整理</li>
+</ol>
+</li>
+</ol>
+<hr>
+<h3 id="gt-gt-gt-gt-gt-gt-gt-gt-gt-gt-gt-gt-gt-gt-gt-gt-gt-gt-gt-gt-gt-gt-gt-gt-持续更新中-lt-lt-lt-lt-lt-lt-lt-lt-lt-lt-lt-lt-lt-lt-lt-lt-lt-lt-lt-lt-lt-lt-lt-lt"><a href="#gt-gt-gt-gt-gt-gt-gt-gt-gt-gt-gt-gt-gt-gt-gt-gt-gt-gt-gt-gt-gt-gt-gt-gt-持续更新中-lt-lt-lt-lt-lt-lt-lt-lt-lt-lt-lt-lt-lt-lt-lt-lt-lt-lt-lt-lt-lt-lt-lt-lt" class="headerlink" title="&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;持续更新中&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;"></a>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;持续更新中&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</h3>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/PCB%E8%AE%BE%E8%AE%A1/">PCB设计</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/02/06/%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">电路分析基础</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/12/22/hello-world/">
+                        <span class="hidden-mobile">Hello World</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
