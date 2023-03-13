@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>Project Case</title>
+    <link href="/2023/03/13/Project_Case/"/>
+    <url>/2023/03/13/Project_Case/</url>
+    
+    <content type="html"><![CDATA[<h2 id="Project-Case"><a href="#Project-Case" class="headerlink" title="Project    Case"></a>Project    Case</h2><p>以下是我做过的一些项目，在此做一些项目案例分享</p><ol><li><h3 id="超声波清洗干燥一体机"><a href="#超声波清洗干燥一体机" class="headerlink" title="超声波清洗干燥一体机"></a>超声波清洗干燥一体机</h3><p>超声波清洗干燥一体机控制主板，主要实现功能为通过485通信控制超声波主机进行清洗，通过电机进行开关门操作，通过传感器检测液位，PT100温度检测等</p><img src="/2023/03/13/Project_Case/超声波清洗干燥一体机.jpg" style="zoom: 80%;"></li><li><h3 id="PCR电机控制板"><a href="#PCR电机控制板" class="headerlink" title="PCR电机控制板"></a>PCR电机控制板</h3><p>PCR检测中所使用的电机控制板，主要所使用的控制芯片为DRV8825</p><img src="/2023/03/13/Project_Case/PCR三路电机控制板.jpg" style="zoom: 80%;"><img src="/2023/03/13/Project_Case/PCR四路电机控制板.jpg" style="zoom: 80%;"><img src="/2023/03/13/Project_Case/PCR光耦板1.jpg" style="zoom: 80%;"><img src="/2023/03/13/Project_Case/PCR光耦板2.jpg" style="zoom: 80%;"><img src="/2023/03/13/Project_Case/PCR光耦板3.jpg" style="zoom: 80%;"><img src="/2023/03/13/Project_Case/PCR光耦板4.jpg" style="zoom: 80%;"></li><li><h3 id="两轮平衡车设计"><a href="#两轮平衡车设计" class="headerlink" title="两轮平衡车设计"></a>两轮平衡车设计</h3><p>实现两轮平衡车控制，MCU为STM32F103C8T6，姿态检测芯片为MPU6050</p><img src="/2023/03/13/Project_Case/BalanceCar结构图.jpg" style="zoom: 80%;"><img src="/2023/03/13/Project_Case/balanceCarban.jpg" style="zoom: 80%;"></li><li><h4 id="基于嵌入式系统的火灾报警器设计"><a href="#基于嵌入式系统的火灾报警器设计" class="headerlink" title="基于嵌入式系统的火灾报警器设计"></a>基于嵌入式系统的火灾报警器设计</h4><img src="/2023/03/13/Project_Case/基于嵌入式系统的火灾报警器设计.jpg" style="zoom: 80%;"></li><li><h4 id="智能蓝牙电子秤设计"><a href="#智能蓝牙电子秤设计" class="headerlink" title="智能蓝牙电子秤设计"></a>智能蓝牙电子秤设计</h4><img src="/2023/03/13/Project_Case/智能蓝牙电子秤.jpg" style="zoom: 80%;"></li><li><h4 id="脉搏心率测量仪"><a href="#脉搏心率测量仪" class="headerlink" title="脉搏心率测量仪"></a>脉搏心率测量仪</h4><h4 id><a href="#" class="headerlink" title></a><img src="/2023/03/13/Project_Case/脉搏心律测量仪.jpg" style="zoom: 80%;"></h4></li><li><p>小作品</p><img src="/2023/03/13/Project_Case/小作品.jpg" style="zoom: 80%;"></li><li></li></ol>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Project</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>模电基础知识分享</title>
     <link href="/2023/02/06/%E6%A8%A1%E7%94%B5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%88%86%E4%BA%AB/"/>
     <url>/2023/02/06/%E6%A8%A1%E7%94%B5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%88%86%E4%BA%AB/</url>
